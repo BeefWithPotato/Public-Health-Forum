@@ -13,17 +13,17 @@ class Welcome_Page extends React.Component{
 
 				{/* sign up button */}
 				<Link className="button_link" to="" >
-					<Button round className="welcome_button">Want an account!</Button>
+					<Button size="small" variant="outlined" href="#outlined-buttons" className="welcome_button">Want an account?</Button>
 				</Link>
 
 				{/* login button */}
 				<Link className="button_link" to="" >
-					<Button round className="welcome_button">User Login!</Button>
+					<Button size="small" variant="outlined" href="#outlined-buttons" className="welcome_button">User Login!</Button>
 				</Link>
 
 				{/* guest visit button */}
 				<Link className="button_link" to={"./Home_Page"} >
-					<Button round className="welcome_button">Continue as a guest!</Button>
+					<Button size="small" variant="outlined" href="#outlined-buttons" className="welcome_button">Continue as a guest!</Button>
 				</Link>
 			</div>
 		);

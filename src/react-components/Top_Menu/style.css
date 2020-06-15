@@ -9,11 +9,21 @@
 
 .top_menu ul li{
 	margin-right: 20px;
-	font-weight: bold;
+	font-weight: 350;
+	font-size: 1em;
 	list-style: none; 
 	text-align: center;
 	display: inline-block
 }
+
+
+.search_button{
+	width: 90px;
+  	height: 30px;
+  	left: 10px;
+  	text-align: center;
+}
+
 
 a{
  	text-decoration: none;

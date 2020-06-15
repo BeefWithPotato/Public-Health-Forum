@@ -2,15 +2,28 @@ import React from "react";
 
 import "./style.css";
 import Top_Menu from "../Top_Menu";
+import header_img from "./static/homepage_header_img.jpg"
 class Home_Page extends React.Component{
 
 	render(){
 		return (
-    		<Top_Menu
-    			item1="Home"
-    			item2="Subfield"
-    			item3="Help"
-    		/>
+    		<div className="homepage">
+    			<Top_Menu/>
+    			<img className="header_img" src={header_img}/>
+
+    			<p>
+
+    			</p>	
+
+
+
+
+
+
+
+
+
+			</div>
   		);
 	}
 }

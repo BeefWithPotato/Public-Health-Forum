@@ -1,24 +1,40 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
 import "./style.css";
 
 class Top_Menu extends React.Component{
 	render(){
 
-		const { item1, item2, item3 } = this.props;
-
 		return (
     		<div className="top_menu">
       			<ul>
+              {/* Home button */}
         			<li className="Home">
-        				<a href="./Home_Page">{item1}</a>
+        			    <a href="./Home_Page">Home</a>
         			</li>
+
+              {/* Subfield button */}
         			<li className="Subfield">
-          				<a href="">{item2}</a>
+          				<a href="">Subfield</a>
         			</li>
+
+              {/* Help button */}
         			<li className="Help">
-          				<a href="">{item3}</a>
+          				<a href="">Help</a>
         			</li>
+
+              {/* Search Box */}
+              <li className="search">
+                  <input className="search" type="text" placeholder="search"/>
+
+                  {/* Search Button */}
+                  <Button size="small" variant="outlined" href="#outlined-buttons" color="primary" className="search_button">
+                      Search
+                  </Button>
+              </li>
+
       			</ul>
     		</div>
   		);

@@ -1,8 +1,4 @@
 /* Styles for the Welcome Page Component*/
-html{
-	font-size: 2em; 
-	font-weight: bold;
-}
 
 .welcome_page{
 	 position: fixed;
@@ -17,9 +13,12 @@ html{
 .welcome_button{
 	width: 400px;
   	height: 50px;
-	top: 80%;
-  	left: 18%;
+	top: 65%;
+  	left: 10%;
 	border: 0px solid transparent; 
     text-align: center;
     display: inline-block;
+}
+html{
+	font-size: 1.5em;
 }
