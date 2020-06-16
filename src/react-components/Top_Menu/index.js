@@ -1,7 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
+
 import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
+
 import "./style.css";
 
 class Top_Menu extends React.Component{
@@ -15,9 +15,9 @@ class Top_Menu extends React.Component{
         			    <a href="./Home_Page">Home</a>
         			</li>
 
-              {/* Subfield button */}
-        			<li className="Subfield">
-          				<a href="">Subfield</a>
+              {/* Posts button */}
+        			<li className="Posts">
+          				<a href="">Posts</a>
         			</li>
 
               {/* Help button */}

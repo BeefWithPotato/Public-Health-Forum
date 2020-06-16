@@ -1,0 +1,38 @@
+
+.Hot_Tag{
+	font-family: Arial;
+	margin-left: 10px;
+	background-color: white;
+	float: left;
+
+	margin-top: 10px;
+	margin-left: 15px;
+	width: 350px;
+
+	display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    overflow: hidden;
+}
+
+.hot_tags_title{
+	float: left;
+	margin-left: -110px;
+	font-style: italic;
+	color: red;
+}
+
+.tag_title{
+	width: auto;
+}
+
+.Hot_Tag ul li {
+	margin-top: 0px;
+    display: inline;
+    float: left;
+}
+
+.no_img{
+	background-color: #33CCFF;
+}
+

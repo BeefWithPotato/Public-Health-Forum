@@ -1,7 +1,6 @@
 .header_img{
-	position: fixed;
+	background-attachment: fixed;
   	height: 325px;
   	display: block;
 	width: 100%;
 }
-
