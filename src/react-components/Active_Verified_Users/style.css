@@ -1,0 +1,32 @@
+
+.active_users{
+	float: left;
+	margin-left: 1270px;
+	font-family: Arial;
+	width: 400px;
+	position: absolute;
+}
+
+.hot_users_title{
+	margin-left: 15px;
+	color: red;
+	font-style: italic;
+}
+
+.user_paper{
+	border: 1px solid black;
+	display: block;
+	text-align: center;
+	min-width: 400px;
+	margin: 10px;
+}
+
+.avatar{
+	margin: 10px;
+	width: 180px;
+}
+
+.description{
+	text-align: center;
+	margin-left: 5px;
+}

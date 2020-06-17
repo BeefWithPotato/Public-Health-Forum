@@ -1,22 +1,21 @@
 
 .Hot_Tag{
 	font-family: Arial;
-	margin-left: 10px;
 	background-color: white;
 	float: left;
-
+	position: absolute;
 	margin-top: 10px;
-	margin-left: 15px;
-	width: 350px;
-
+	margin-left: 150px;
+	width: 400px;
+	
 	display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     overflow: hidden;
 }
 
+
 .hot_tags_title{
-	float: left;
 	margin-left: -110px;
 	font-style: italic;
 	color: red;

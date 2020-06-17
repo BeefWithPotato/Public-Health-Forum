@@ -4,18 +4,34 @@ import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
 
-import COV19 from "./static/cov19.jpg"
-import headache from "./static/headache.jpg"
-import flu from "./static/cold.jpg"
-import fever from "./static/fever.jpg"
-import stomachache from "./static/stomachache.jpg"
+import COV19 from "./static/cov19.jpg";
+import headache from "./static/headache.jpg";
+import flu from "./static/cold.jpg";
+import fever from "./static/fever.jpg";
+import stomachache from "./static/stomachache.jpg";
 
 import "./style.css";
 
-
+{/* hot tags part in homepage*/}
 class Hot_Tag extends React.Component{
 
+  state = {
+      /* Hot tags will be choosen from statistic data in the database. 
+         The corresponding picture, link, etc will be first set by admin,
+         then it will be saved in the database.
+      */
+      tags: [
+
+        { img: COV19, name: "COV19", cols: 2, link: "./"},
+        { img: fever, name: "fever", cols: 1, link: "./"},
+        { img: headache, name: "headache", cols: 3, link: "./"},
+        { img: flu, name: "flu", cols: 1, link: "./"},
+        { img: stomachache, name: "stomachache", cols: 2, link: "./"}
+    ]
+  }
+
 	render(){
+
 
 		return (
     		<div className="Hot_Tag">
@@ -24,56 +40,20 @@ class Hot_Tag extends React.Component{
 
     			<GridList className="tags" cellHeight={100} cols={3}>
 
-        			<GridListTile className="img" key={COV19} cols={2 || 1}>
-            			<img src={COV19} alt="COV19" />
-            			
-            			{/* link to COV-19 tag posts */}
-            			<Link to={"./"}>
-            				  <GridListTileBar className="tag_title" title="COV-19"/>
-            			</Link>
-          			</GridListTile>
+              {this.state.tags.map((tag) => (
 
-                <GridListTile className="img" cols={1 || 1}>
-                  <img src={fever} alt="fever" />
-
-                  {/* link to Fever tag posts */}
-                  <Link to={"./Home_Page"}>
-                      <GridListTileBar className="tag_title" title="Fever"/>
-                  </Link>
-                </GridListTile>
-
-          			<GridListTile className="img" key={headache} cols={3 || 1}>
-            			<img src={headache} alt="headache" />
-
-            			{/* link to Headache tag posts */}
-            			<Link to={"./Welcome_Page"}>
-            				  <GridListTileBar className="tag_title" title="Headache" />
-            			</Link>
-          			</GridListTile>
-
-                <GridListTile className="img" key={flu} cols={1 || 1}>
-                  <img src={flu} alt="flu" />
-
-                  {/* link to Flu tag posts */}
-                  <Link to={"./Welcome_Page"}>
-                      <GridListTileBar className="tag_title" title="Flu" />
-                  </Link>
-                </GridListTile>
-
-                <GridListTile className="img" cols={2 || 1}>
-                  <img src={stomachache} alt="stomachache" />
-                  {/* link to Fever tag posts */}
-                  <Link to={"./Welcome_Page"}>
-                      <GridListTileBar className="tag_title" title="Stomachache" />
-                  </Link>
-                </GridListTile>
-
-          			
-      			</GridList>
-    			
-        												
+                  <GridListTile key={tag.name} cols={tag.cols}>
+                      <img className="img" src={tag.img} alt={tag.name} />
+                      
+                      <Link to={tag.link}>
+                        <GridListTileBar className="tag_title" title={tag.name} />
+                      </Link>
+                  </GridListTile>
+              ))}
+        			
+      			</GridList>     												
 			</div>
-  		);
+  	);
 	}
 }
 

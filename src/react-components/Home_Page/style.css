@@ -4,3 +4,17 @@
   	display: block;
 	width: 100%;
 }
+
+.cov19-update{
+	margin-top: 0px;
+	text-align: center;
+	background-color: #000099;
+	color: white;
+	font-weight: 400;
+	border: 1px solid #3300FF;
+}
+
+.homepage{
+	position: absolute;
+	width: 100%;
+}
