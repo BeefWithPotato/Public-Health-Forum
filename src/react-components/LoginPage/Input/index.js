@@ -12,8 +12,6 @@ class Input extends React.Component{
 	render(){
 		return (
     		<div className="Input">
-
-    				
                 <Grid className="main"  container direction="column" spacing={2}>
                     <Grid item >
                         <TextField 
@@ -61,7 +59,7 @@ class Input extends React.Component{
                     </li>   
                     <li>
                     {/* guest visit button */}
-                        <Link className="button_link" to={"./Home_Page"}>
+                        <Link className="button_link" to={"./HomePage"}>
                             <Button 
                                 className="button"
                                 variant="contained" 

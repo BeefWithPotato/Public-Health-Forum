@@ -2,9 +2,9 @@ import React from 'react';
 import './App.css';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
 
-import Welcome_Page from './react-components/Welcome_Page';
-import Home_Page from './react-components/Home_Page';
-import Login_Page from './react-components/Login_Page';
+import WelcomePage from './react-components/WelcomePage';
+import HomePage from './react-components/HomePage';
+import LoginPage from './react-components/LoginPage';
 
 class App extends React.Component{
     render() {
@@ -14,11 +14,11 @@ class App extends React.Component{
           <Switch> 
            
             <Route exact path='/' render={() => 
-                            (<Welcome_Page state={this.state}/>)}/>
-            <Route exact path='/home_page' render={() => 
-                            (<Home_Page state={this.state}/>)}/>
+                            (<WelcomePage state={this.state} />)}/>
+            <Route exact path='/homepage' render={() =>
+                            (<HomePage state={this.state} />)}/>
             <Route exact path='/login' render={() => 
-                            (<Login_Page state={this.state}/>)}/>                
+                            (<LoginPage state={this.state} />)}/>
 
           </Switch>
         </BrowserRouter>

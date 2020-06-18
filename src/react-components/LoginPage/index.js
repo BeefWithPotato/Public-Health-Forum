@@ -6,18 +6,18 @@ import TextField from "@material-ui/core/TextField";
 import Input from "./Input"
 import "./style.css";
 
-class Login_Page extends React.Component{
+class LoginPage extends React.Component{
 
 
-	render(){
-		return (
-    		<div className="login_page">
+    render(){
+        return (
+            <div className="login_page">
 
-    		    <Input className="main"/>
-    
-			</div>
-  		);
-	}
+                <Input className="main"/>
+
+            </div>
+        );
+    }
 }
 
-export default Login_Page;
+export default LoginPage;

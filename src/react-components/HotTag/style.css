@@ -1,0 +1,36 @@
+.HotTag{
+    font-family: Arial, serif;
+    background-color: white;
+
+    position: absolute;
+    margin: auto 15px;
+    float: left;
+    width: 380px;
+
+    display: block;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    overflow: hidden;
+}
+
+
+.hot_tags_title{
+
+    font-style: italic;
+    color: red;
+}
+
+.tag_title{
+    width: auto;
+}
+
+.HotTag ul li {
+    margin-top: 0;
+    display: inline;
+    float: left;
+}
+
+.no_img{
+    background-color: #33CCFF;
+}
+

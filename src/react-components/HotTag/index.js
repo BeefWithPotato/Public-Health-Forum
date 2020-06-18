@@ -12,8 +12,8 @@ import stomachache from "./static/stomachache.jpg";
 
 import "./style.css";
 
-{/* hot tags part in homepage*/}
-class Hot_Tag extends React.Component{
+/* hot tags part in homepage*/
+class HotTag extends React.Component{
 
   state = {
       /* Hot tags will be choosen from statistic data in the database. 
@@ -32,9 +32,8 @@ class Hot_Tag extends React.Component{
 
 	render(){
 
-
 		return (
-    		<div className="Hot_Tag">
+    		<div className="HotTag">
 
     			<h3 className="hot_tags_title">Current Hot Tags</h3>
 
@@ -57,4 +56,4 @@ class Hot_Tag extends React.Component{
 	}
 }
 
-export default Hot_Tag;
+export default HotTag;
