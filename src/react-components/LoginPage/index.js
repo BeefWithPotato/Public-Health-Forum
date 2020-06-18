@@ -1,23 +1,44 @@
 import React from "react";
-import Grid from "@material-ui/core/Grid";
-import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
+import { BrowserRouter as Router, Link} from "react-router-dom"
+import { Button, TextField, FormGroup } from "@material-ui/core";
 
-import Input from "./Input"
 import "./style.css";
 
-class LoginPage extends React.Component{
+const register = React.forwardRef((props, ref) => (
+    <Link ref={ref} to="./RegisterPage" {...props} />
+))
 
+export default function LoginPage() {
 
-    render(){
-        return (
-            <div className="login_page">
-
-                <Input className="main"/>
-
-            </div>
-        );
+    function submit(event) {
+        event.preventDefault();
+        /*
+        * TODO
+        */
     }
-}
 
-export default LoginPage;
+    return (
+        <div className="login_page">
+            <form onSubmit={submit} noValidate autoComplete="off" className="form">
+                <p className="title">Login</p>
+                <FormGroup className="input">
+                    <TextField required variant="outlined" label="Username" placeholder="Username" />
+                </FormGroup>
+                <FormGroup className="input">
+                    <TextField required variant="outlined" label="Password" placeholder="Password" />
+                </FormGroup>
+                <FormGroup className="forget">
+                    <Button color="primary" size="small">Forget password?</Button>
+                </FormGroup>
+                <FormGroup className="submit">
+                    <Button variant="contained" color="primary" type="submit">Login</Button>
+                </FormGroup>
+                <FormGroup className="submit">
+                    <Router>
+                        <Button variant="contained" color="secondary" component={register}>register</Button>
+                    </Router>
+                </FormGroup>
+            </form>
+        </div>
+    );
+}
