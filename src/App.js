@@ -4,7 +4,7 @@ import { Route, Switch, BrowserRouter } from 'react-router-dom';
 
 import Welcome_Page from './react-components/Welcome_Page';
 import Home_Page from './react-components/Home_Page';
-
+import Login_Page from './react-components/Login_Page';
 
 class App extends React.Component{
     render() {
@@ -17,6 +17,8 @@ class App extends React.Component{
                             (<Welcome_Page state={this.state}/>)}/>
             <Route exact path='/home_page' render={() => 
                             (<Home_Page state={this.state}/>)}/>
+            <Route exact path='/login' render={() => 
+                            (<Login_Page state={this.state}/>)}/>                
 
           </Switch>
         </BrowserRouter>

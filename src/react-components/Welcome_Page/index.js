@@ -17,7 +17,7 @@ class Welcome_Page extends React.Component{
 				</Link>
 
 				{/* login button */}
-				<Link className="button_link" to="" >
+				<Link className="button_link" to="./Login" >
 					<Button size="small" variant="outlined" href="#outlined-buttons" className="welcome_button">User Login!</Button>
 				</Link>
 

@@ -32,29 +32,29 @@ class Active_Verified_Users extends React.Component{
 
                   	<Paper className="user_paper">
 
-    					<Grid className="content" container spacing={2}>
+    					          <Grid className="content" container spacing={2}>
 
-          					<Grid item>
-              					<img className="avatar" src={user.img} />
-          					</Grid>
+          					        <Grid item>
+              					        <img className="avatar" src={user.img} />
+          					        </Grid>
 
-          					<Grid item xs={6} sm container>
-          						<Link className="button_link" to="" >
-									<Grid container direction="column" spacing={1}>
-    									<Grid item className="info">
-              								<h3 className="username"> {user.name} </h3>
-              								<h6 className="description">Verified Doctor <br/> Field: <br/> {user.field} </h6>
-            							</Grid>
-            						</Grid>
-            					</Link>
-    						</Grid>
+          					        <Grid item xs={6} sm container>
+          						          <Link className="button_link" to="" >
+									                  <Grid container direction="column" spacing={1}>
+    									                  <Grid item className="info">
+              								              <h3 className="username"> {user.name} </h3>
+              								              <h6 className="description">Verified Doctor <br/> Field: <br/> {user.field} </h6>
+            							              </Grid>
+            						            </Grid>
+            					          </Link>
+    						            </Grid>
 
-    					</Grid>
+    					          </Grid>
 
-    				</Paper>
+    				        </Paper>
 
-              	))}
-			</div>
+        ))}
+		  </div>
 		);
 	}
 }
