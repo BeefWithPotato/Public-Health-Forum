@@ -4,7 +4,7 @@ import { Route, Switch, BrowserRouter } from 'react-router-dom';
 
 import WelcomePage from './react-components/WelcomePage';
 import HomePage from './react-components/HomePage';
-import LoginPage from './react-components/LoginPage';
+import Login from './react-components/Login';
 import Post from './react-components/Post';
 
 class App extends React.Component{
@@ -13,8 +13,19 @@ class App extends React.Component{
         super(props);
         this.state = {
             loggedIn: "NOT_LOGGED_IN",
-            usr: {}
+            user: {}
         }
+        this.handleLogin = this.handleLogin.bind(this);
+    }
+
+    handleLogin(data) {
+        console.log(data);
+        this.setState(
+            {
+                loggedIn: "LOGGED_IN",
+                user: data
+            }
+        )
     }
 
     render() {
@@ -23,16 +34,29 @@ class App extends React.Component{
                 <BrowserRouter>
                     <Switch>
                         <Route
-                          exact path='/'
-                          render={
-                              props => (<WelcomePage {...props} loggedIn={this.state.loggedIn} />)
-                        }
+                            exact path='/'
+                            render={
+                                props => (<WelcomePage {...props} loggedIn={this.state.loggedIn} />)
+                            }
                         />
-                        <Route exact path='/homepage/:user' component={HomePage}/>
-                        <Route exact path='/postpage/:user' component={Post}/>
-                        <Route exact path='/login'>
-                            <LoginPage/>
-                        </Route>
+                        <Route exact path='/homepage/:user'
+                               render={
+                                   props => (<HomePage {...props}
+                                                       loggedIn={this.state.loggedIn}
+                                                       user={this.state.user}
+                                   />)
+                               }
+                        />
+                        <Route exact path='/postpage/:user'
+                               render={
+                                   props => (<Post {...props} loggedIn={this.state.loggedIn} />)
+                               }
+                        />
+                        <Route exact path='/login'
+                               render={
+                                   props => (<Login {...props} handleLogin={this.handleLogin} />)
+                               }
+                        />
                     </Switch>
                 </BrowserRouter>
             </div>

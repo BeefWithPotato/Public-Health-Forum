@@ -8,8 +8,15 @@ import ActiveVerifiedUsers from "../ActiveVerifiedUsers";
 
 class HomePage extends React.Component{
 
+    constructor(props) {
+        super(props);
+    }
+
     componentDidMount() {
         console.log(this.props.match.params);
+        if (this.props.loggedIn === "LOGGED_IN") {
+            console.log(this.props.user);
+        }
     }
 
     render(){

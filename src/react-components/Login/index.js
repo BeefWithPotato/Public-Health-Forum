@@ -5,7 +5,7 @@ import { Visibility, VisibilityOff } from "@material-ui/icons"
 
 import "./style.css";
 
-export default function LoginPage() {
+const Login = (props) => {
 
     const [values, setValues] = React.useState({
         username: '',
@@ -17,12 +17,40 @@ export default function LoginPage() {
         <Link ref={ref} to="./RegisterPage" {...props} />
     ))
 
+    const tempAuth = (data) => {
+        if (data.username === "user" && data.password === "user")
+            return "user"
+        else if (data.username === "admin" && data.password === "admin")
+            return "admin"
+        return ""
+    }
+
+    const successCallback = (data) => {
+        props.handleLogin(data);
+        if (data.username === "user") {
+            // TODO: Redirect to user's page
+            //props.history.push("/homepage/:user");
+        } else {
+            // TODO: Redirect to admin's page
+            //props.history.push("/homepage/:admin");
+        }
+    }
+
+    const failedCallback = () => {
+        alert("Login failed");
+    }
+
     const submit = (event) => {
         event.preventDefault();
-        console.log(values.username+"\n"+values.password)
+        console.log("username: "+values.username+"\npassword: "+values.password)
         /*
         * TODO
         */
+        const data = {username: values.username, password: values.password}
+        if (tempAuth(data) !== "")
+            successCallback(data);
+        else
+            failedCallback();
     }
     
     const change = (prop) => (event) => {
@@ -80,3 +108,5 @@ export default function LoginPage() {
         </div>
     );
 }
+
+export default Login;
