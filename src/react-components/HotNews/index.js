@@ -2,7 +2,6 @@ import React from "react";
 
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import GridListTile from '@material-ui/core/GridListTile';
 import { Link } from "react-router-dom";
 import Typography from '@material-ui/core/Typography';
 

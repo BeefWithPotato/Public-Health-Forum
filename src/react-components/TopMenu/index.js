@@ -13,12 +13,12 @@ class TopMenu extends React.Component{
                 <ul>
                     {/* Home button */}
                     <li className="Home">
-                        <a href={"./HomePage"}>Home</a>
+                        <a href={"/HomePage/guest"}>Home</a>
                     </li>
 
                     {/* Posts button */}
                     <li className="Posts">
-                        <a href={"./Post"}>Posts</a>
+                        <a href={"/PostPage/guest"}>Posts</a>
                     </li>
 
                     {/* Help button */}

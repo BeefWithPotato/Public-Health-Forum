@@ -8,6 +8,10 @@ import ActiveVerifiedUsers from "../ActiveVerifiedUsers";
 
 class HomePage extends React.Component{
 
+    componentDidMount() {
+        console.log(this.props.match.params);
+    }
+
     render(){
         return (
             <div className="homepage">
@@ -25,7 +29,7 @@ class HomePage extends React.Component{
                 <HotNews />
 
                 <ActiveVerifiedUsers />
-
+                
             </div>
         );
     }

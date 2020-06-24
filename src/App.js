@@ -5,6 +5,7 @@ import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import WelcomePage from './react-components/WelcomePage';
 import HomePage from './react-components/HomePage';
 import LoginPage from './react-components/LoginPage';
+import Post from './react-components/Post';
 
 class App extends React.Component{
     render() {
@@ -13,13 +14,13 @@ class App extends React.Component{
             <BrowserRouter>
               <Switch>
 
-                <Route exact path='/' render={() =>
-                                (<WelcomePage state={this.state} />)}/>
-                <Route exact path='/homepage' render={() =>
-                                (<HomePage state={this.state} />)}/>
+                <Route exact path='/' component={WelcomePage}/>
+                <Route exact path='/homepage/:user' component={HomePage}/>
+                <Route exact path='/postpage/:user' component={Post}/>
                 <Route exact path='/login'>
                     <LoginPage/>
                 </Route>
+                
 
               </Switch>
             </BrowserRouter>

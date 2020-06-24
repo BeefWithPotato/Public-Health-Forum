@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Paper from '@material-ui/core/Paper';
-import Avatar from '@material-ui/core/Avatar';
 import Grid from '@material-ui/core/Grid';
 
 

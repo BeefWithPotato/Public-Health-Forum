@@ -22,9 +22,11 @@ class WelcomePage extends React.Component{
                 </Link>
 
                 {/* guest visit button */}
-                <Link className="button_link" to={"./HomePage"} >
+                <Link className="button_link" to={"./HomePage/guest"} >
                     <Button size="small" variant="outlined" href="#outlined-buttons" className="welcome_button">Continue as a guest!</Button>
                 </Link>
+
+                
             </div>
         );
     }

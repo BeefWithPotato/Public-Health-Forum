@@ -1,0 +1,37 @@
+.row{
+	
+	text-align: center;
+	font-family: Aerial;
+	border-bottom: 2px solid grey;
+	overflow: auto;
+	background-color: white;
+}
+
+.user-icon{
+	float: left;
+	border-radius: 50%;
+	height: 80px;
+	width: 80px;
+	margin: 5px;
+}
+
+.delete-button{
+	height: 15px;
+	width: 15px;
+	float: right;
+}
+
+.post-user{
+	float: left;
+}
+
+.content{
+	
+	padding-top: 5px;
+	padding-left: 35px;
+	width: 500px;
+	table-layout: fixed;
+	word-wrap: break-all;
+	word-break: break-all;
+	overflow: hidden;
+}
