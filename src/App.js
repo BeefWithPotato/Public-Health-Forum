@@ -60,7 +60,7 @@ class App extends React.Component{
                         />
                         <Route exact path='/register'
                                render={
-                                   props => (<Register {...props} />)
+                                   props => (<Register {...props} handleLogin={this.handleLogin}/>)
                                }
                         />
                     </Switch>
