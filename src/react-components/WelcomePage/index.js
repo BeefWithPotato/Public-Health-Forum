@@ -12,7 +12,7 @@ class WelcomePage extends React.Component{
             <div className="welcome_page">
 
                 {/* sign up button */}
-                <Link className="button_link" to="" >
+                <Link className="button_link" to="./Register" >
                     <Button size="small" variant="outlined" href="#outlined-buttons" className="welcome_button">Want an account?</Button>
                 </Link>
 

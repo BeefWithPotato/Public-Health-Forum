@@ -1,28 +1,22 @@
 import React from "react";
-import { BrowserRouter as Router, Link} from "react-router-dom"
-import { Button, TextField, FormGroup, InputAdornment, InputLabel,
-    OutlinedInput, IconButton, FormControl } from "@material-ui/core";
+import { Button, TextField, FormGroup, InputAdornment,
+    InputLabel, OutlinedInput, IconButton, FormControl } from "@material-ui/core";
 import { Visibility, VisibilityOff } from "@material-ui/icons"
 
 import "./style.css";
 
-const Login = (props) => {
+const Register = (props) => {
 
     const [values, setValues] = React.useState({
         username: '',
         password: '',
+        repeat: '',
         show: false
     });
 
-    const register = React.forwardRef((props, ref) => (
-        <Link ref={ref} to="./RegisterPage" {...props} />
-    ))
-
-    const tempAuth = (data) => {
-        if (data.username === "user" && data.password === "user")
-            return "user"
-        else if (data.username === "admin" && data.password === "admin")
-            return "admin"
+    const tempRegister = (data) => {
+        if (data.repeat === data.password)
+            return "success"
         return ""
     }
 
@@ -38,20 +32,28 @@ const Login = (props) => {
     }
 
     const failedCallback = () => {
-        alert("Login failed");
+        alert("Register failed");
     }
 
     const submit = (event) => {
         event.preventDefault();
-        console.log("username: "+values.username+"\npassword: "+values.password)
+        console.log("username: "+values.username
+            +"\npassword: "+values.password
+            +"\nrepeat: "+values.repeat
+        )
         /*
         * TODO
         */
-        const data = {username: values.username, password: values.password}
-        if (tempAuth(data) !== "")
+        const data = {
+            username: values.username,
+            password: values.password,
+            repeat: values.repeat
+        }
+        if (tempRegister(data) !== "") {
             successCallback(data);
-        else
+        } else {
             failedCallback();
+        }
     }
     
     const change = (prop) => (event) => {
@@ -63,9 +65,9 @@ const Login = (props) => {
     };
 
     return (
-        <div className="login_page">
+        <div className="register_page">
             <form onSubmit={submit} noValidate autoComplete="off" className="form">
-                <p className="title">Login</p>
+                <p className="title">Register</p>
                 <FormGroup className="input">
                     <TextField
                         required variant="outlined"
@@ -94,20 +96,32 @@ const Login = (props) => {
                         />
                     </FormControl>
                 </FormGroup>
-                <FormGroup className="forget">
-                    <Button color="primary" size="small">Forget password?</Button>
+                <FormGroup className="input">
+                    <FormControl variant="outlined">
+                        <InputLabel>Repeat Password *</InputLabel>
+                        <OutlinedInput
+                            required
+                            placeholder="Repeat Password"
+                            type={values.show ? 'text' : 'password'}
+                            value={values.repeat}
+                            onChange={change('password')}
+                            endAdornment={
+                                <InputAdornment position='end'>
+                                    <IconButton onClick={show} edge="end">
+                                        {values.show ? <Visibility /> : <VisibilityOff />}
+                                    </IconButton>
+                                </InputAdornment>
+                            }
+                            labelWidth={215}
+                        />
+                    </FormControl>
                 </FormGroup>
                 <FormGroup className="submit">
-                    <Button variant="contained" color="primary" type="submit">Login</Button>
-                </FormGroup>
-                <FormGroup className="submit">
-                    <Router>
-                        <Button variant="contained" color="secondary" component={register}>register</Button>
-                    </Router>
+                    <Button variant="contained" color="primary" type="submit">Register</Button>
                 </FormGroup>
             </form>
         </div>
     );
 }
 
-export default Login;
+export default Register;

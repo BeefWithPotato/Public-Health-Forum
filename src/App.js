@@ -6,6 +6,7 @@ import WelcomePage from './react-components/WelcomePage';
 import HomePage from './react-components/HomePage';
 import Login from './react-components/Login';
 import Post from './react-components/Post';
+import Register from "./react-components/Register";
 
 class App extends React.Component{
 
@@ -55,6 +56,11 @@ class App extends React.Component{
                         <Route exact path='/login'
                                render={
                                    props => (<Login {...props} handleLogin={this.handleLogin} />)
+                               }
+                        />
+                        <Route exact path='/register'
+                               render={
+                                   props => (<Register {...props} />)
                                }
                         />
                     </Switch>
