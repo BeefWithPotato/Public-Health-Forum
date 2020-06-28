@@ -1,46 +1,67 @@
 import React from "react";
-import Grid from '@material-ui/core/Grid';
+
 import Button from '@material-ui/core/Button';
-import TextField from "@material-ui/core/TextField";
 
 
+//This is an free external rich text-editor called React-Quill.
+//Source: 
+//https://github.com/zenoamaro/react-quill
+//https://github.com/kensnyder/quill-image-drop-module
+import ReactQuill, { Quill } from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+import { ImageDrop } from 'quill-image-drop-module';
 import "./style.css";
+
+//register quill-image-drop-module in quill
+Quill.register('modules/imageDrop', ImageDrop);
 
 class AddPost extends React.Component{
 
-	
+	modules = {
+	    toolbar: [
+	      	[{ 'header': [1, 2, false] }],
+	      	['bold', 'italic', 'underline','strike', 'blockquote'],
+	      	[{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
+	      	['clean']
+	    ],
+	    imageDrop: true,
+  	};
+
+  	formats = [
+    	'header',
+    	'bold', 'italic', 'underline', 'strike', 'blockquote',
+    	'list', 'bullet', 'indent',
+  	];
+
+
+
     render(){
 
     	
-    	const {newContent, onChange, addPost } = this.props;
+    	const {newtitle, onChange, addPost } = this.props;
         return (
             <div className="Add">
             	
                 <form className="text-input">
-                	<Grid direction="column" container spacing={2}>
-                		<Grid item>
-					        <textarea 
-					            className="text-area" 
-					            name="newContent"
-					            rows="12" 
-					            placeholder="Say something"
-					            value ={newContent} 
-					            onChange={onChange}
-					        >
-					        </textarea>
-					    </Grid>
+                	
+					<ReactQuill
+						className="text-area" 
+						theme="snow"
+						value={newtitle}
+						modules={this.modules}
+	    				formats={this.formats}
+						onChange={onChange}
+					/>
 
-				        <Grid item>            
-				            <Button 
-					            className="post" 
-					            variant="contained" 
-					            color="primary" 					           
-					            onClick={addPost}
-					        >
-					            Post
-					        </Button>
-					    </Grid>  
-		            </Grid>  	
+				    <Button 
+					    className="post-button" 
+					    variant="contained" 
+					    color="primary"			           
+					    onClick={addPost}
+					>
+					    Post
+					</Button> 
+		             	
                 </form>
             </div>
         );

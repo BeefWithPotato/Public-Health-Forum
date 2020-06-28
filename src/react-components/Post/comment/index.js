@@ -1,60 +1,61 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
 import Grid from '@material-ui/core/Grid';
-import "./style.css";
 
+import "./style.css";
+import PostList from "../PostList"
 import header_img from "./static/header_img.jpg";
-import Add from "./Add";
-import PostList from "./PostList"
-import { addPost } from "./actions/actions";
+import Add from "../Add";
+import { addComment } from "./actions/actions";
 import img1 from "./static/user1.png"
 import img2 from "./static/user2.png"
 import img3 from "./static/user3.png"
 
-class Post extends React.Component{
+class Comment extends React.Component{
 
     state = {
-        homeurl:"guest",
-        posturl:"guest",
-        newUsername: "guest",
-        newtitle: "",
+        homeurl:"",
+        posturl:"",
+        username: "",
+        content: "",
         icon: img3,
-        posts: ""
+        post:"",
+        comments: ""
         
     }
-
-
+    
     componentDidMount() {
         console.log(this.props.match.params);
         console.log(this.props.match.params.user);
-        console.log(this.props.match.params.topic);
+        console.log(this.props.match.params.title);
 
 
         let cov19 = [
-            {username: "user1", title: "I am in my 14-day quarantine.", icon: img1},
-            {username: "user2", title: "My neighbour has found a new case of COV-19. Here is the address: XXX", icon: img2}
+            {username: "user1", content: "I just finished!", icon: img1},
+            {username: "user2", content: "The quarantine is so boring. I want freedom! ", icon: img2}
         ]
 
-        let fever = [
+        let neighbour = [
 
-            {username: "user1", title: "Fever is one of the symptoms of COV-19", icon: img1},
-            {username: "user2", title: "Useful Medicine", icon: img2}
+            {username: "user1", content: "Really??? I just come back form here!", icon: img1},
+            {username: "user2", content: "That's dangerous!", icon: img2}
         ]
 
-        if("COV-19" === this.props.match.params.topic){
+        const post = this.props.match.params.title;
+        if(post.indexOf("quarantine") !== -1){
             this.setState({
-                posts: cov19  
+                comments: cov19  
             });
         }
-        else if("Fever" === this.props.match.params.topic){
+        else if(post.indexOf("neighbour") !== -1){
             this.setState({
-                posts: fever  
+                comments: neighbour  
             });
             
         }
 
         const homeurl = "/homepage/" + this.props.match.params.user;
-        const posturl = "/postoverview/" + this.props.match.params.user;
+        const posturl = "/postpage/" + this.props.match.params.user;
 
         this.setState({
             homeurl: homeurl,
@@ -68,36 +69,41 @@ class Post extends React.Component{
         console.log(value);
         console.log(this.props.match.params.user);
         this.setState({
-            newUsername: this.props.match.params.user,
-            newTag: value
+            username: this.props.match.params.user,
+            content: value
         });
     }
     
 
     render(){
         let checkList;
-        if(this.state.posts === ""){
+        if(this.state.comments === ""){
             checkList = (
                 <h3 className="no-post-title">
-                    Please start the first post of current topic!
+                    Be the first to share your thoughts!
                 </h3>
             )
         }
         else{
             checkList = (
                 <Grid item className="post-list">    
-                    <PostList posts={this.state.posts} postComponent={this} user={this.props.match.params.user}/>
+                    <PostList 
+                        type="comment"
+                        posts={this.state.comments} 
+                        postComponent={this} 
+                        user={this.props.match.params.user}
+                    />
                 </Grid>
             )
         }
 
 
         return (
-            <div className="PostPage">
+            <div className="comment-page">
 
                 <ul>
                     {/* Home button */}
-                    <li className="Home">
+                    <li className="Home" key="top-menu">
                         <a href={this.state.homeurl}>Home</a>
                     </li>
 
@@ -127,7 +133,7 @@ class Post extends React.Component{
 
                 <img className="header_img" src={header_img} alt="header"/>
                 
-                <h3 className="topic-title">Topic: {this.props.match.params.topic}</h3>
+                <h3 className="topic-title">Comments:</h3>
 
                 <Grid item container className="post-grid" direction="column">
 
@@ -135,17 +141,16 @@ class Post extends React.Component{
 
                     <Grid item className="post-inut">
                         <Add 
-                            newtitle={this.state.newtitle}
+                            newtitle={this.state.content}
                             onChange={this.handleInputChange}
-                            addPost={() => addPost(this)}
+                            addPost={() => addComment(this)}
                         />
                     </Grid>
 
                 </Grid>
-                
             </div>
         );
     }
 }
 
-export default Post;
+export default Comment;

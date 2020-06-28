@@ -1,0 +1,100 @@
+
+.postoverview{
+    height: 100%;
+    width: 100%;
+}
+
+.input-topic{
+    border-bottom: 1px solid grey;
+}
+
+.postoverview ul{
+    border: 1px solid grey;
+    width: 100%;
+    list-style-type: none;
+    margin: 0;
+}
+
+.postoverview ul li{
+    margin-right: 20px;
+    font-weight: 350;
+    font-size: 1em;
+    list-style: none;
+    text-align: center;
+    display: inline-block;
+}
+
+
+.search_button{
+    width: 90px;
+    height: 30px;
+    left: 10px;
+    text-align: center;
+}
+
+.postsubpaper{
+    
+    margin: 40px;
+    text-align: center;
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 345px;
+    display: inline-block;
+    height: 350px;
+}
+
+.Grid{
+    padding:40px;
+
+}
+
+.tags-grid{
+    float: left;
+    position: relative;
+    left: 50%;
+    top: 100%;
+    transform: translate(-50%, 0%);
+    width: 400px;
+}
+
+.upload-input{
+    display: none;
+}
+
+.tag-input{
+    width: 345px;
+    height: 100px;
+    position: relative;
+    left: 40%;
+    top: 100%;
+    transform: translate(-50%, 0%);
+    
+}
+
+.upload-button{
+
+    position: relative;
+
+    left: 30%;
+    top: 10px;
+    transform: translate(-50%, 0%);
+    
+    display: inline;
+
+}
+
+.tag-delete-button{
+    width: 10%;
+    top: -10px;
+    left: 290px;
+
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+a:PostPage{
+    text-decoration:underline
+} 

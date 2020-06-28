@@ -1,6 +1,7 @@
 import React from "react";
+import Button from "@material-ui/core/Button";
 import "./style.css";
-import TopMenu from "../TopMenu";
+
 import header_img from "./static/homepage_header_img.jpg";
 import HotTag from "../HotTag";
 import HotNews from "../HotNews";
@@ -8,21 +9,59 @@ import ActiveVerifiedUsers from "../ActiveVerifiedUsers";
 
 class HomePage extends React.Component{
 
-    constructor(props) {
-        super(props);
+    state = {
+        homeurl: "",
+        posturl: ""
     }
 
     componentDidMount() {
         console.log(this.props.match.params);
-        if (this.props.loggedIn === "LOGGED_IN") {
-            console.log(this.props.user);
-        }
+        
+        console.log(this.props.user.username);
+        const homeurl = "/homepage/" + this.props.match.params.user;
+        const posturl = "/postoverview/" + this.props.match.params.user;
+        this.setState({
+            homeurl: homeurl,
+            posturl: posturl,   
+        });
+        
     }
 
+
     render(){
+
         return (
             <div className="homepage">
-                <TopMenu />
+                
+                <ul>
+                    {/* Home button */}
+                    <li className="Home">
+                        <a href={this.state.homeurl}>Home</a>
+                    </li>
+
+                    {/* Posts button */}
+                    <li className="Posts">
+
+                        <a href={this.state.posturl}>Posts</a>
+                    </li>
+
+                    {/* Help button */}
+                    <li className="Help">
+                        <a href={"./Help"}>Help</a>
+                    </li>
+
+                    {/* Search Box */}
+                    <li className="search">
+                        <input className="search" type="text" placeholder="search"/>
+
+                        {/* Search Button */}
+                        <Button size="small" variant="outlined" href="#outlined-buttons"
+                                color="primary" className="search_button">
+                            Search
+                        </Button>
+                    </li>
+
+                </ul>
 
                 <img className="header_img" src={header_img} alt="header"/>
 

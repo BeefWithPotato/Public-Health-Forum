@@ -1,33 +1,60 @@
 
 export const addPost = actions => {
-  
-  const postList = actions.state.posts;
-  const index = actions.state.index;
-  const post = {
-    username: actions.state.newUsername,
-    content: actions.state.newContent,
-    icon: actions.state.icon
-  };
+  if(actions.props.match.params.user !== "guest"){
+      const postList = actions.state.posts;
 
-  // Adding at a particular position
-  postList.unshift(post);
-  actions.setState({
-    posts: postList
-  });
-  
+      const post = {
+        username: actions.state.newUsername,
+        title: actions.state.newtitle,
+        icon: actions.state.icon
+      };
+      
+      if(postList.length !== 0){
+          postList.unshift(post);
+          actions.setState({
+              posts: postList
+          });
+      }
+      else{
+          const newList = []
+          newList.push(post);
+          actions.setState({
+              posts: newList
+          });
+      }
+  }
+  else{
+    alert("IF YOU WANT TO CREATE A TOPIC PLEASE LOG IN");
+  }
+
+
 };
 
 export const deletePost = (actions, post) => {
-  //log(student)
+ 
 
-  // filters out the student we don't want.
-  const filteredPosts = actions.state.posts.filter(p => {
-    return p !== post;
-  });
+  if(actions.props.match.params.user === "admin"){
+      const filteredPosts = actions.state.posts.filter(p => {
+          return p !== post;
+      });
 
-  //log(filteredStudents)
+      actions.setState({
+          posts: filteredPosts
+      });
+  }
+  else{
+        if(post.username === actions.props.match.params.user){
+            const filteredPosts = actions.state.posts.filter(p => {
+                return p !== post;
+            });
 
-  actions.setState({
-    posts: filteredPosts
-  });
+            actions.setState({
+                posts: filteredPosts
+            });
+        }
+        else{
+          alert("YOU DON'T HAVE PERMISSION TO DELETE THIS POST");
+        }
+    }
+  
 };

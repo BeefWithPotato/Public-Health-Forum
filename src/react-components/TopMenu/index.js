@@ -6,19 +6,26 @@ import "./style.css";
 
 /* TopMenu part in every pages*/
 class TopMenu extends React.Component{
+
+
+
     render(){
+
+        const url = "/homepage/" + 
+        console.log(url)
 
         return (
             <div className="top_menu">
                 <ul>
                     {/* Home button */}
                     <li className="Home">
-                        <a href={"/HomePage/guest"}>Home</a>
+                        <a href={url}>Home</a>
                     </li>
 
                     {/* Posts button */}
                     <li className="Posts">
-                        <a href={"/PostPage/guest"}>Posts</a>
+
+                        <a href={""}>Posts</a>
                     </li>
 
                     {/* Help button */}

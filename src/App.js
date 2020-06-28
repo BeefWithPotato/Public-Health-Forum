@@ -6,7 +6,9 @@ import WelcomePage from './react-components/WelcomePage';
 import HomePage from './react-components/HomePage';
 import Login from './react-components/Login';
 import Post from './react-components/Post';
+import Comment from './react-components/Post/comment';
 import Register from "./react-components/Register";
+import PostOverview from "./react-components/PostOverview";
 
 class App extends React.Component{
 
@@ -41,6 +43,7 @@ class App extends React.Component{
                             }
                         />
                         <Route exact path='/homepage/:user'
+                               
                                render={
                                    props => (<HomePage {...props}
                                                        loggedIn={this.state.loggedIn}
@@ -48,11 +51,18 @@ class App extends React.Component{
                                    />)
                                }
                         />
-                        <Route exact path='/postpage/:user'
+                        <Route exact path='/postpage/:topic/:user'
+                               
                                render={
-                                   props => (<Post {...props} loggedIn={this.state.loggedIn} />)
+                                   props => (<Post {...props} loggedIn={this.state.loggedIn}/>)
                                }
+                               
                         />
+
+                        <Route exact path='/postoverview/:user' component={PostOverview} />
+
+                        <Route exact path='/comment/:title/:user' component={Comment} />
+
                         <Route exact path='/login'
                                render={
                                    props => (<Login {...props} handleLogin={this.handleLogin} />)

@@ -22,11 +22,11 @@ class HotTag extends React.Component{
       */
       tags: [
 
-        { img: COV19, name: "COV19", cols: 2, link: "./"},
-        { img: fever, name: "fever", cols: 1, link: "./"},
+        { img: COV19, name: "COV-19", cols: 3, link: "./"},
+        { img: fever, name: "fever", cols: 3, link: "./"},
         { img: headache, name: "headache", cols: 3, link: "./"},
-        { img: flu, name: "flu", cols: 1, link: "./"},
-        { img: stomachache, name: "stomachache", cols: 2, link: "./"}
+        { img: flu, name: "flu", cols: 3, link: "./"},
+        { img: stomachache, name: "stomachache", cols: 3, link: "./"}
     ]
   }
 
@@ -35,9 +35,9 @@ class HotTag extends React.Component{
 		return (
     		<div className="HotTag">
 
-    			<h3 className="hot_tags_title">Current Hot Tags</h3>
+    			<h3 className="hot_tags_title">Current Hot Topics</h3>
 
-    			<GridList className="tags" cellHeight={100} cols={3}>
+    			<GridList className="tags" cellHeight={120} cols={3}>
 
               {this.state.tags.map((tag) => (
 
