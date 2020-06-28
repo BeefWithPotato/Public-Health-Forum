@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Link} from "react-router-dom"
+import { Link } from "react-router-dom"
 import { Button, TextField, FormGroup, InputAdornment, InputLabel,
     OutlinedInput, IconButton, FormControl } from "@material-ui/core";
 import { Visibility, VisibilityOff } from "@material-ui/icons"
@@ -14,9 +14,9 @@ const Login = (props) => {
         show: false
     });
 
-    const register = React.forwardRef((props, ref) => (
-        <Link ref={ref} to="./RegisterPage" {...props} />
-    ))
+    const redirect = React.forwardRef((props, ref) => (
+        <Link ref={ref} to="./Register" {...props} />
+    ));
 
     const tempAuth = (data) => {
         if (data.username === "user" && data.password === "user")
@@ -101,9 +101,7 @@ const Login = (props) => {
                     <Button variant="contained" color="primary" type="submit">Login</Button>
                 </FormGroup>
                 <FormGroup className="submit">
-                    <Router>
-                        <Button variant="contained" color="secondary" component={register}>register</Button>
-                    </Router>
+                    <Button variant="contained" color="secondary" type="button" component={redirect}>register</Button>
                 </FormGroup>
             </form>
         </div>

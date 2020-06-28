@@ -104,7 +104,7 @@ const Register = (props) => {
                             placeholder="Repeat Password"
                             type={values.show ? 'text' : 'password'}
                             value={values.repeat}
-                            onChange={change('password')}
+                            onChange={change('repeat')}
                             endAdornment={
                                 <InputAdornment position='end'>
                                     <IconButton onClick={show} edge="end">
