@@ -3,15 +3,17 @@
     background-color: white;
 
     position: absolute;
-    margin: auto 15px;
+    
+    left: 5%;
     float: left;
-    width: 380px;
+    width: 20%;
 
     display: inline-block;
     flex-wrap: wrap;
     justify-content: space-around;
     overflow: hidden;
 }
+
 
 
 .hot_tags_title{

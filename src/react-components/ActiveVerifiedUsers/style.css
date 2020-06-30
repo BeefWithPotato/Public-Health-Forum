@@ -1,11 +1,14 @@
 .active_users{
     font-family: Arial, serif;
-    height: auto;
-    width: 350px;
+    
+    width: 25%;
     position: absolute;
-    display: block;
-    float: right;
-    margin: auto 1130px;
+    display: inline-block;
+    float: left;
+    left: 72%;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    overflow: hidden;
 }
 
 .hot_users_title{
@@ -16,16 +19,16 @@
 }
 
 .user_paper{
-    border: 1px solid black;
+    
     display: block;
     text-align: center;
-    min-width: 350px;
+    border: 1px solid grey;
     margin: 10px;
 }
 
 .avatar{
-    margin: 10px;
-    width: 150px;
+    margin: 20px;
+    width: 125px;
 }
 
 .description{
