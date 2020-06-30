@@ -7,7 +7,8 @@ import { Link } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
-
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import Like from './Like';
 import { addTag, deleteTag} from "./actions/actions";
 
 import "./style.css";
@@ -64,7 +65,7 @@ class AllPost extends React.Component{
     
 
     render(){
-        console.log(this.state.img);
+
         return (
             <div className="postoverview">
 
@@ -178,14 +179,18 @@ class AllPost extends React.Component{
                                                 </h5>
                                             </Grid>
                                         </Link>
-                                                
+
+                                        
+                                        <Like/>
+
                                         <IconButton 
                                             className="tag-delete-button" 
                                             aria-label="delete"
                                             onClick={() => deleteTag(this, tag)}
                                         >
-                                              <DeleteIcon />
+                                            <DeleteIcon />
                                         </IconButton>
+                                     
                                     </Grid>
                             </Paper>
                         ))}

@@ -16,9 +16,16 @@
 }
 
 .delete-button{
+
 	height: 15px;
 	width: 15px;
 	float: right;
+}
+
+.post-like-button{
+	top: 50%;
+	float: left;
+	left:290px;
 }
 
 .post-user{

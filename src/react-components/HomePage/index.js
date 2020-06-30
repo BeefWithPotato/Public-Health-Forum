@@ -7,6 +7,7 @@ import HotTag from "../HotTag";
 import HotNews from "../HotNews";
 import ActiveVerifiedUsers from "../ActiveVerifiedUsers";
 
+
 class HomePage extends React.Component{
 
     state = {
@@ -14,6 +15,7 @@ class HomePage extends React.Component{
         posturl: ""
     }
 
+    
     componentDidMount() {
         console.log(this.props.match.params);
         
@@ -29,13 +31,14 @@ class HomePage extends React.Component{
 
 
     render(){
-
+        
         return (
             <div className="homepage">
                 
                 <ul>
                     {/* Home button */}
                     <li className="Home">
+                        
                         <a href={this.state.homeurl}>Home</a>
                     </li>
 

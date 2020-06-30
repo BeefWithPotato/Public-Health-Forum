@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import Parser from 'html-react-parser';
 import { deletePost } from "../actions/actions";
 import { deleteComment } from "../comment/actions/actions";
+import Like from "./Like";
 import "./style.css";
 
 class PostItem extends React.Component {
@@ -75,6 +76,8 @@ class PostItem extends React.Component {
                   <h3 className="post-user">
                       @{post.username}
                   </h3>
+
+                  <Like className="post-like-button"/>
 
                   {checkType}
 

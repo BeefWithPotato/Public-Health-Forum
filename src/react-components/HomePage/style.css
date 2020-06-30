@@ -5,6 +5,13 @@
     width: 100vw;
 }
 
+.homeicon{
+    position: absolute;
+    left: 4px;
+    width: 10px;
+    height: 10px;
+}
+
 .cov19-update{
     margin-top: 0;
     text-align: center;
