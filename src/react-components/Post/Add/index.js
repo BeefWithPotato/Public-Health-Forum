@@ -9,11 +9,7 @@ import Button from '@material-ui/core/Button';
 //https://github.com/kensnyder/quill-image-drop-module
 import ReactQuill, { Quill } from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import { ImageDrop } from 'quill-image-drop-module';
 import "./style.css";
-
-//register quill-image-drop-module in quill
-Quill.register('modules/imageDrop', ImageDrop);
 
 class AddPost extends React.Component{
 
@@ -24,7 +20,6 @@ class AddPost extends React.Component{
 	      	[{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
 	      	['clean']
 	    ],
-	    imageDrop: true,
   	};
 
   	formats = [
