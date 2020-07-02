@@ -137,7 +137,12 @@ class App extends React.Component {
                                }
                         />
 
-                        <Route exact path='/Dashboard' render={props => (<Dashboard {...props}/>)}/>
+                        <Route exact path='/Dashboard'
+                               render={
+                                   props => (<Dashboard {...props}
+                                                        loggedIn={this.state.loggedIn}
+                                                        user={this.state.user}/>)}
+                        />
 
                         <Route exact path='/MainPage' render={props => (<MainPage {...props}/>)}/>
                     </Switch>

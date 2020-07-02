@@ -58,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function Dashboard() {
+const Dashboard = (props) => {
     const classes = useStyles();
     const [open, setOpen] = React.useState(true);
     const handleDrawerOpen = () => {
@@ -68,6 +68,8 @@ export default function Dashboard() {
         setOpen(false);
     };
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+
+    console.log("status: " + props.loggedIn);
 
     return (
         <div className={classes.root}>
@@ -118,3 +120,5 @@ export default function Dashboard() {
         </div>
     );
 }
+
+export default Dashboard;
