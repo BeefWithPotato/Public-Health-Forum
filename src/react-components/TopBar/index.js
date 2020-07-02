@@ -1,5 +1,6 @@
 import React from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
+import { Button, Link } from '@material-ui/core';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -173,8 +174,10 @@ export default function TopBar() {
           >
             <MenuIcon />
           </IconButton>
+            <Button href="/MainPage" color="inherit">
+                Health Base
+            </Button>
           <Typography className={classes.title} variant="h6" noWrap>
-            Material-UI
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>

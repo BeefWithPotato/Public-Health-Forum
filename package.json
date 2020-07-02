@@ -10,6 +10,7 @@
         "@testing-library/user-event": "^7.2.1",
         "fontsource-roboto": "^2.1.4",
         "html-react-parser": "^0.13.0",
+        "markdown-to-jsx": "^6.11.4",
         "quill-image-drop-module": "^1.0.3",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",

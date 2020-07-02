@@ -103,7 +103,7 @@ export default function Dashboard() {
                     <UserInfo />
                 </Paper>
                 </Grid>
-                {/* Recent Orders */}
+                {/* Recent Login history */}
                 <Grid item xs={12}>
                 <Paper className={classes.paper}>
                     <Orders />
