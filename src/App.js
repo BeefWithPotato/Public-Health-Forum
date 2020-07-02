@@ -9,7 +9,11 @@ import Post from './react-components/Post';
 import Comment from './react-components/Post/comment';
 import Register from "./react-components/Register";
 import PostOverview from "./react-components/PostOverview";
+
 import News from "./react-components/News";
+
+import Dashboard from './react-components/Dashboard';
+
 
 class App extends React.Component{
 
@@ -76,6 +80,8 @@ class App extends React.Component{
                                    props => (<Register {...props} handleLogin={this.handleLogin}/>)
                                }
                         />
+                        
+                        <Route exact path='/Dashboard' render={props => (<Dashboard {...props}/>)}/>
                     </Switch>
                 </BrowserRouter>
             </div>
