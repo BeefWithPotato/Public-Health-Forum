@@ -26,7 +26,7 @@ const mainFeaturedPost = {
       "Premier Doug Ford wished Ontario residents a happy Canada Day on Wednesday, while urging them to follow public health advice as they celebrate amid the COVID-19 pandemic.",
     image: 'https://www.cp24.com/polopoly_fs/1.5001730.1593199624!/httpImage/image.jpg_gen/derivatives/landscape_620/image.jpg',
     imgText: 'Doug Ford',
-    linkText: 'Continue reading…',
+    linkText: 'https://www.cp24.com/news/ford-wishes-ontarians-a-happy-canada-day-urges-them-to-continue-following-health-advice-1.5006987',
 };
 
 const featuredPosts = [
