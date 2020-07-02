@@ -14,13 +14,20 @@ import "./style.css";
 /* hot news part in homepage*/
 class HotNews extends React.Component{
 
+    
 
     render(){
+        
+        const newsA = "/news/1/A single case could spark a COVID-19 outbreak, Tam warns/" + this.props.user;
+        const newsB = "/news/2/Ontario will not make it mandatory to wear masks or face coverings/" + this.props.user;
+        const newsC = "/news/3/Quebec reports fewer than 100 new COVID-19 cases for first time since March 22, but testing continues to plummet/" + this.props.user;
+
         return (
             <div className="HotNews">
                 {/* Main News */}
                 <Paper className="paper">
-                    <Link className="button_link" to="" >
+                    <Link className="button_link" to={newsA}>
+
                         <Grid container direction="column" spacing={1}>
                             {/* img src */}
                             <Grid item>
@@ -51,7 +58,7 @@ class HotNews extends React.Component{
                 <Paper className="subpaper">
 
                     {/* Link to sub news */}
-                    <Link className="button_link" to="" >
+                    <Link className="button_link" to={newsB}>
 
                         <Grid container direction="column" spacing={1}>
                             {/* img src */}
@@ -83,7 +90,7 @@ class HotNews extends React.Component{
                 <Paper className="subpaper">
 
                     {/* Link to sub news */}
-                    <Link className="button_link" to="" >
+                    <Link className="button_link" to={newsC} >
 
                         <Grid container direction="column" spacing={1}>
                             {/* img src */}

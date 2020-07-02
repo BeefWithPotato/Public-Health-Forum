@@ -7,25 +7,24 @@ import "./style.css";
 /* TopMenu part in every pages*/
 class TopMenu extends React.Component{
 
-
-
     render(){
 
-        const url = "/homepage/" + 
-        console.log(url)
-
+        const user = this.props.user;
+        console.log(user);
+        const homeurl = "/homepage/" + user;
+        const posturl = "/postoverview/" + user;
         return (
             <div className="top_menu">
                 <ul>
                     {/* Home button */}
                     <li className="Home">
-                        <a href={url}>Home</a>
+                        <a href={homeurl}>Home</a>
                     </li>
 
                     {/* Posts button */}
                     <li className="Posts">
 
-                        <a href={""}>Posts</a>
+                        <a href={posturl}>Posts</a>
                     </li>
 
                     {/* Help button */}

@@ -9,6 +9,7 @@ import Post from './react-components/Post';
 import Comment from './react-components/Post/comment';
 import Register from "./react-components/Register";
 import PostOverview from "./react-components/PostOverview";
+import News from "./react-components/News";
 
 class App extends React.Component{
 
@@ -58,6 +59,8 @@ class App extends React.Component{
                                }
                                
                         />
+
+                        <Route exact path='/news/:id/:title/:user' component={News} />
 
                         <Route exact path='/postoverview/:user' component={PostOverview} />
 

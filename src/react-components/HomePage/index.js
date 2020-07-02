@@ -10,6 +10,7 @@ import ActiveVerifiedUsers from "../ActiveVerifiedUsers";
 
 class HomePage extends React.Component{
 
+    user:""
     state = {
         homeurl: "",
         posturl: ""
@@ -23,6 +24,7 @@ class HomePage extends React.Component{
         const homeurl = "/homepage/" + this.props.match.params.user;
         const posturl = "/postoverview/" + this.props.match.params.user;
         this.setState({
+            user: this.props.match.params.user,
             homeurl: homeurl,
             posturl: posturl,   
         });
@@ -31,7 +33,7 @@ class HomePage extends React.Component{
 
 
     render(){
-        
+        console.log(this.props.match.params.user)
         return (
             <div className="homepage">
                 
@@ -75,7 +77,7 @@ class HomePage extends React.Component{
 
                 <HotTag />
 
-                <HotNews />
+                <HotNews user={this.props.match.params.user}/>
 
                 <ActiveVerifiedUsers />
                 
