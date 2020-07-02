@@ -10,7 +10,7 @@ import ActiveVerifiedUsers from "../ActiveVerifiedUsers";
 
 class HomePage extends React.Component{
 
-    user:""
+    //user:""
     state = {
         homeurl: "",
         posturl: ""

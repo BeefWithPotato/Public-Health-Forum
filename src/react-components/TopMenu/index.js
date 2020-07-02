@@ -5,9 +5,9 @@ import Button from "@material-ui/core/Button";
 import "./style.css";
 
 /* TopMenu part in every pages*/
-class TopMenu extends React.Component{
+class TopMenu extends React.Component {
 
-    render(){
+    render() {
 
         const user = this.props.user;
         console.log(user);

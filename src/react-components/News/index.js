@@ -1,5 +1,4 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
 import TopMenu from "../TopMenu";
 import "./style.css";
 
@@ -9,12 +8,13 @@ import tam from "./static/Tam.jpg";
 import quebec from "./static/quebec.jpg";
 import graphA from "./static/graphA.png";
 import graphB from "./static/graphB.png";
-class News extends React.Component{
 
-    render(){
-        
+class News extends React.Component {
+
+    render() {
+
         let newsDetail;
-        if(this.props.match.params.id === "1"){
+        if (this.props.match.params.id === "1") {
             newsDetail = (
                 <span className="news-detail">
                     <h1 className="news-title"> 
@@ -75,12 +75,10 @@ class News extends React.Component{
                         <br/>
 
                     </p>
-                </span>    
-            )        
+                </span>
+            )
 
-        }
-
-        else if(this.props.match.params.id === "2"){
+        } else if (this.props.match.params.id === "2") {
             newsDetail = (
                 <span className="news-detail">
                     <h1 className="news-title"> 
@@ -191,9 +189,7 @@ class News extends React.Component{
 
 
             )
-        }
-
-        else if(this.props.match.params.id === "3"){
+        } else if (this.props.match.params.id === "3") {
             newsDetail = (
                 <span className="news-detail">
                     <h1 className="news-title"> 
@@ -254,14 +250,14 @@ class News extends React.Component{
                         <img className="news-img" src={graphB} alt="news-img"/>
 
                     </p>
-                </span>    
-            )        
+                </span>
+            )
 
         }
-        
+
         return (
             <div className="newspage">
-                
+
                 <TopMenu user={this.props.match.params.user}/>
 
                 <img className="header_img" src={header_img} alt="header"/>
@@ -272,7 +268,7 @@ class News extends React.Component{
                 </h3>
 
                 {newsDetail}
-                
+
             </div>
         );
     }

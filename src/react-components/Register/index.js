@@ -14,20 +14,14 @@ const Register = (props) => {
         show: false
     });
 
-    const tempRegister = (data) => {
-        if (data.repeat === data.password)
-            return "success"
-        return ""
-    }
-
     const successCallback = (data) => {
-        props.handleLogin(data);
-        if (data.username === "user") {
+        props.handleRegister(data);
+        if (data.role === "user") {
             // TODO: Redirect to user's page
-            //props.history.push("/homepage/:user");
+            props.history.push("/homepage/:user");
         } else {
             // TODO: Redirect to admin's page
-            //props.history.push("/homepage/:admin");
+            props.history.push("/homepage/:admin");
         }
     }
 
@@ -49,8 +43,9 @@ const Register = (props) => {
             password: values.password,
             repeat: values.repeat
         }
-        if (tempRegister(data) !== "") {
-            successCallback(data);
+        const result = props.tempRegister(data)
+        if (result !== {}) {
+            successCallback(result);
         } else {
             failedCallback();
         }
@@ -66,7 +61,7 @@ const Register = (props) => {
 
     return (
         <div className="register_page">
-            <form onSubmit={submit} noValidate autoComplete="off" className="form">
+            <form onSubmit={submit} noValidate={false} autoComplete="off" className="form">
                 <p className="title">Register</p>
                 <FormGroup className="input">
                     <TextField

@@ -1,37 +1,37 @@
 
-.news-detail{
-	float: left;
-	position: absolute;
-	left: 10%;
+.news-detail {
+    float: left;
+    position: absolute;
+    left: 10%;
 }
 
-.news-title{
-	left: 10%;
-	width: 90%;
+.news-title {
+    left: 10%;
+    width: 90%;
 }
 
-.reporter{
-	font-weight: bold;
+.reporter {
+    font-weight: bold;
 }
 
-.reporter-info{
-	margin-left: 10px;
-	font-weight: 300;
+.reporter-info {
+    margin-left: 10px;
+    font-weight: 300;
 }
 
-.news-date{
-	font-weight: 300;
+.news-date {
+    font-weight: 300;
 }
 
-.news-content{
-	
-	top: 150%;
-	left: 10%;
-	width: 90%;
+.news-content {
+
+    top: 150%;
+    left: 10%;
+    width: 90%;
 }
 
-.news-img{
-	margin: 0 auto;    
-    text-align:center;
-    display:block;
+.news-img {
+    margin: 0 auto;
+    text-align: center;
+    display: block;
 }

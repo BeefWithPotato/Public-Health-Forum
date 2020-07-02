@@ -1,14 +1,14 @@
-.top_menu{
+.top_menu {
     border: 1px solid grey;
     width: 100%;
 }
 
-.top_menu ul{
+.top_menu ul {
     list-style-type: none;
     margin: 0;
 }
 
-.top_menu ul li{
+.top_menu ul li {
     margin-right: 20px;
     font-weight: 350;
     font-size: 1em;
@@ -18,7 +18,7 @@
 }
 
 
-.search_button{
+.search_button {
     width: 90px;
     height: 30px;
     left: 10px;
@@ -26,11 +26,11 @@
 }
 
 
-a{
+a {
     text-decoration: none;
     color: black;
 }
 
-a:hover{
-    text-decoration:underline
+a:hover {
+    text-decoration: underline
 } 

@@ -15,25 +15,17 @@ const Login = (props) => {
     });
 
     const redirect = React.forwardRef((props, ref) => (
-        <Link ref={ref} to="./Register" {...props} />
+        <Link ref={ref} to="./register" {...props} />
     ));
-
-    const tempAuth = (data) => {
-        if (data.username === "user" && data.password === "user")
-            return "user"
-        else if (data.username === "admin" && data.password === "admin")
-            return "admin"
-        return ""
-    }
 
     const successCallback = (data) => {
         props.handleLogin(data);
-        if (data.username === "user") {
+        if (data.role === "user") {
             // TODO: Redirect to user's page
-            props.history.push("/homepage/user");
+            props.history.push("/homepage/:user");
         } else {
             // TODO: Redirect to admin's page
-            props.history.push("/homepage/admin");
+            props.history.push("/homepage/:admin");
         }
     }
 
@@ -48,8 +40,9 @@ const Login = (props) => {
         * TODO
         */
         const data = {username: values.username, password: values.password}
-        if (tempAuth(data) !== "")
-            successCallback(data);
+        const result = props.tempAuth(data)
+        if (result !== {})
+            successCallback(result);
         else
             failedCallback();
     }
@@ -64,7 +57,7 @@ const Login = (props) => {
 
     return (
         <div className="login_page">
-            <form onSubmit={submit} noValidate autoComplete="off" className="form">
+            <form onSubmit={submit} noValidate={false} autoComplete="off" className="form">
                 <p className="title">Login</p>
                 <FormGroup className="input">
                     <TextField
