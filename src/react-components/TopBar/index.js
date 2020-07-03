@@ -95,28 +95,56 @@ export default function TopBar(props) {
 
     const {user} = props;
     const menuId = 'primary-search-account-menu';
-    const renderMenu = (
-        <Menu
-            anchorEl={anchorEl}
-            anchorOrigin={{vertical: 'top', horizontal: 'right'}}
-            id={menuId}
-            keepMounted
-            transformOrigin={{vertical: 'top', horizontal: 'right'}}
-            open={isMenuOpen}
-            onClose={handleMenuClose}
-        >
-            <MenuItem onClick={handleMenuClose}>
-                <Button href={"/MainPage/" + user} color="inherit">
-                    Main Page
-                </Button>
-            </MenuItem>
-            <MenuItem onClick={handleMenuClose} href="/admin/Dashboard">
-                <Button href={"/Dashboard/" + user} color="inherit">
-                    Dashboard
-                </Button>
-            </MenuItem>
-        </Menu>
-    );
+    let renderMenu;
+    if(user !== 'guest'){
+        renderMenu = (
+            <Menu
+                anchorEl={anchorEl}
+                anchorOrigin={{vertical: 'top', horizontal: 'right'}}
+                id={menuId}
+                keepMounted
+                transformOrigin={{vertical: 'top', horizontal: 'right'}}
+                open={isMenuOpen}
+                onClose={handleMenuClose}
+            >
+                <MenuItem onClick={handleMenuClose}>
+                    <Button href={"/MainPage/" + user} color="inherit">
+                        Main Page
+                    </Button>
+                </MenuItem>
+                <MenuItem onClick={handleMenuClose} href="/admin/Dashboard">
+                    <Button href={"/Dashboard/" + user} color="inherit">
+                        Dashboard
+                    </Button>
+                </MenuItem>
+            </Menu>
+        );
+    }
+    else{
+        renderMenu = (
+            <Menu
+                anchorEl={anchorEl}
+                anchorOrigin={{vertical: 'top', horizontal: 'right'}}
+                id={menuId}
+                keepMounted
+                transformOrigin={{vertical: 'top', horizontal: 'right'}}
+                open={isMenuOpen}
+                onClose={handleMenuClose}
+            >
+                <MenuItem onClick={handleMenuClose}>
+                    <Button href={"/MainPage/" + user} color="inherit">
+                        Main Page
+                    </Button>
+                </MenuItem>
+                <MenuItem onClick={handleMenuClose} href="/admin/Dashboard">
+                    <Button href={"/Login"} color="inherit">
+                        Dashboard
+                    </Button>
+                </MenuItem>
+            </Menu>
+        );
+    }
+   
 
     let checkUser;
     if(user === "guest"){
