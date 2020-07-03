@@ -3,18 +3,16 @@ import {makeStyles} from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
-import GitHubIcon from '@material-ui/icons/GitHub';
-import FacebookIcon from '@material-ui/icons/Facebook';
-import TwitterIcon from '@material-ui/icons/Twitter';
 import MainFeaturedPost from './MainFeaturedPost';
 import FeaturedPost from './FeaturedPost';
 import Main from './Main';
-import Sidebar from './Sidebar';
 import Footer from './Footer';
 import TopBar from '../TopBar';
 import mask from "./static/mask.jpg";
 import tam from "./static/Tam.jpg";
 import quebec from "./static/quebec.jpg";
+import ActiveUser from './ActiveUser';
+import Topic from './Topic';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -38,7 +36,7 @@ const featuredPosts = [
         date: 'June 16',
         description:
             'As more businesses prepare to reopen their doors on Friday, the Ontario government says it will not make it mandatory to wear masks or face coverings—although they remain recommended by health officials.',
-        image: 'https://source.unsplash.com/random',
+        image: mask,
         imageText: 'Mask',
         index: "2",
     },
@@ -47,38 +45,13 @@ const featuredPosts = [
         date: 'June 16',
         description:
             'There are now 5,269 people who have died of COVID-19 in Quebec, health authorities announced Tuesday, as confirmed cases in the province reached 54,146.',
-        image: 'https://source.unsplash.com/random',
+        image: quebec,
         imageText: 'Quebec',
         index: "3",
     },
 ];
 
 const posts = [];
-
-const sidebar = {
-    title: 'About',
-    description:
-        'Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.',
-    archives: [
-        {title: 'March 2020', url: '#'},
-        {title: 'February 2020', url: '#'},
-        {title: 'January 2020', url: '#'},
-        {title: 'November 1999', url: '#'},
-        {title: 'October 1999', url: '#'},
-        {title: 'September 1999', url: '#'},
-        {title: 'August 1999', url: '#'},
-        {title: 'July 1999', url: '#'},
-        {title: 'June 1999', url: '#'},
-        {title: 'May 1999', url: '#'},
-        {title: 'April 1999', url: '#'},
-    ],
-    social: [
-        {name: 'GitHub', icon: GitHubIcon},
-        {name: 'Twitter', icon: TwitterIcon},
-        {name: 'Facebook', icon: FacebookIcon},
-    ],
-};
-
 
 
 export default function MainPage(props){
@@ -91,23 +64,23 @@ export default function MainPage(props){
             <CssBaseline/>
             <TopBar user={props.match.params.user}/>
             <Container maxWidth="lg">
-                <main>
-                    <MainFeaturedPost post={mainFeaturedPost} user={props.match.params.user}/>
-                    <Grid container spacing={4}>
-                        {featuredPosts.map((post) => (
-                            <FeaturedPost key={post.title} post={post} user={props.match.params.user}/>
-                        ))}
-                    </Grid>
-                    <Grid container spacing={5} className={classes.mainGrid}>
-                        <Main title="From the firehose" posts={posts}/>
-                        <Sidebar
-                            title={sidebar.title}
-                            description={sidebar.description}
-                            archives={sidebar.archives}
-                            social={sidebar.social}
-                        />
-                    </Grid>
-                </main>
+              <main>
+                  <MainFeaturedPost post={mainFeaturedPost} user={props.match.params.user}/>
+                  <Grid container spacing={6}>
+                    <Topic/>
+                  </Grid>
+
+                  <Grid container spacing={4} className={classes.mainGrid}>
+                      <Main title="Other News" posts={posts}/>
+                  </Grid>
+                  <Grid container spacing={4} className={classes.mainGrid}>
+                      {featuredPosts.map((post) => (
+                          <FeaturedPost key={post.title} post={post} user={props.match.params.user}/>
+                      ))}
+                      <ActiveUser/>
+                  </Grid>
+                  
+              </main>
             </Container>
             <Footer title="Footer" description="Something here to give the footer a purpose!"/>
         </React.Fragment>
