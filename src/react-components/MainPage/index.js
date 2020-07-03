@@ -13,6 +13,8 @@ import tam from "./static/Tam.jpg";
 import quebec from "./static/quebec.jpg";
 import ActiveUser from './ActiveUser';
 import Topic from './Topic';
+import TopicOverview from './TopicOverview'
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -66,6 +68,9 @@ export default function MainPage(props) {
             <Container maxWidth="lg">
                 <main>
                     <MainFeaturedPost post={mainFeaturedPost} user={props.match.params.user}/>
+                    <Grid container spacing={6}>
+                        <TopicOverview/>
+                    </Grid>
                     <Grid container spacing={6}>
                         <Topic user={props.match.params.user}/>
                     </Grid>
