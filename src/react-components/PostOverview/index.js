@@ -124,7 +124,7 @@ class AllPost extends React.Component {
                         {this.state.tags.map((tag) => (
 
                             /* Post Title */
-                            <Paper className="postsubpaper">
+                            <Paper className="postsubpaper" key={tag.tagName}>
 
                                 <Grid container direction="column" spacing={1}>
 

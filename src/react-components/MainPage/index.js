@@ -69,7 +69,7 @@ export default function MainPage(props) {
                 <main>
                     <MainFeaturedPost post={mainFeaturedPost} user={props.match.params.user}/>
                     <Grid container spacing={6}>
-                        <TopicOverview/>
+                        <TopicOverview user={props.match.params.user}/>
                     </Grid>
                     <Grid container spacing={6}>
                         <Topic user={props.match.params.user}/>

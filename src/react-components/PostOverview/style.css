@@ -19,6 +19,23 @@
     height: 350px;
 }
 
+.sub_img {
+    margin: 10px;
+    width: 300px;
+    height: 150px;
+}
+
+.subtitle {
+    margin-top: -10px;
+    font-weight: 500;
+}
+
+.src {
+    margin: 10px;
+    color: grey;
+
+}
+
 .Grid {
     padding: 40px;
 
@@ -73,3 +90,4 @@ a {
 a:PostPage {
     text-decoration: underline
 } 
+

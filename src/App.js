@@ -3,7 +3,7 @@ import './App.css';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 import WelcomePage from './react-components/WelcomePage';
-import HomePage from './react-components/HomePage';
+
 import Login from './react-components/Login';
 import Post from './react-components/Post';
 import Comment from './react-components/Post/comment';
@@ -97,15 +97,7 @@ class App extends React.Component {
                                 props => (<WelcomePage {...props} loggedIn={this.state.loggedIn}/>)
                             }
                         />
-                        <Route exact path='/homepage/:user'
-
-                               render={
-                                   props => (<HomePage {...props}
-                                                       loggedIn={this.state.loggedIn}
-                                                       user={this.state.user}
-                                   />)
-                               }
-                        />
+                        
                         <Route exact path='/postpage/:topic/:user'
 
                                render={
