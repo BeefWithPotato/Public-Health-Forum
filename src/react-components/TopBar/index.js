@@ -93,6 +93,7 @@ export default function TopBar(props) {
         handleMobileMenuClose();
     };
 
+    const {user} = props;
     const menuId = 'primary-search-account-menu';
     const renderMenu = (
         <Menu
@@ -105,20 +106,17 @@ export default function TopBar(props) {
             onClose={handleMenuClose}
         >
             <MenuItem onClick={handleMenuClose}>
-                <Button href="/MainPage" color="inherit">
+                <Button href={"/MainPage/" + user} color="inherit">
                     Main Page
                 </Button>
             </MenuItem>
             <MenuItem onClick={handleMenuClose} href="/admin/Dashboard">
-                <Button href="/Dashboard" color="inherit">
+                <Button href={"/Dashboard/" + user} color="inherit">
                     Dashboard
                 </Button>
             </MenuItem>
         </Menu>
     );
-
-    const {user} = props;
-    console.log(user)
 
     let checkUser;
     if(user === "guest"){

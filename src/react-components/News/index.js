@@ -1,8 +1,8 @@
 import React from "react";
-import TopMenu from "../TopMenu";
+import TopBar from "../TopBar";
 import "./style.css";
 
-import header_img from "./static/homepage_header_img.jpg";
+
 import mask from "./static/mask.jpg";
 import tam from "./static/Tam.jpg";
 import quebec from "./static/quebec.jpg";
@@ -258,15 +258,8 @@ class News extends React.Component {
         return (
             <div className="newspage">
 
-                <TopMenu user={this.props.match.params.user}/>
-
-                <img className="header_img" src={header_img} alt="header"/>
-
-                <h3 className="cov19-update">
-                    Corona Virus in Canada <br/>
-                    Total cases: 99,427 | Active: 29,812 | Recovered: 61,402 | Deceased: 8,213
-                </h3>
-
+                <TopBar user={this.props.match.params.user}/>
+            
                 {newsDetail}
 
             </div>

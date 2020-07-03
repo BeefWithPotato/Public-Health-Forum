@@ -23,11 +23,11 @@ const useStyles = makeStyles({
 
 export default function FeaturedPost(props) {
     const classes = useStyles();
-    const {post} = props;
+    const {post, user} = props;
 
     return (
         <Grid item xs={12} md={6}>
-            <CardActionArea component="a" href="#">
+            <CardActionArea component="a" href={"/news/" + post.index + "/" + post.title + "/" + user}>
                 <Card className={classes.card}>
                     <div className={classes.cardDetails}>
                         <CardContent>

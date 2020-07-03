@@ -7,6 +7,7 @@ import PostList from "../PostList"
 import header_img from "./static/header_img.jpg";
 import Add from "../Add";
 import { addComment } from "./actions/actions";
+import TopBar from "../../TopBar";
 import img1 from "./static/user1.png"
 import img2 from "./static/user2.png"
 import img3 from "./static/user3.png"
@@ -101,37 +102,7 @@ class Comment extends React.Component{
         return (
             <div className="comment-page">
 
-                <ul>
-                    {/* Home button */}
-                    <li className="Home" key="top-menu">
-                        <a href={this.state.homeurl}>Home</a>
-                    </li>
-
-                    {/* Posts button */}
-                    <li className="Posts">
-
-                        <a href={this.state.posturl}>Posts</a>
-                    </li>
-
-                    {/* Help button */}
-                    <li className="Help">
-                        <a href={"./Help"}>Help</a>
-                    </li>
-
-                    {/* Search Box */}
-                    <li className="search">
-                        <input className="search" type="text" placeholder="search"/>
-
-                        {/* Search Button */}
-                        <Button size="small" variant="outlined" href="#outlined-buttons"
-                                color="primary" className="search_button">
-                            Search
-                        </Button>
-                    </li>
-
-                </ul>
-
-                <img className="header_img" src={header_img} alt="header"/>
+                <TopBar user={this.props.match.params.user}/>
                 
                 <h3 className="topic-title">Comments:</h3>
 

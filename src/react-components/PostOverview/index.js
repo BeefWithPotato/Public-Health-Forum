@@ -10,7 +10,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import Like from './Like';
 import { addTag, deleteTag} from "./actions/actions";
-
+import TopBar from "../TopBar";
 import "./style.css";
 import header_img from "./static/header_img.jpg";
 import cov19 from "./static/cov19.jpg"
@@ -69,39 +69,8 @@ class AllPost extends React.Component{
         return (
             <div className="postoverview">
 
-                <ul>
-                    {/* Home button */}
-                    <li className="Home">
-                        <a href={this.state.homeurl}>Home</a>
-                    </li>
-
-                    {/* Posts button */}
-                    <li className="Posts">
-
-                        <a href={this.state.posturl}>Posts</a>
-                    </li>
-
-                    {/* Help button */}
-                    <li className="Help">
-                        <a href={"./Help"}>Help</a>
-                    </li>
-
-                    {/* Search Box */}
-                    <li className="search">
-                        <input className="search" type="text" placeholder="search"/>
-
-                        {/* Search Button */}
-                        <Button size="small" variant="outlined" href="#outlined-buttons"
-                                color="primary" className="search_button">
-                            Search
-                        </Button>
-                    </li>
-
-                </ul>
-
-                <img className="header_img" src={header_img} alt="header"/>
-
-
+                <TopBar user={this.props.match.params.user}/>
+                
                 <Grid className="Grid" container direction="column" spacing={3}>
 
 

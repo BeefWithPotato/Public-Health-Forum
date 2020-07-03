@@ -142,7 +142,8 @@ class App extends React.Component {
                                                         user={this.state.user}/>)}
                         />
 
-                        <Route exact path='/MainPage/:user' component={MainPage} />
+                        <Route exact path='/MainPage/:user' component={MainPage}/>
+
                     </Switch>
                 </BrowserRouter>
             </div>

@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MainFeaturedPost(props) {
     const classes = useStyles();
-    const {post} = props;
+    const {post, user} = props;
 
     return (
         <Paper className={classes.mainFeaturedPost} style={{backgroundImage: `url(${post.image})`}}>
@@ -53,8 +53,8 @@ export default function MainFeaturedPost(props) {
                         <Typography variant="subtitle1" color="inherit" paragraph>
                             {post.description}
                         </Typography>
-                        <Link variant="subtitle1" href="#">
-                            {post.linkText}
+                        <Link variant="h5" href={"/news/" + post.index + "/" + post.title + "/" + user}>
+                            Continue reading ...
                         </Link>
                     </div>
                 </Grid>

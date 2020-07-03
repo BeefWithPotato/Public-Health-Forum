@@ -10,7 +10,7 @@ export const addComment = actions => {
       };
       
       if(commentList.length !== 0){
-          commentList.unshift(comment);
+          commentList.push(comment);
           actions.setState({
               comments: commentList
           });
@@ -53,7 +53,7 @@ export const deleteComment = (actions, post) => {
             });
         }
         else{
-          alert("YOU DON'T HAVE PERMISSION TO DELETE THIS POST");
+          alert("YOU DON'T HAVE PERMISSION TO DELETE THIS COMMENT");
         }
     }
   

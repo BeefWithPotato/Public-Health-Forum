@@ -12,6 +12,10 @@ import Main from './Main';
 import Sidebar from './Sidebar';
 import Footer from './Footer';
 import TopBar from '../TopBar';
+import mask from "./static/mask.jpg";
+import tam from "./static/Tam.jpg";
+import quebec from "./static/quebec.jpg";
+
 
 const useStyles = makeStyles((theme) => ({
     mainGrid: {
@@ -20,30 +24,32 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const mainFeaturedPost = {
-    title: 'Ford wishes Ontarians a happy Canada Day, urges them to continue following health advice',
+    title: 'A single case could spark a new COVID-19 outbreak, Tam warns',
     description:
-        "Premier Doug Ford wished Ontario residents a happy Canada Day on Wednesday, while urging them to follow public health advice as they celebrate amid the COVID-19 pandemic.",
-    image: 'https://www.cp24.com/polopoly_fs/1.5001730.1593199624!/httpImage/image.jpg_gen/derivatives/landscape_620/image.jpg',
-    imgText: 'Doug Ford',
-    linkText: 'https://www.cp24.com/news/ford-wishes-ontarians-a-happy-canada-day-urges-them-to-continue-following-health-advice-1.5006987',
+        "OTTAWA -- All it could take for Canada’s current COVID-19 progress to be thrown off course is a single new case that prompts an outbreak, Chief Public Health Officer Dr. Theresa Tam warned on Tuesday.",
+    image: tam,
+    imgText: 'Tam',
+    index: "1",
 };
 
 const featuredPosts = [
     {
-        title: 'Featured post',
-        date: 'Nov 12',
+        title: 'Ontario will not make it mandatory to wear masks or face coverings',
+        date: 'June 16',
         description:
-            'This is a wider card with supporting text below as a natural lead-in to additional content.',
+            'As more businesses prepare to reopen their doors on Friday, the Ontario government says it will not make it mandatory to wear masks or face coverings—although they remain recommended by health officials.',
         image: 'https://source.unsplash.com/random',
-        imageText: 'Image Text',
+        imageText: 'Mask',
+        index: "2",
     },
     {
-        title: 'Post title',
-        date: 'Nov 11',
+        title: 'Quebec reports fewer than 100 new COVID-19 cases for first time since March 22, but testing continues to plummet',
+        date: 'June 16',
         description:
-            'This is a wider card with supporting text below as a natural lead-in to additional content.',
+            'There are now 5,269 people who have died of COVID-19 in Quebec, health authorities announced Tuesday, as confirmed cases in the province reached 54,146.',
         image: 'https://source.unsplash.com/random',
-        imageText: 'Image Text',
+        imageText: 'Quebec',
+        index: "3",
     },
 ];
 
@@ -78,7 +84,7 @@ const sidebar = {
 export default function MainPage(props){
     
     const classes = useStyles();
-    console.log(props.match.params.user)
+    
 
     return (
         <React.Fragment>
@@ -86,10 +92,10 @@ export default function MainPage(props){
             <TopBar user={props.match.params.user}/>
             <Container maxWidth="lg">
                 <main>
-                    <MainFeaturedPost post={mainFeaturedPost}/>
+                    <MainFeaturedPost post={mainFeaturedPost} user={props.match.params.user}/>
                     <Grid container spacing={4}>
                         {featuredPosts.map((post) => (
-                            <FeaturedPost key={post.title} post={post}/>
+                            <FeaturedPost key={post.title} post={post} user={props.match.params.user}/>
                         ))}
                     </Grid>
                     <Grid container spacing={5} className={classes.mainGrid}>
