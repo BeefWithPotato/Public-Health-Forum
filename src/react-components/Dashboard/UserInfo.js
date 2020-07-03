@@ -66,7 +66,10 @@ const UserInfo = (props) => {
     const handleSave = () => {
         for (let [key, value] of Object.entries(values)) {
             if (value !== "") {
-                setInfo({...info, [key]: value});
+                setInfo(prevState => ({
+                    ...prevState,
+                    [key]: value
+                }));
             }
         }
         setOn(on => !on);
