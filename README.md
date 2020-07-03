@@ -64,7 +64,7 @@ The purpose of the website is to provide a platform for the public to share and 
 ### Post Page
 + This is the detail page for topics in the Post Overview Page. The topic's title will be displayed on the top of the page. The posts will display under. Every posts have **Like** and **Delete** button. They work the same as the buttons in the topic.
 
-+People can view the comments of each post by clicking the post.
++ People can view the comments of each post by clicking the post.
 
 + User and admin can create new post by using the rich text-editor at bottom of the page.
 
