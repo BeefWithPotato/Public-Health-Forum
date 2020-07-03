@@ -42,16 +42,7 @@ const useStyles = makeStyles((theme) => ({
     appBar: {
         zIndex: theme.zIndex.drawer + 1,
     },
-    drawer: {
-        width: drawerWidth,
-        flexShrink: 0,
-    },
-    drawerPaper: {
-        width: drawerWidth,
-    },
-    drawerContainer: {
-        overflow: 'auto',
-    },
+    
     content: {
         flexGrow: 1,
         padding: theme.spacing(3),
@@ -78,24 +69,7 @@ const Dashboard = (props) => {
             <CssBaseline/>
             <AppBar position="fixed" className={classes.appBar}>
             </AppBar>
-            <Drawer
-                className={classes.drawer}
-                variant="permanent"
-                classes={{
-                    paper: classes.drawerPaper,
-                }}
-            >
-                <div className={classes.drawerContainer}>
-                    <List>
-                        {['Setting', 'Likes', 'Bookmarks', 'Drafts'].map((text, index) => (
-                            <ListItem button key={text}>
-                                <ListItemIcon>{index % 2 === 0 ? <InboxIcon/> : <MailIcon/>}</ListItemIcon>
-                                <ListItemText primary={text}/>
-                            </ListItem>
-                        ))}
-                    </List>
-                </div>
-            </Drawer>
+            
             <main className={classes.content}>
                 <TopBar user={user}/>
                 <div className={classes.appBarSpacer}/>
