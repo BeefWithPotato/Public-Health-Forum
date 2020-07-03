@@ -9,28 +9,28 @@ import "./style.css";
 class PostList extends React.Component {
 
 
-  render() {
-    const { type, posts, postComponent, user} = this.props;
-    return(
+    render() {
+        const {type, posts, postComponent, user} = this.props;
+        return (
 
-        
-        <div className="post-list">
+
+            <div className="post-list">
                 <Table>
                     <TableBody>
-                          
+
                         {posts.map((post) => (
-                            
-                            <PostItem type={type} post={post} postComponent={postComponent} user={user} />
-                                                 
-                        ))} 
-                      
+
+                            <PostItem type={type} post={post} postComponent={postComponent} user={user}/>
+
+                        ))}
+
                     </TableBody>
                 </Table>
-            </div>  
-        
-          
-    );
-  }
+            </div>
+
+
+        );
+    }
 }
 
 export default PostList;

@@ -1,11 +1,11 @@
-.comment-page ul{
+.comment-page ul {
     border: 1px solid grey;
     width: 100%;
     list-style-type: none;
     margin: 0;
 }
 
-.comment-page ul li{
+.comment-page ul li {
     margin-right: 20px;
     font-weight: 350;
     font-size: 1em;
@@ -15,7 +15,7 @@
 }
 
 
-.search_button{
+.search_button {
     width: 90px;
     height: 30px;
     left: 10px;

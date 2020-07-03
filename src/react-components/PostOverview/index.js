@@ -3,24 +3,22 @@ import Button from "@material-ui/core/Button";
 
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
-import FavoriteIcon from '@material-ui/icons/Favorite';
 import Like from './Like';
-import { addTag, deleteTag} from "./actions/actions";
+import {addTag, deleteTag} from "./actions/actions";
 import TopBar from "../TopBar";
 import "./style.css";
-import header_img from "./static/header_img.jpg";
 import cov19 from "./static/cov19.jpg"
 import fever from "./static/fever.jpg"
 
-class AllPost extends React.Component{
-    
+class AllPost extends React.Component {
+
     state = {
-        tagName:"",
-        creator:"",
+        tagName: "",
+        creator: "",
         img: "",
         homeurl: "",
         posturl: "",
@@ -34,7 +32,7 @@ class AllPost extends React.Component{
 
     componentDidMount() {
         console.log(this.props.match.params.user);
-        
+
         const homeurl = "/homepage/" + this.props.match.params.user;
         const posturl = "/postoverview/" + this.props.match.params.user;
 
@@ -43,20 +41,20 @@ class AllPost extends React.Component{
             homeurl: homeurl,
             posturl: posturl
         });
-         
+
     }
 
     //handler for whenever we input in the input box
-    handleInputChange = event =>{
-        
+    handleInputChange = event => {
+
         this.setState({
             tagName: event.target.value
-           
+
         });
     }
-    
+
     //handler for whenever a picture is uploaded
-    handleImgChange = event =>{
+    handleImgChange = event => {
 
         let reader = new FileReader();
         reader.onload = (event) => {
@@ -66,25 +64,25 @@ class AllPost extends React.Component{
         };
         reader.readAsDataURL(event.target.files[0]);
     }
-    
 
-    render(){
+
+    render() {
 
         return (
             <div className="postoverview">
 
                 <TopBar user={this.props.match.params.user}/>
-                
+
                 <Grid className="Grid" container direction="column" spacing={3}>
 
                     <Grid item className="input-topic">
-                        <TextField 
+                        <TextField
                             className="tag-input"
-                            id="outlined-basic" 
-                            label="Create a brand new Topic" 
-                            variant="outlined" 
+                            id="outlined-basic"
+                            label="Create a brand new Topic"
+                            variant="outlined"
                             onChange={this.handleInputChange}
-                        />    
+                        />
 
 
                         <input
@@ -96,22 +94,22 @@ class AllPost extends React.Component{
                             onChange={this.handleImgChange}
                         />
                         <label htmlFor="upload">
-                            <Button 
+                            <Button
                                 size="small"
                                 className="upload-button"
-                                variant="contained" 
-                                color="secondary" 
+                                variant="contained"
+                                color="secondary"
                                 component="span"
                             >
                                 Upload
                             </Button>
                         </label>
 
-                        <Button 
+                        <Button
                             size="small"
                             className="upload-button"
-                            variant="contained" 
-                            color="primary" 
+                            variant="contained"
+                            color="primary"
                             component="span"
                             onClick={() => addTag(this)}
                         >
@@ -124,49 +122,50 @@ class AllPost extends React.Component{
                     <Grid item className="tags-grid">
                         {/* Post Title */}
                         {this.state.tags.map((tag) => (
-                            
+
                             /* Post Title */
                             <Paper className="postsubpaper">
 
-                                    <Grid container direction="column" spacing={1}>
-                                        
-                                        {/* Link to topic detail */}
-                                        <Link className="button_link" to={"/postpage/"+tag.tagName+"/"+this.props.match.params.user} >
-                                            <Grid item>
-                                                {/* img src */}
-                                                <img className="sub_img" src={tag.img} alt="sub"/>
-                                            </Grid>
+                                <Grid container direction="column" spacing={1}>
 
-                                            <Grid item>
-                                                <h2 className="subtitle">
-                                                    {tag.tagName}
-                                                </h2>
-                                            </Grid>
+                                    {/* Link to topic detail */}
+                                    <Link className="button_link"
+                                          to={"/postpage/" + tag.tagName + "/" + this.props.match.params.user}>
+                                        <Grid item>
+                                            {/* img src */}
+                                            <img className="sub_img" src={tag.img} alt="sub"/>
+                                        </Grid>
 
-                                            {/* creator */}
-                                            <Grid item>
-                                                <h5 className="src">
-                                                    Tag First Created by, <br/>
-                                                    {tag.creator}
-                                                </h5>
-                                            </Grid>
-                                        </Link>
+                                        <Grid item>
+                                            <h2 className="subtitle">
+                                                {tag.tagName}
+                                            </h2>
+                                        </Grid>
 
-                                        {/* The like component can't do any record in this phase, will be fix in Phase2 */}
-                                        <Like/>
+                                        {/* creator */}
+                                        <Grid item>
+                                            <h5 className="src">
+                                                Tag First Created by, <br/>
+                                                {tag.creator}
+                                            </h5>
+                                        </Grid>
+                                    </Link>
 
-                                        <IconButton 
-                                            className="tag-delete-button" 
-                                            aria-label="delete"
-                                            onClick={() => deleteTag(this, tag)}
-                                        >
-                                            <DeleteIcon />
-                                        </IconButton>
-                                     
-                                    </Grid>
+                                    {/* The like component can't do any record in this phase, will be fix in Phase2 */}
+                                    <Like/>
+
+                                    <IconButton
+                                        className="tag-delete-button"
+                                        aria-label="delete"
+                                        onClick={() => deleteTag(this, tag)}
+                                    >
+                                        <DeleteIcon/>
+                                    </IconButton>
+
+                                </Grid>
                             </Paper>
                         ))}
-                    </Grid>    
+                    </Grid>
                 </Grid>
             </div>
         );

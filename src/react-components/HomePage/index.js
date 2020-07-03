@@ -8,7 +8,7 @@ import HotNews from "../HotNews";
 import ActiveVerifiedUsers from "../ActiveVerifiedUsers";
 
 
-class HomePage extends React.Component{
+class HomePage extends React.Component {
 
     //user:""
     state = {
@@ -16,31 +16,31 @@ class HomePage extends React.Component{
         posturl: ""
     }
 
-    
+
     componentDidMount() {
         console.log(this.props.match.params);
-        
+
         console.log(this.props.user.username);
         const homeurl = "/homepage/" + this.props.match.params.user;
         const posturl = "/postoverview/" + this.props.match.params.user;
         this.setState({
             user: this.props.match.params.user,
             homeurl: homeurl,
-            posturl: posturl,   
+            posturl: posturl,
         });
-        
+
     }
 
 
-    render(){
+    render() {
         console.log(this.props.match.params.user)
         return (
             <div className="homepage">
-                
+
                 <ul>
                     {/* Home button */}
                     <li className="Home">
-                        
+
                         <a href={this.state.homeurl}>Home</a>
                     </li>
 
@@ -75,12 +75,12 @@ class HomePage extends React.Component{
                     Total cases: 99,427 | Active: 29,812 | Recovered: 61,402 | Deceased: 8,213
                 </h3>
 
-                <HotTag />
+                <HotTag/>
 
                 <HotNews user={this.props.match.params.user}/>
 
-                <ActiveVerifiedUsers />
-                
+                <ActiveVerifiedUsers/>
+
             </div>
         );
     }

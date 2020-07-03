@@ -1,6 +1,6 @@
-.active_users{
+.active_users {
     font-family: Arial, serif;
-    
+
     width: 25%;
     position: absolute;
     display: inline-block;
@@ -11,27 +11,27 @@
     overflow: hidden;
 }
 
-.hot_users_title{
+.hot_users_title {
     margin-left: 15px;
     color: red;
     font-style: italic;
     font-size: 100%;
 }
 
-.user_paper{
-    
+.user_paper {
+
     display: block;
     text-align: center;
     border: 1px solid grey;
     margin: 10px;
 }
 
-.avatar{
+.avatar {
     margin: 20px;
     width: 125px;
 }
 
-.description{
+.description {
     text-align: center;
     margin-left: 5px;
 }

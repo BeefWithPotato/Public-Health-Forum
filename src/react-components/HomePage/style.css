@@ -1,18 +1,18 @@
-.header_img{
+.header_img {
     background-attachment: fixed;
     height: 350px;
     display: block;
     width: 100vw;
 }
 
-.homeicon{
+.homeicon {
     position: absolute;
     left: 4px;
     width: 10px;
     height: 10px;
 }
 
-.cov19-update{
+.cov19-update {
     margin-top: 0;
     text-align: center;
     background-color: #000099;
@@ -21,21 +21,21 @@
     border: 1px solid #3300FF;
 }
 
-.homepage{
+.homepage {
     position: absolute;
     width: 100%;
     height: auto;
 }
 
 
-.homepage ul{
+.homepage ul {
     border: 1px solid grey;
     width: 100%;
     list-style-type: none;
     margin: 0;
 }
 
-.homepage ul li{
+.homepage ul li {
     margin-right: 20px;
     font-weight: 350;
     font-size: 1em;
@@ -45,18 +45,18 @@
 }
 
 
-.search_button{
+.search_button {
     width: 90px;
     height: 30px;
     left: 10px;
     text-align: center;
 }
 
-a{
-    
+a {
+
     color: black;
 }
 
-a:hover{
-    text-decoration:underline
+a:hover {
+    text-decoration: underline
 } 

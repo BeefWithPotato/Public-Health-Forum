@@ -1,17 +1,17 @@
 /* Styles for the Welcome Page Component*/
 
-.welcome_page{
+.welcome_page {
     position: absolute;
     width: 100%;
     height: 100%;
 
     background-size: cover;
     background-image: url("./static/welcome_page_img.jpg");
-    background-repeat:no-repeat;
+    background-repeat: no-repeat;
 }
 
 
-.welcome_button{
+.welcome_button {
     position: absolute;
     width: 21%;
     height: 5%;
@@ -21,6 +21,7 @@
     text-align: center;
     display: inline-block;
 }
-html{
+
+html {
     font-size: 1.5em;
 }

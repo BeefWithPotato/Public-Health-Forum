@@ -1,32 +1,29 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
 import Grid from '@material-ui/core/Grid';
 
 import "./style.css";
 import PostList from "../PostList"
-import header_img from "./static/header_img.jpg";
 import Add from "../Add";
-import { addComment } from "./actions/actions";
+import {addComment} from "./actions/actions";
 import TopBar from "../../TopBar";
-
 //imgs are all hard-coded here
 import img1 from "./static/user1.png"
 import img2 from "./static/user2.png"
 import img3 from "./static/user3.png"
 
-class Comment extends React.Component{
+class Comment extends React.Component {
 
     state = {
-        homeurl:"",
-        posturl:"",
+        homeurl: "",
+        posturl: "",
         username: "",
         content: "",
         icon: img3,
-        post:"",
+        post: "",
         comments: ""
-        
+
     }
-    
+
     componentDidMount() {
         console.log(this.props.match.params);
         console.log(this.props.match.params.user);
@@ -46,16 +43,15 @@ class Comment extends React.Component{
 
         //display corresponding comments by checking url parameter
         const post = this.props.match.params.title;
-        if(post.indexOf("quarantine") !== -1){
+        if (post.indexOf("quarantine") !== -1) {
             this.setState({
-                comments: cov19  
+                comments: cov19
             });
-        }
-        else if(post.indexOf("neighbour") !== -1){
+        } else if (post.indexOf("neighbour") !== -1) {
             this.setState({
-                comments: neighbour  
+                comments: neighbour
             });
-            
+
         }
 
         const homeurl = "/homepage/" + this.props.match.params.user;
@@ -63,14 +59,14 @@ class Comment extends React.Component{
 
         this.setState({
             homeurl: homeurl,
-            posturl: posturl,   
+            posturl: posturl,
         });
-         
+
     }
 
     //handler for whenever we input in the input box
-    handleInputChange = (value) =>{
-       
+    handleInputChange = (value) => {
+
         console.log(value);
         console.log(this.props.match.params.user);
         this.setState({
@@ -78,25 +74,24 @@ class Comment extends React.Component{
             content: value
         });
     }
-    
 
-    render(){
+
+    render() {
         //check if the currrent post contain any comments
         let checkList;
-        if(this.state.comments === ""){
+        if (this.state.comments === "") {
             checkList = (
                 <h3 className="no-post-title">
                     Be the first to share your thoughts!
                 </h3>
             )
-        }
-        else{
+        } else {
             checkList = (
-                <Grid item className="post-list">    
-                    <PostList 
+                <Grid item className="post-list">
+                    <PostList
                         type="comment"
-                        posts={this.state.comments} 
-                        postComponent={this} 
+                        posts={this.state.comments}
+                        postComponent={this}
                         user={this.props.match.params.user}
                     />
                 </Grid>
@@ -108,7 +103,7 @@ class Comment extends React.Component{
             <div className="comment-page">
 
                 <TopBar user={this.props.match.params.user}/>
-                
+
                 <h3 className="topic-title">Comments:</h3>
 
                 <Grid item container className="post-grid" direction="column">
@@ -117,7 +112,7 @@ class Comment extends React.Component{
 
                     <Grid item className="post-inut">
                         {/* Here is the whole structure for adding a new comment */}
-                        <Add 
+                        <Add
                             newtitle={this.state.content}
                             onChange={this.handleInputChange}
                             addPost={() => addComment(this)}

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 
@@ -10,7 +10,7 @@ import user2 from "./static/user2.png"
 import "./style.css";
 
 
-class ActiveVerifiedUsers extends React.Component{
+class ActiveVerifiedUsers extends React.Component {
 
     state = {
 
@@ -21,8 +21,8 @@ class ActiveVerifiedUsers extends React.Component{
         ]
     }
 
-    render(){
-        return(
+    render() {
+        return (
             <div className="active_users">
                 <h3 className="hot_users_title">Recent Active Verified Users</h3>
 
@@ -38,11 +38,12 @@ class ActiveVerifiedUsers extends React.Component{
                             </Grid>
 
                             <Grid item xs={6} sm container>
-                                <Link className="button_link" to="" >
+                                <Link className="button_link" to="">
                                     <Grid container direction="column" spacing={1}>
                                         <Grid item className="info">
                                             <h3 className="username"> {user.name} </h3>
-                                            <h6 className="description">Verified Doctor <br/> Field: <br/> {user.field} </h6>
+                                            <h6 className="description">Verified Doctor <br/> Field: <br/> {user.field}
+                                            </h6>
                                         </Grid>
                                     </Grid>
                                 </Link>

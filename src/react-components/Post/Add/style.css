@@ -1,32 +1,32 @@
-.Add{
-	float: left;
-	width: 100%;
+.Add {
+    float: left;
+    width: 100%;
     height: 100%;
 }
 
-.no-post-title{
-	position: relative;
-	left: 11%;
-	color: #FF0000;
+.no-post-title {
+    position: relative;
+    left: 11%;
+    color: #FF0000;
 }
 
-.text-area{
+.text-area {
 
-	height: 200px; 
-	width: 81.5%;
+    height: 200px;
+    width: 81.5%;
 
-	font-family: Areial;
-	font-size: 100%;
+    font-family: Areial;
+    font-size: 100%;
 }
 
-.text-input{
-	position: relative;
-	left: 11%;
+.text-input {
+    position: relative;
+    left: 11%;
 
 }
 
-.post-button{
-	position: relative;
-	top: 60px;
-	left: 74%;
+.post-button {
+    position: relative;
+    top: 60px;
+    left: 74%;
 }

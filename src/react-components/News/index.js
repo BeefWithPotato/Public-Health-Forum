@@ -259,7 +259,7 @@ class News extends React.Component {
             <div className="newspage">
 
                 <TopBar user={this.props.match.params.user}/>
-            
+
                 {newsDetail}
 
             </div>

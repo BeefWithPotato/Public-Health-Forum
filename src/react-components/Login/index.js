@@ -1,8 +1,16 @@
 import React from "react";
-import { Link } from "react-router-dom"
-import { Button, TextField, FormGroup, InputAdornment, InputLabel,
-    OutlinedInput, IconButton, FormControl } from "@material-ui/core";
-import { Visibility, VisibilityOff } from "@material-ui/icons"
+import {Link} from "react-router-dom"
+import {
+    Button,
+    FormControl,
+    FormGroup,
+    IconButton,
+    InputAdornment,
+    InputLabel,
+    OutlinedInput,
+    TextField
+} from "@material-ui/core";
+import {Visibility, VisibilityOff} from "@material-ui/icons"
 
 import "./style.css";
 
@@ -35,7 +43,7 @@ const Login = (props) => {
 
     const submit = (event) => {
         event.preventDefault();
-        console.log("username: "+values.username+"\npassword: "+values.password)
+        console.log("username: " + values.username + "\npassword: " + values.password)
         /*
         * TODO
         */
@@ -49,13 +57,13 @@ const Login = (props) => {
         else
             failedCallback();
     }
-    
+
     const change = (prop) => (event) => {
-        setValues({ ...values, [prop]: event.target.value });
+        setValues({...values, [prop]: event.target.value});
     }
 
     const show = () => {
-        setValues({ ...values, show: !values.show });
+        setValues({...values, show: !values.show});
     };
 
     return (
@@ -82,7 +90,7 @@ const Login = (props) => {
                             endAdornment={
                                 <InputAdornment position='end'>
                                     <IconButton onClick={show} edge="end">
-                                        {values.show ? <Visibility /> : <VisibilityOff />}
+                                        {values.show ? <Visibility/> : <VisibilityOff/>}
                                     </IconButton>
                                 </InputAdornment>
                             }

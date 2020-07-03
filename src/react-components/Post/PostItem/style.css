@@ -1,44 +1,44 @@
-.row{
-	position: relative;
-	margin-top: 10px;
-	font-family: Aerial;
-	border-bottom: 1.5px solid grey;
-	background-color: white;
-	height: 100%;
+.row {
+    position: relative;
+    margin-top: 10px;
+    font-family: Aerial;
+    border-bottom: 1.5px solid grey;
+    background-color: white;
+    height: 100%;
 }
 
-.user-icon{
-	float: left;
-	border-radius: 50%;
-	height: 70px;
-	width: 70px;
-	margin: 5px;
+.user-icon {
+    float: left;
+    border-radius: 50%;
+    height: 70px;
+    width: 70px;
+    margin: 5px;
 }
 
-.delete-button{
+.delete-button {
 
-	height: 15px;
-	width: 15px;
-	float: right;
+    height: 15px;
+    width: 15px;
+    float: right;
 }
 
-.post-like-button{
-	top: 50%;
-	float: left;
-	left:290px;
+.post-like-button {
+    top: 50%;
+    float: left;
+    left: 290px;
 }
 
-.post-user{
-	float: left;
+.post-user {
+    float: left;
 }
 
-.post-info{
-	
-	padding-top: 5px;
-	padding-left: 35px;
-	width: 500px;
-	table-layout: fixed;
-	word-wrap: break-all;
-	word-break: break-all;
-	overflow: hidden;
+.post-info {
+
+    padding-top: 5px;
+    padding-left: 35px;
+    width: 500px;
+    table-layout: fixed;
+    word-wrap: break-all;
+    word-break: break-all;
+    overflow: hidden;
 }

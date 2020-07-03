@@ -54,33 +54,33 @@ const featuredPosts = [
 const posts = [];
 
 
-export default function MainPage(props){
-    
+export default function MainPage(props) {
+
     const classes = useStyles();
-    
+
 
     return (
         <React.Fragment>
             <CssBaseline/>
             <TopBar user={props.match.params.user}/>
             <Container maxWidth="lg">
-              <main>
-                  <MainFeaturedPost post={mainFeaturedPost} user={props.match.params.user}/>
-                  <Grid container spacing={6}>
-                    <Topic user={props.match.params.user}/>
-                  </Grid>
+                <main>
+                    <MainFeaturedPost post={mainFeaturedPost} user={props.match.params.user}/>
+                    <Grid container spacing={6}>
+                        <Topic user={props.match.params.user}/>
+                    </Grid>
 
-                  <Grid container spacing={4} className={classes.mainGrid}>
-                      <Main title="Other News" posts={posts}/>
-                  </Grid>
-                  <Grid container spacing={4} className={classes.mainGrid}>
-                      {featuredPosts.map((post) => (
-                          <FeaturedPost key={post.title} post={post} user={props.match.params.user}/>
-                      ))}
-                      <ActiveUser/>
-                  </Grid>
-                  
-              </main>
+                    <Grid container spacing={4} className={classes.mainGrid}>
+                        <Main title="Other News" posts={posts}/>
+                    </Grid>
+                    <Grid container spacing={4} className={classes.mainGrid}>
+                        {featuredPosts.map((post) => (
+                            <FeaturedPost key={post.title} post={post} user={props.match.params.user}/>
+                        ))}
+                        <ActiveUser/>
+                    </Grid>
+
+                </main>
             </Container>
             <Footer title="Footer" description="Something here to give the footer a purpose!"/>
         </React.Fragment>

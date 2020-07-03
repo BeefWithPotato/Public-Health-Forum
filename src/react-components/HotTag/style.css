@@ -1,9 +1,9 @@
-.HotTag{
+.HotTag {
     font-family: Arial, serif;
     background-color: white;
 
     position: absolute;
-    
+
     left: 5%;
     float: left;
     width: 20%;
@@ -15,18 +15,17 @@
 }
 
 
-
-.hot_tags_title{
+.hot_tags_title {
 
     font-style: italic;
     color: red;
 }
 
-.tag_title{
+.tag_title {
     width: auto;
 }
 
-.no_img{
+.no_img {
     background-color: #33CCFF;
 }
 

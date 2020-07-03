@@ -2,7 +2,7 @@ import React from "react";
 
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import Typography from '@material-ui/core/Typography';
 
 import news from "./static/news.jpg";
@@ -12,12 +12,11 @@ import "./style.css";
 
 
 /* hot news part in homepage*/
-class HotNews extends React.Component{
+class HotNews extends React.Component {
 
-    
 
-    render(){
-        
+    render() {
+
         const newsA = "/news/1/A single case could spark a COVID-19 outbreak, Tam warns/" + this.props.user;
         const newsB = "/news/2/Ontario will not make it mandatory to wear masks or face coverings/" + this.props.user;
         const newsC = "/news/3/Quebec reports fewer than 100 new COVID-19 cases for first time since March 22, but testing continues to plummet/" + this.props.user;
@@ -90,7 +89,7 @@ class HotNews extends React.Component{
                 <Paper className="subpaper">
 
                     {/* Link to sub news */}
-                    <Link className="button_link" to={newsC} >
+                    <Link className="button_link" to={newsC}>
 
                         <Grid container direction="column" spacing={1}>
                             {/* img src */}

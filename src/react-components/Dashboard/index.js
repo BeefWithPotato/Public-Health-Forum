@@ -2,20 +2,13 @@ import React from 'react';
 import clsx from 'clsx';
 import {makeStyles} from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Drawer from '@material-ui/core/Drawer';
 import Box from '@material-ui/core/Box';
 import AppBar from '@material-ui/core/AppBar';
-import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Link from '@material-ui/core/Link';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import UserInfo from './UserInfo';
 import Orders from './LoginHistory';
 import TopBar from '../TopBar';
@@ -42,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     appBar: {
         zIndex: theme.zIndex.drawer + 1,
     },
-    
+
     content: {
         flexGrow: 1,
         padding: theme.spacing(3),
@@ -69,7 +62,7 @@ const Dashboard = (props) => {
             <CssBaseline/>
             <AppBar position="fixed" className={classes.appBar}>
             </AppBar>
-            
+
             <main className={classes.content}>
                 <TopBar user={user}/>
                 <div className={classes.appBarSpacer}/>

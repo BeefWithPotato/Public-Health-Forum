@@ -1,15 +1,15 @@
 
-.postoverview{
+.postoverview {
     height: 100%;
     width: 100%;
 }
 
-.input-topic{
+.input-topic {
     border-bottom: 1px solid grey;
 }
 
-.postsubpaper{
-    
+.postsubpaper {
+
     margin: 40px;
     text-align: center;
     margin-top: 10px;
@@ -19,12 +19,12 @@
     height: 350px;
 }
 
-.Grid{
-    padding:40px;
+.Grid {
+    padding: 40px;
 
 }
 
-.tags-grid{
+.tags-grid {
     float: left;
     position: relative;
     left: 50%;
@@ -33,43 +33,43 @@
     width: 400px;
 }
 
-.upload-input{
+.upload-input {
     display: none;
 }
 
-.tag-input{
+.tag-input {
     width: 345px;
     height: 100px;
     position: relative;
     left: 40%;
     top: 100%;
     transform: translate(-50%, 0%);
-    
+
 }
 
-.upload-button{
+.upload-button {
 
     position: relative;
     left: 33%;
     top: 10px;
     transform: translate(-50%, 0%);
-    
+
     display: inline;
 
 }
 
-.tag-delete-button{
+.tag-delete-button {
     width: 10%;
     top: -32px;
     left: 300px;
 
 }
 
-a{
+a {
     text-decoration: none;
     color: black;
 }
 
-a:PostPage{
-    text-decoration:underline
+a:PostPage {
+    text-decoration: underline
 } 

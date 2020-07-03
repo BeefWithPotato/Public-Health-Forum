@@ -1,11 +1,11 @@
-.PostPage ul{
+.PostPage ul {
     border: 1px solid grey;
     width: 100%;
     list-style-type: none;
     margin: 0;
 }
 
-.PostPage ul li{
+.PostPage ul li {
     margin-right: 20px;
     font-weight: 350;
     font-size: 1em;
@@ -14,14 +14,14 @@
     display: inline-block
 }
 
-.search_button{
+.search_button {
     width: 90px;
     height: 30px;
     left: 10px;
     text-align: center;
 }
 
-.topic-title{
+.topic-title {
     position: relative;
     font-style: 1em;
     font-weight: 400;
@@ -31,7 +31,7 @@
     color: grey;
 }
 
-.post-list{
+.post-list {
     position: relative;
     left: 5%;
     margin: 20px;
@@ -39,19 +39,19 @@
     width: 90%;
 }
 
-.post-input{
+.post-input {
     position: relative;
     float: left;
     width: 80%;
-  
+
 }
 
 
-a{
+a {
     text-decoration: none;
     color: black;
 }
 
-a:PostPage{
-    text-decoration:underline
+a:PostPage {
+    text-decoration: underline
 } 

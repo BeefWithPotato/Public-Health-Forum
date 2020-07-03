@@ -9,7 +9,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 
 const useStyles = makeStyles({
     root: {
-      maxWidth: 345,
+        maxWidth: 345,
     },
     card: {
         display: 'flex',
@@ -29,23 +29,23 @@ export default function FeaturedPost(props) {
     return (
         <Grid item xs={12} md={4}>
             <CardActionArea href={"/news/" + post.index + "/" + post.title + "/" + user}>
-            <CardMedia
-                component="img"
-                className={classes.cardMedia}
-                image={post.image}
-                title={post.imageTitle}
-            />
-            <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                    {post.title}
-                </Typography>
-                <Typography variant="body2" color="textSecondary">
-                    {post.date}
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                    {post.description}
-                </Typography>
-            </CardContent>
+                <CardMedia
+                    component="img"
+                    className={classes.cardMedia}
+                    image={post.image}
+                    title={post.imageTitle}
+                />
+                <CardContent>
+                    <Typography gutterBottom variant="h5" component="h2">
+                        {post.title}
+                    </Typography>
+                    <Typography variant="body2" color="textSecondary">
+                        {post.date}
+                    </Typography>
+                    <Typography variant="body2" color="textSecondary" component="p">
+                        {post.description}
+                    </Typography>
+                </CardContent>
             </CardActionArea>
         </Grid>
     );
