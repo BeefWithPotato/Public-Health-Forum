@@ -149,16 +149,34 @@ export default function TopBar(props) {
     let checkUser;
     if(user === "guest"){
         checkUser = (
-            <Button href="/Login" color="inherit">
+            
+            <IconButton
+                edge="end"
+                aria-label="account of current user"
+                aria-controls={menuId}
+                aria-haspopup="true"
+                color="inherit"
+                href="/admin/Dashboard"
+            >
                 Guest
-            </Button>
+            </IconButton>
+            
         )
     }
     else{
         checkUser = (
-            <Button href={"/Dashboard/" + user} color="inherit">
+            
+            <IconButton
+                edge="end"
+                aria-label="account of current user"
+                aria-controls={menuId}
+                aria-haspopup="true"
+                color="inherit"
+                href="/admin/Dashboard"
+            >
                 user
-            </Button>
+            </IconButton>
+            
         )
     }
 
@@ -207,19 +225,7 @@ export default function TopBar(props) {
                                 <NotificationsIcon/>
                             </Badge>
                         </IconButton> */}
-                        <IconButton
-                            edge="end"
-                            aria-label="account of current user"
-                            aria-controls={menuId}
-                            aria-haspopup="true"
-                            // onClick={handleProfileMenuOpen}
-                            color="inherit"
-                            href="/admin/Dashboard"
-                        >
-
-                            {checkUser}
-
-                        </IconButton>
+                        
                     </div>
                 </Toolbar>
             </AppBar>
