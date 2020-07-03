@@ -1,30 +1,30 @@
-#A Public Health Forum
+# A Public Health Forum
 
-##Overview
+## Overview
 The purpose of the website is to provide a platform for the public to share and exchange thoughts, curing experience and latest public health related infomation online. Through sharing, patients can get reliable advice and healthy people can start putting prevention first.
 
-##Getting Started
-###Clone our project
+## Getting Started
+### Clone our project
 
 `git clone https://github.com/csc309-summer-2020/team08.git`
 
-###Dependencies
+### Dependencies
 `npm install`
 
-###Run App
+### Run App
 `npm start`
 
-##How to use
-###Welcome Page
+## How to use
+### Welcome Page
 + This page is the first page a user/guest will see once they open the web application. In this page, guest/user/admin could choose to **register** an account, **login** as a user or **continue to visit as a guest**.
 
-###Register Page
+### Register Page
 + This page requires a guest visitor to set a username and a password. Once he complete, he will be registered as a user in this web application and redirect to the Main Page.
 
-###Login Page
+### Login Page
 + The page requires a user's/admin's username and password to log in. Once logging in, he will be redirect to the Main Page. Guests can choose to register an account here as well.
 
-###Top Bar(App Bar): 
+### Top Bar(App Bar): 
 + Top Bar will locates in the top of every sub pages.
 
 + On the left side of the bar, there is a menu open button. The menu contains two buttons: **MAIN PAGE** and **DASHBOARD**. Every user/admin/guest can redirect to the Main Page by using Main Page button. Dashboard button will only redirect user and admin to the Dashboard. If a guest clicks the button, he will be redirected to the Login Page. 
@@ -33,10 +33,10 @@ The purpose of the website is to provide a platform for the public to share and 
 
 + Users' username and icon will be displayed on the right side of the Top Bar. Users can click their username to go to their Dashboard Page. For guests, the Top Bar will only display "Guest" without icon and the redirect function will redirect them to the Log in Page.
 
-###User/Guest Main Page (Homepage)
+### User/Guest Main Page (Homepage)
 + Once a guest registers successfully or a user logs in successfully or a guest chooses to keep visiting as a guest, the page will be redirect to here --- Main Page.
 
-####The Main Page contains 4 parts:
+#### The Main Page contains 4 parts:
 
 + **Main Featured Content**: the content can be news or other related public health information chosen by admin. Right now we put a news in this part. People can keep reading the detail content of the news by clicking **Continue reading...** at bottom of this part.
 
@@ -46,13 +46,13 @@ The purpose of the website is to provide a platform for the public to share and 
 
 + **Active Users**: Some active users will be displayed here. If they are verified bt admin, the verified information will also be displayed.
 
-###Dashboard
+### Dashboard
 + This page will display some personal infomation of user or admin. They can edit their personal information by using **EDIT** button under the inforamtion and **SAVE** button to save changes.
 + Under the buttons, there's a verification box. This box is for users who want to be verified as a doctor identity to upload certain documents to admin. The whole functionality will be complete in Phase 2.
 
 + The user login history locates in the bottom of the page.
 
-###Post Overview Page
+### Post Overview Page
 + People can view this page by using **Topic** button in the Main Page. The page will display all current topics in the web application. User and admin can create new topic by using **Create** button as well(Must with a picture when creating, picture can be uploaded by **Upload** button). However, two topics with same name are not allowed.
 
 + People can choose their interested topic and view the detail content by clicking the topic.
@@ -61,15 +61,15 @@ The purpose of the website is to provide a platform for the public to share and 
 
 + Admins have permission to delete all the topics. Users can only delete their own topics. Guest cannot delete any of the topics.  
 
-###Post Page
+### Post Page
 + This is the detail page for topics in the Post Overview Page. The topic's title will be displayed on the top of the page. The posts will display under. Every posts have **Like** and **Delete** button. They work the same as the buttons in the topic.
 
 +People can view the comments of each post by clicking the post.
 
 + User and admin can create new post by using the rich text-editor at bottom of the page.
 
-###Comment Page
+### Comment Page
 + This page has similar structure and functions as post page. The difference is that the owner of current post can delete all the comments. Normal users can only delete their own comments.
 
-##Copyright
+## Copyright
 The project is implemented by CSC309 2020 Summer Team08
