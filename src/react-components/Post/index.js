@@ -8,6 +8,8 @@ import Add from "./Add";
 import PostList from "./PostList"
 import { addPost } from "./actions/actions";
 import TopBar from "../TopBar";
+
+//imgs are all hard-coded here
 import img1 from "./static/user1.png"
 import img2 from "./static/user2.png"
 import img3 from "./static/user3.png"
@@ -15,9 +17,9 @@ import img3 from "./static/user3.png"
 class Post extends React.Component{
 
     state = {
-        homeurl:"guest",
-        posturl:"guest",
-        newUsername: "guest",
+        homeurl:"",
+        posturl:"",
+        newUsername: "",
         newtitle: "",
         icon: img3,
         posts: ""
@@ -30,7 +32,7 @@ class Post extends React.Component{
         console.log(this.props.match.params.user);
         console.log(this.props.match.params.topic);
 
-
+        //the posts data is hard-coded, it requires server call in Phase2
         let cov19 = [
             {username: "user1", title: "I am in my 14-day quarantine.", icon: img1},
             {username: "user2", title: "My neighbour has found a new case of COV-19. Here is the address: XXX", icon: img2}
@@ -42,6 +44,7 @@ class Post extends React.Component{
             {username: "user2", title: "Useful Medicine", icon: img2}
         ]
 
+        //display corresponding posts by checking url parameter
         if("COV-19" === this.props.match.params.topic){
             this.setState({
                 posts: cov19  
@@ -63,7 +66,8 @@ class Post extends React.Component{
         });
          
     }
-    
+
+    //handler for whenever we input in the input box
     handleInputChange = (value) =>{
        
         console.log(value);
@@ -76,6 +80,7 @@ class Post extends React.Component{
     
 
     render(){
+        //check if the currrent topic contain posts
         let checkList;
         if(this.state.posts === ""){
             checkList = (
@@ -104,7 +109,9 @@ class Post extends React.Component{
 
                     {checkList}
 
+                
                     <Grid item className="post-inut">
+                        {/* Here is the whole structure for adding a new post */}
                         <Add 
                             newtitle={this.state.newtitle}
                             onChange={this.handleInputChange}

@@ -10,6 +10,7 @@ class Like extends React.Component{
 		isLike: ""
 	}
 
+    //check if we click on the like button
 	handleOnClick(){
         if(this.state.isLike === ""){
             this.setState({
@@ -29,6 +30,7 @@ class Like extends React.Component{
 		let checkLike;
         if(this.state.isLike === "like"){
             checkLike = (
+                //with color -- red
                 <IconButton 
                     color="secondary"
                     className="like-button" 
@@ -41,8 +43,8 @@ class Like extends React.Component{
         }
         else{
             checkLike = (
+                //without color -- grey
                 <IconButton 
-                    
                     className="like-button" 
                     onClick={() => {this.handleOnClick()}}
                 >

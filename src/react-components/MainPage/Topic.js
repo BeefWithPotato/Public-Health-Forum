@@ -5,22 +5,6 @@ import Typography from '@material-ui/core/Typography';
 import fever from "./static/fever.jpg";
 import cov19 from "./static/cov19.jpg";
 
-// change the image or link here
-const images = [
-  {
-    url: cov19,
-    title: 'COVID-19',
-    width: '50%',
-    link: "/",
-  },
-  {
-    url: fever,
-    title: 'FEVER',
-    width: '50%',
-    link: "/MainPage/guest",
-  },
-];
-
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -94,8 +78,25 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Topic() {
+export default function Topic(props) {
   const classes = useStyles();
+  const {user} = props;
+
+
+  const images = [
+    {
+      url: cov19,
+      title: 'COVID-19',
+      width: '50%',
+      link: "/postpage/COV-19/" + user,
+    },
+    {
+      url: fever,
+      title: 'FEVER',
+      width: '50%',
+      link: "/postpage/Fever/" + user,
+    },
+  ];
 
   return (
     <div className={classes.root}>

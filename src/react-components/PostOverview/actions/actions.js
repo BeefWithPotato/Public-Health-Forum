@@ -1,4 +1,7 @@
+
+//Methods in this file modifies the postoverview component state
 export const addTag = actions => {
+  //guest don't have permission to do any actions
   if(actions.props.match.params.user !== "guest"){
       const tagsList = actions.state.tags;
 
@@ -8,6 +11,7 @@ export const addTag = actions => {
           img: actions.state.img
       };
 
+      //check if there's a picture
       if(tag.img !== ""){
           tagsList.unshift(tag);
           actions.setState({
@@ -27,7 +31,7 @@ export const addTag = actions => {
 
 
 export const deleteTag = (actions, tag) => {
-
+    //admin can delete any tags in this page
     if(actions.props.match.params.user === "admin"){
 
         const filteredTags = actions.state.tags.filter(t => {
@@ -39,6 +43,7 @@ export const deleteTag = (actions, tag) => {
         });
     }
     else{
+        //users only can delete their own tags
         if(tag.creator === actions.props.match.params.user){
             const filteredTags = actions.state.tags.filter(t => {
                 return t !== tag;

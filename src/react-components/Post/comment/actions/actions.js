@@ -1,5 +1,6 @@
-
+//Methods in this file modifies the comment page component state
 export const addComment = actions => {
+  //guest don't have permission to do any actions
   if(actions.props.match.params.user !== "guest"){
       const commentList = actions.state.comments;
 
@@ -32,7 +33,7 @@ export const addComment = actions => {
 
 export const deleteComment = (actions, post) => {
  
-
+  //admin can delete any tags in this page
   if(actions.props.match.params.user === "admin"){
       const filteredComments = actions.state.comments.filter(c => {
           return c !== post;
@@ -43,6 +44,7 @@ export const deleteComment = (actions, post) => {
       });
   }
   else{
+        //users only can delete all the comments under their own post
         if(post.username === actions.props.match.params.user){
             const filteredComments = actions.state.comments.filter(c => {
                 return c !== post;

@@ -8,6 +8,8 @@ import header_img from "./static/header_img.jpg";
 import Add from "../Add";
 import { addComment } from "./actions/actions";
 import TopBar from "../../TopBar";
+
+//imgs are all hard-coded here
 import img1 from "./static/user1.png"
 import img2 from "./static/user2.png"
 import img3 from "./static/user3.png"
@@ -30,7 +32,7 @@ class Comment extends React.Component{
         console.log(this.props.match.params.user);
         console.log(this.props.match.params.title);
 
-
+        //the comments data is hard-coded, it requires server call in Phase2
         let cov19 = [
             {username: "user1", content: "I just finished!", icon: img1},
             {username: "user2", content: "The quarantine is so boring. I want freedom! ", icon: img2}
@@ -42,6 +44,7 @@ class Comment extends React.Component{
             {username: "user2", content: "That's dangerous!", icon: img2}
         ]
 
+        //display corresponding comments by checking url parameter
         const post = this.props.match.params.title;
         if(post.indexOf("quarantine") !== -1){
             this.setState({
@@ -64,7 +67,8 @@ class Comment extends React.Component{
         });
          
     }
-    
+
+    //handler for whenever we input in the input box
     handleInputChange = (value) =>{
        
         console.log(value);
@@ -77,6 +81,7 @@ class Comment extends React.Component{
     
 
     render(){
+        //check if the currrent post contain any comments
         let checkList;
         if(this.state.comments === ""){
             checkList = (
@@ -111,6 +116,7 @@ class Comment extends React.Component{
                     {checkList}
 
                     <Grid item className="post-inut">
+                        {/* Here is the whole structure for adding a new comment */}
                         <Add 
                             newtitle={this.state.content}
                             onChange={this.handleInputChange}

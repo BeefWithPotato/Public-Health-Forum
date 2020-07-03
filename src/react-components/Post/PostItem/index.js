@@ -13,6 +13,7 @@ import { deleteComment } from "../comment/actions/actions";
 import Like from "./Like";
 import "./style.css";
 
+/* Component for the individual post */
 class PostItem extends React.Component {
 
   render() {
@@ -34,6 +35,8 @@ class PostItem extends React.Component {
         )
     }
 
+    //comment and post will use the same item component
+    //need to check since they have different delete methods
     let checkDelete;
     if(type === "comment"){
         checkDelete = (
@@ -77,6 +80,7 @@ class PostItem extends React.Component {
                       @{post.username}
                   </h3>
 
+                  {/* The like component can't do any record in this phase, will be fix in Phase2 */}
                   <Like className="post-like-button"/>
 
                   {checkType}

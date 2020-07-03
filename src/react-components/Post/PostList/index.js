@@ -5,7 +5,7 @@ import PostItem from "../PostItem"
 
 import "./style.css";
 
-
+/* Component for the List of Posts */
 class PostList extends React.Component {
 
 

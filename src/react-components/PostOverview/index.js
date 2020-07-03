@@ -25,6 +25,8 @@ class AllPost extends React.Component{
         homeurl: "",
         posturl: "",
         tags: [
+            // now the tags data is hard-coded
+            // here requires server call in the future
             {tagName: "COV-19", creator: "User1", img: cov19},
             {tagName: "Fever", creator: "User2", img: fever},
         ]
@@ -44,6 +46,7 @@ class AllPost extends React.Component{
          
     }
 
+    //handler for whenever we input in the input box
     handleInputChange = event =>{
         
         this.setState({
@@ -52,6 +55,7 @@ class AllPost extends React.Component{
         });
     }
     
+    //handler for whenever a picture is uploaded
     handleImgChange = event =>{
 
         let reader = new FileReader();
@@ -72,7 +76,6 @@ class AllPost extends React.Component{
                 <TopBar user={this.props.match.params.user}/>
                 
                 <Grid className="Grid" container direction="column" spacing={3}>
-
 
                     <Grid item className="input-topic">
                         <TextField 
@@ -149,7 +152,7 @@ class AllPost extends React.Component{
                                             </Grid>
                                         </Link>
 
-                                        
+                                        {/* The like component can't do any record in this phase, will be fix in Phase2 */}
                                         <Like/>
 
                                         <IconButton 

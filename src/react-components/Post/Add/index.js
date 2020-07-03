@@ -3,16 +3,16 @@ import React from "react";
 import Button from '@material-ui/core/Button';
 
 
-//This is an free external rich text-editor called React-Quill.
+//Here is a free external rich text-editor called React-Quill.
 //Source: 
 //https://github.com/zenoamaro/react-quill
-//https://github.com/kensnyder/quill-image-drop-module
 import ReactQuill, { Quill } from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import "./style.css";
 
 class AddPost extends React.Component{
 
+	//default setup for react-quill
 	modules = {
 	    toolbar: [
 	      	[{ 'header': [1, 2, false] }],
