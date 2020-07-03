@@ -18,7 +18,7 @@ function Copyright() {
         <Typography variant="body2" color="textSecondary" align="center">
             {'Copyright © '}
             <Link color="inherit" href="http://localhost:3000/">
-                Your Website
+                HEALTH BASE
             </Link>{' '}
             {new Date().getFullYear()}
             {'.'}
@@ -38,7 +38,6 @@ const useStyles = makeStyles((theme) => ({
 
     content: {
         flexGrow: 1,
-        padding: theme.spacing(3),
     },
 }));
 
@@ -60,9 +59,6 @@ const Dashboard = (props) => {
     return (
         <div className={classes.root}>
             <CssBaseline/>
-            <AppBar position="fixed" className={classes.appBar}>
-            </AppBar>
-
             <main className={classes.content}>
                 <TopBar user={user}/>
                 <div className={classes.appBarSpacer}/>
