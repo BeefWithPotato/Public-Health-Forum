@@ -3,7 +3,6 @@ import clsx from 'clsx';
 import {makeStyles} from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Box from '@material-ui/core/Box';
-import AppBar from '@material-ui/core/AppBar';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
@@ -18,15 +17,13 @@ function Copyright() {
         <Typography variant="body2" color="textSecondary" align="center">
             {'Copyright © '}
             <Link color="inherit" href="http://localhost:3000/">
-                Your Website
+                HEALTH BASE
             </Link>{' '}
             {new Date().getFullYear()}
             {'.'}
         </Typography>
     );
 }
-
-const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -38,20 +35,12 @@ const useStyles = makeStyles((theme) => ({
 
     content: {
         flexGrow: 1,
-        padding: theme.spacing(3),
     },
 }));
 
 const Dashboard = (props) => {
 
     const classes = useStyles();
-    const [open, setOpen] = React.useState(true);
-    const handleDrawerOpen = () => {
-        setOpen(true);
-    };
-    const handleDrawerClose = () => {
-        setOpen(false);
-    };
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
     const user = props.match.params.user;
@@ -60,9 +49,6 @@ const Dashboard = (props) => {
     return (
         <div className={classes.root}>
             <CssBaseline/>
-            <AppBar position="fixed" className={classes.appBar}>
-            </AppBar>
-
             <main className={classes.content}>
                 <TopBar user={user}/>
                 <div className={classes.appBarSpacer}/>
