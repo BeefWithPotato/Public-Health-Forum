@@ -44,7 +44,7 @@ const Register = (props) => {
             repeat: values.repeat
         }
         const result = props.tempRegister(data)
-        if (result !== {}) {
+        if (result !== false) {
             successCallback(result);
         } else {
             failedCallback();

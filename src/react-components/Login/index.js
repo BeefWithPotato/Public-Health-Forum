@@ -39,9 +39,12 @@ const Login = (props) => {
         /*
         * TODO
         */
-        const data = {username: values.username, password: values.password}
-        const result = props.tempAuth(data)
-        if (result !== {})
+        const data = {
+            username: values.username,
+            password: values.password
+        };
+        const result = props.tempAuth(data);
+        if (result !== false)
             successCallback(result);
         else
             failedCallback();

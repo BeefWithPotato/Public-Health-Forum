@@ -104,8 +104,16 @@ export default function TopBar(props) {
             open={isMenuOpen}
             onClose={handleMenuClose}
         >
-            <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-            <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+            <MenuItem onClick={handleMenuClose}>
+                <Button href="/MainPage" color="inherit">
+                    Main Page
+                </Button>
+            </MenuItem>
+            <MenuItem onClick={handleMenuClose} href="/admin/Dashboard">
+                <Button href="/Dashboard" color="inherit">
+                    Dashboard
+                </Button>
+            </MenuItem>
         </Menu>
     );
 
@@ -138,6 +146,7 @@ export default function TopBar(props) {
                         edge="start"
                         className={classes.menuButton}
                         color="inherit"
+                        onClick={handleProfileMenuOpen}
                         aria-label="open drawer"
                     >
                         <MenuIcon/>
@@ -162,7 +171,7 @@ export default function TopBar(props) {
                     </div>
                     <div className={classes.grow}/>
                     <div className={classes.sectionDesktop}>
-                        <IconButton aria-label="show 4 new mails" color="inherit">
+                        {/* <IconButton aria-label="show 4 new mails" color="inherit">
                             <Badge badgeContent={4} color="secondary">
                                 <MailIcon/>
                             </Badge>
@@ -171,17 +180,19 @@ export default function TopBar(props) {
                             <Badge badgeContent={17} color="secondary">
                                 <NotificationsIcon/>
                             </Badge>
-                        </IconButton>
+                        </IconButton> */}
                         <IconButton
                             edge="end"
                             aria-label="account of current user"
                             aria-controls={menuId}
                             aria-haspopup="true"
-                            onClick={handleProfileMenuOpen}
+                            // onClick={handleProfileMenuOpen}
                             color="inherit"
+                            href="/admin/Dashboard"
                         >
+
                             {checkUser}
-                            <AccountCircle/>
+
                         </IconButton>
                     </div>
                 </Toolbar>

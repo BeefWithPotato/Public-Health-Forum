@@ -50,7 +50,7 @@ class App extends React.Component {
                 this.data[i].password === data.password)
                 return this.data[i]
         }
-        return {}
+        return false
     }
 
     tempRegister = (data) => {
@@ -64,11 +64,10 @@ class App extends React.Component {
                 role: "user"
             }
         }
-        return {}
+        return false
     }
 
     handleLogin(data) {
-        console.log(data);
         this.setState(
             {
                 loggedIn: "LOGGED_IN",
@@ -78,7 +77,6 @@ class App extends React.Component {
     }
 
     handleRegister(data) {
-        console.log(data);
         this.data.push(data);
         this.setState(
             {
@@ -137,7 +135,12 @@ class App extends React.Component {
                                }
                         />
 
-                        <Route exact path='/Dashboard/:user'  render={props => (<Dashboard {...props}/>)}/>
+                        <Route exact path='/Dashboard/:user'
+                               render={
+                                   props => (<Dashboard {...props}
+                                                        loggedIn={this.state.loggedIn}
+                                                        user={this.state.user}/>)}
+                        />
 
                         <Route exact path='/MainPage/:user' component={MainPage} />
                     </Switch>
