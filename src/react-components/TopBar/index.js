@@ -135,38 +135,38 @@ export default function TopBar(props) {
     }
 
 
-    // let checkUser;
-    // if (user === "guest") {
-    //     checkUser = (
+    let checkUser;
+    if (user === "guest") {
+        checkUser = (
 
-    //         <IconButton
-    //             edge="end"
-    //             aria-label="account of current user"
-    //             aria-controls={menuId}
-    //             aria-haspopup="true"
-    //             color="inherit"
-    //             href="/admin/Dashboard"
-    //         >
-    //             Guest
-    //         </IconButton>
+            <IconButton
+                edge="end"
+                aria-label="account of current user"
+                aria-controls={menuId}
+                aria-haspopup="true"
+                color="inherit"
+                href="/Login"
+            >
+                Guest
+            </IconButton>
 
-    //     )
-    // } else {
-    //     checkUser = (
+        )
+    } else {
+        checkUser = (
 
-    //         <IconButton
-    //             edge="end"
-    //             aria-label="account of current user"
-    //             aria-controls={menuId}
-    //             aria-haspopup="true"
-    //             color="inherit"
-    //             href="/admin/Dashboard"
-    //         >
-    //             user
-    //         </IconButton>
+            <IconButton
+                edge="end"
+                aria-label="account of current user"
+                aria-controls={menuId}
+                aria-haspopup="true"
+                color="inherit"
+                href={"/Dashboard/" + user}
+            >
+                user
+            </IconButton>
 
-    //     )
-    // }
+        )
+    }
 
 
     return (
@@ -212,7 +212,7 @@ export default function TopBar(props) {
                                 <NotificationsIcon/>
                             </Badge>
                         </IconButton> */}
-
+                        {checkUser}
                     </div>
                 </Toolbar>
             </AppBar>
