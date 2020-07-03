@@ -72,7 +72,6 @@ const useStyles = makeStyles((theme) => ({
 export default function TopBar(props) {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
-    const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
     const isMenuOpen = Boolean(anchorEl);
 
@@ -80,13 +79,8 @@ export default function TopBar(props) {
         setAnchorEl(event.currentTarget);
     };
 
-    const handleMobileMenuClose = () => {
-        setMobileMoreAnchorEl(null);
-    };
-
     const handleMenuClose = (props) => {
         setAnchorEl(null);
-        handleMobileMenuClose();
     };
 
     const {user} = props;
@@ -141,38 +135,38 @@ export default function TopBar(props) {
     }
 
 
-    let checkUser;
-    if (user === "guest") {
-        checkUser = (
+    // let checkUser;
+    // if (user === "guest") {
+    //     checkUser = (
 
-            <IconButton
-                edge="end"
-                aria-label="account of current user"
-                aria-controls={menuId}
-                aria-haspopup="true"
-                color="inherit"
-                href="/admin/Dashboard"
-            >
-                Guest
-            </IconButton>
+    //         <IconButton
+    //             edge="end"
+    //             aria-label="account of current user"
+    //             aria-controls={menuId}
+    //             aria-haspopup="true"
+    //             color="inherit"
+    //             href="/admin/Dashboard"
+    //         >
+    //             Guest
+    //         </IconButton>
 
-        )
-    } else {
-        checkUser = (
+    //     )
+    // } else {
+    //     checkUser = (
 
-            <IconButton
-                edge="end"
-                aria-label="account of current user"
-                aria-controls={menuId}
-                aria-haspopup="true"
-                color="inherit"
-                href="/admin/Dashboard"
-            >
-                user
-            </IconButton>
+    //         <IconButton
+    //             edge="end"
+    //             aria-label="account of current user"
+    //             aria-controls={menuId}
+    //             aria-haspopup="true"
+    //             color="inherit"
+    //             href="/admin/Dashboard"
+    //         >
+    //             user
+    //         </IconButton>
 
-        )
-    }
+    //     )
+    // }
 
 
     return (

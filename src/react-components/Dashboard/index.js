@@ -3,7 +3,6 @@ import clsx from 'clsx';
 import {makeStyles} from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Box from '@material-ui/core/Box';
-import AppBar from '@material-ui/core/AppBar';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
@@ -26,8 +25,6 @@ function Copyright() {
     );
 }
 
-const drawerWidth = 240;
-
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
@@ -44,13 +41,6 @@ const useStyles = makeStyles((theme) => ({
 const Dashboard = (props) => {
 
     const classes = useStyles();
-    const [open, setOpen] = React.useState(true);
-    const handleDrawerOpen = () => {
-        setOpen(true);
-    };
-    const handleDrawerClose = () => {
-        setOpen(false);
-    };
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
     const user = props.match.params.user;
