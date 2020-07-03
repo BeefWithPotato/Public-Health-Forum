@@ -11,6 +11,7 @@ import Link from '@material-ui/core/Link';
 import UserInfo from './UserInfo';
 import Orders from './LoginHistory';
 import TopBar from '../TopBar';
+import Verification from './Verification';
 
 function Copyright() {
     return (
@@ -58,6 +59,11 @@ const Dashboard = (props) => {
                         <Grid item xs={12}>
                             <Paper className={fixedHeightPaper}>
                                 <UserInfo user={user}/>
+                            </Paper>
+                        </Grid>
+                        <Grid item xs={12}>
+                            <Paper className={fixedHeightPaper}>
+                                <Verification user={user}/>
                             </Paper>
                         </Grid>
                         {/* Recent Login history */}

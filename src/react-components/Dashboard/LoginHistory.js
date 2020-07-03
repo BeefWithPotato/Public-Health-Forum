@@ -29,13 +29,16 @@ const useStyles = makeStyles((theme) => ({
     seeMore: {
         marginTop: theme.spacing(3),
     },
+    title: {
+        margin: theme.spacing(2),
+    },
 }));
 
 export default function Orders() {
     const classes = useStyles();
     return (
         <React.Fragment>
-            <TextTitle>Login History</TextTitle>
+            <TextTitle className={classes.title}>Login History</TextTitle>
             <Table size="small">
                 <TableHead>
                     <TableRow>
