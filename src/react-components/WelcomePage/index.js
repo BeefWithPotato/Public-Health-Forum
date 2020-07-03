@@ -26,7 +26,7 @@ class WelcomePage extends React.Component{
                 </Link>
 
                 {/* guest visit button */}
-                <Link className="button_link" to={"./HomePage/guest"} >
+                <Link className="button_link" to={"./MainPage/guest"} {...this.props}>
                     <Button size="small" className="welcome_button">Continue as a guest!</Button>
                 </Link>
 

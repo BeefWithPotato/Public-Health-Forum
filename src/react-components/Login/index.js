@@ -22,10 +22,10 @@ const Login = (props) => {
         props.handleLogin(data);
         if (data.role === "user") {
             // TODO: Redirect to user's page
-            props.history.push("/homepage/:user");
+            props.history.push("/MainPage/user");
         } else {
             // TODO: Redirect to admin's page
-            props.history.push("/homepage/:admin");
+            props.history.push("/MainPage/admin");
         }
     }
 

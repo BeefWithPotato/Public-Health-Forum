@@ -73,13 +73,17 @@ const sidebar = {
     ],
 };
 
-export default function MainPage() {
+
+
+export default function MainPage(props){
+    
     const classes = useStyles();
+    console.log(props.match.params.user)
 
     return (
         <React.Fragment>
             <CssBaseline/>
-            <TopBar/>
+            <TopBar user={props.match.params.user}/>
             <Container maxWidth="lg">
                 <main>
                     <MainFeaturedPost post={mainFeaturedPost}/>
@@ -102,4 +106,4 @@ export default function MainPage() {
             <Footer title="Footer" description="Something here to give the footer a purpose!"/>
         </React.Fragment>
     );
-}
+};

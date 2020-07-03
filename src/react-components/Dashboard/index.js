@@ -58,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function Dashboard() {
+export default function Dashboard(props) {
     const classes = useStyles();
     const [open, setOpen] = React.useState(true);
     const handleDrawerOpen = () => {
@@ -68,6 +68,9 @@ export default function Dashboard() {
         setOpen(false);
     };
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+
+
+    const user = props.match.params.user;
 
     return (
         <div className={classes.root}>
@@ -93,14 +96,14 @@ export default function Dashboard() {
                 </div>
             </Drawer>
             <main className={classes.content}>
-                <TopBar/>
+                <TopBar user={user}/>
                 <div className={classes.appBarSpacer}/>
                 <Container maxWidth="lg" className={classes.container}>
                     <Grid container spacing={3}>
                         {/* UserInfo */}
                         <Grid item xs={12}>
                             <Paper className={fixedHeightPaper}>
-                                <UserInfo/>
+                                <UserInfo user={user}/>
                             </Paper>
                         </Grid>
                         {/* Recent Login history */}

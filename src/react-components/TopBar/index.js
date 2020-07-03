@@ -73,7 +73,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function TopBar() {
+export default function TopBar(props) {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -88,7 +88,7 @@ export default function TopBar() {
         setMobileMoreAnchorEl(null);
     };
 
-    const handleMenuClose = () => {
+    const handleMenuClose = (props) => {
         setAnchorEl(null);
         handleMobileMenuClose();
     };
@@ -109,6 +109,27 @@ export default function TopBar() {
         </Menu>
     );
 
+    const {user} = props;
+    console.log(user)
+
+    let checkUser;
+    if(user === "guest"){
+        checkUser = (
+            <Button href="/Login" color="inherit">
+                Guest
+            </Button>
+        )
+    }
+    else{
+        checkUser = (
+            <Button href={"/Dashboard/" + user} color="inherit">
+                user
+            </Button>
+        )
+    }
+
+
+
     return (
         <div className={classes.grow}>
             <AppBar position="static">
@@ -121,7 +142,7 @@ export default function TopBar() {
                     >
                         <MenuIcon/>
                     </IconButton>
-                    <Button href="/MainPage" color="inherit">
+                    <Button href={"/MainPage/" + user} color="inherit">
                         Health Base
                     </Button>
                     <Typography className={classes.title} variant="h6" noWrap>
@@ -159,9 +180,7 @@ export default function TopBar() {
                             onClick={handleProfileMenuOpen}
                             color="inherit"
                         >
-                            <Button href="/Dashboard" color="inherit">
-                                User01
-                            </Button>
+                            {checkUser}
                             <AccountCircle/>
                         </IconButton>
                     </div>

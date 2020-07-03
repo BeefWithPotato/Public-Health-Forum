@@ -13,13 +13,15 @@ const useStyles = makeStyles({
     },
 });
 
-export default function UserInfo() {
+export default function UserInfo(props) {
     const classes = useStyles();
+    const {user} = props;
+    
     return (
         <React.Fragment>
             {/* user icon need add */}
             <Typography component="p" variant="h4">
-                User01
+                {user}
             </Typography>
             <Typography color="textSecondary" className={classes.depositContext}>
                 User bio balabala

@@ -18,10 +18,10 @@ const Register = (props) => {
         props.handleRegister(data);
         if (data.role === "user") {
             // TODO: Redirect to user's page
-            props.history.push("/homepage/:user");
+            props.history.push("/homepage/user");
         } else {
             // TODO: Redirect to admin's page
-            props.history.push("/homepage/:admin");
+            props.history.push("/homepage/admin");
         }
     }
 

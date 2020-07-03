@@ -13,7 +13,7 @@ import PostOverview from "./react-components/PostOverview";
 import News from "./react-components/News";
 
 import Dashboard from './react-components/Dashboard';
-import MainPage from './react-components/MainPage'
+import MainPage from './react-components/MainPage';
 
 
 class App extends React.Component {
@@ -137,9 +137,9 @@ class App extends React.Component {
                                }
                         />
 
-                        <Route exact path='/Dashboard' render={props => (<Dashboard {...props}/>)}/>
+                        <Route exact path='/Dashboard/:user'  render={props => (<Dashboard {...props}/>)}/>
 
-                        <Route exact path='/MainPage' render={props => (<MainPage {...props}/>)}/>
+                        <Route exact path='/MainPage/:user' component={MainPage} />
                     </Switch>
                 </BrowserRouter>
             </div>
