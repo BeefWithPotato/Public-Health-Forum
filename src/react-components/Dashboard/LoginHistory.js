@@ -39,7 +39,7 @@ export default function Orders() {
     return (
         <React.Fragment>
             <TextTitle className={classes.title}>Login History</TextTitle>
-            <Table size="small">
+            <Table size="medium">
                 <TableHead>
                     <TableRow>
                         <TableCell>Date</TableCell>

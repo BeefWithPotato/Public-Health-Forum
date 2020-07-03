@@ -8,7 +8,6 @@ const useStyles = makeStyles({
 	upload: {
     flex: 1,
     display: 'none',
-    marginBottom: 5,
 	},
 });
 
@@ -18,8 +17,12 @@ export default function Verification(props) {
   return (
     <React.Fragment>
       <TextTitle>Verification</TextTitle>
-      <Typography component="p" variant="h5">
-        Verification
+      <Typography component="p" variant="h6">
+        Verification Message
+      </Typography>
+      
+      <Typography component="p" variant="h6" color="textSecondary">
+        ------
       </Typography>
       
       <label htmlFor="upload-photo">

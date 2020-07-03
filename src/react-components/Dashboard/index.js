@@ -30,12 +30,21 @@ const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
     },
-    appBar: {
-        zIndex: theme.zIndex.drawer + 1,
-    },
-
     content: {
         flexGrow: 1,
+    },
+    container: {
+        paddingTop: theme.spacing(4),
+        paddingBottom: theme.spacing(4),
+    },
+    paper: {
+        padding: theme.spacing(2),
+        display: 'flex',
+        overflow: 'auto',
+        flexDirection: 'column',
+    },
+    fixedHeight: {
+        height: 235,
     },
 }));
 
@@ -57,7 +66,7 @@ const Dashboard = (props) => {
                     <Grid container spacing={3}>
                         {/* UserInfo */}
                         <Grid item xs={12}>
-                            <Paper className={fixedHeightPaper}>
+                            <Paper>
                                 <UserInfo user={user}/>
                             </Paper>
                         </Grid>
