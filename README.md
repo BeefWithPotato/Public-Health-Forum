@@ -16,7 +16,7 @@ The purpose of the website is to provide a platform for the public to share and 
 
 ## How to use
 ### Welcome Page
-+ This page is the first page a user/guest will see once they open the web application. In this page, guest/user/admin could choose to **register** an account, **login** as a user or **continue to visit** as a guest and start browsing.
++ This page is the first page a user/guest will see once they open the web application. In this page, guest/user/admin could choose to **register** an account, **login** as a user or **continue to visit** as a guest and start browsing. **Note**: Standard User: username user, password: user; Admin user: username: admin, password: admin
 
 ### Register Page
 + This page requires a guest visitor to set a username and a password. Once he complete, he will be registered as a user in this web application and redirect to the Main Page.
