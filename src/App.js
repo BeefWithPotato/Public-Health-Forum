@@ -97,7 +97,7 @@ class App extends React.Component {
                                 props => (<WelcomePage {...props} loggedIn={this.state.loggedIn}/>)
                             }
                         />
-                        
+
                         <Route exact path='/postpage/:topic/:user'
 
                                render={

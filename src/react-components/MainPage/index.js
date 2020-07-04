@@ -16,7 +16,6 @@ import Topic from './Topic';
 import TopicOverview from './TopicOverview'
 
 
-
 const useStyles = makeStyles((theme) => ({
     mainGrid: {
         marginTop: theme.spacing(3),
@@ -87,7 +86,8 @@ export default function MainPage(props) {
 
                 </main>
             </Container>
-            <Footer title="Contact us if you have any suggestions or questions!" description="Please keep the social distancing and wear a mask."/>
+            <Footer title="Contact us if you have any suggestions or questions!"
+                    description="Please keep the social distancing and wear a mask."/>
         </React.Fragment>
     );
 };

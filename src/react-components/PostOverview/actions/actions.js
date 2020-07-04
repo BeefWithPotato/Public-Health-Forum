@@ -5,7 +5,7 @@ export const addTag = actions => {
     //guest don't have permission to do any actions
     if (actions.props.match.params.user !== "guest") {
         const tagsList = actions.state.tags;
-        
+
         const tag = {
             tagName: actions.state.tagName,
             creator: actions.state.creator,
@@ -14,21 +14,20 @@ export const addTag = actions => {
 
         //Check if the topic has been created
         let check = false;
-        for(var i = 0; i < tagsList.length; i++) {
-            if(tagsList[i].tagName === tag.tagName){
+        for (var i = 0; i < tagsList.length; i++) {
+            if (tagsList[i].tagName === tag.tagName) {
                 check = true;
             }
         }
 
         //check if there's a picture
         if (tag.img !== "") {
-            if(check !== true){
+            if (check !== true) {
                 tagsList.unshift(tag);
                 actions.setState({
                     tags: tagsList
                 });
-            }
-            else{
+            } else {
                 alert("This TOPIC HAS BEEN CREATED BY OTHERS!");
             }
         } else {

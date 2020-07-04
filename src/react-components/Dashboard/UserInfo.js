@@ -1,8 +1,10 @@
 import React from 'react';
 import {
+    Avatar,
     Button,
     FormControl,
     FormGroup,
+    Grid,
     InputLabel,
     makeStyles,
     MenuItem,
@@ -10,8 +12,8 @@ import {
     TextField,
     Typography
 } from "@material-ui/core";
+import CloudUploadIcon from "@material-ui/icons/CloudUpload";
 import Detail from './Detail';
-import Grid from '@material-ui/core/Grid';
 import userImg from './static/user.png'
 
 const useStyles = makeStyles((theme) => ({
@@ -31,9 +33,12 @@ const useStyles = makeStyles((theme) => ({
     margin: {
         margin: theme.spacing(2),
     },
-    userimg: {
-        width:150,
-        height: 150,
+    avatar: {
+        width: 100,
+        height: 100,
+    },
+    edit: {
+        width: 500
     }
 }));
 
@@ -82,8 +87,16 @@ const UserInfo = (props) => {
     }
 
     const edit = (
-        <div>
+        <div className={classes.edit}>
             <form onSubmit={handleSave} noValidate={false} autoComplete="off" className={classes.formControl}>
+                <FormGroup>
+                    <Button
+                        variant="contained"
+                        color="default"
+                        startIcon={<CloudUploadIcon/>}
+                    >Change Avatar
+                    </Button>
+                </FormGroup>
                 <FormGroup className={classes.input}>
                     <FormControl variant="outlined">
                         <InputLabel>Gender</InputLabel>
@@ -140,11 +153,9 @@ const UserInfo = (props) => {
 
     return (
         <React.Fragment>
-
-            
             <Grid className="Grid" container spacing={1}>
                 <Grid item>
-                    <img alt="user-img" src={userImg} className={classes.userimg}/>
+                    <Avatar alt="user-img" src={userImg} className={classes.avatar}/>
                 </Grid>
                 <Grid item>
                     <Typography component="div" variant="h3" className={classes.margin}>

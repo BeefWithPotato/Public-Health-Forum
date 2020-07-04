@@ -150,7 +150,7 @@ export default function TopBar(props) {
                 >
                     Guest
                 </IconButton>
-            
+
                 <IconButton
                     edge="end"
                     aria-label="account of current user"
@@ -158,8 +158,8 @@ export default function TopBar(props) {
                     aria-haspopup="true"
                     color="inherit"
                     href="/Login"
-                    >
-                    <AccountCircle />
+                >
+                    <AccountCircle/>
                 </IconButton>
             </React.Fragment>
         )
@@ -184,8 +184,8 @@ export default function TopBar(props) {
                     aria-haspopup="true"
                     color="inherit"
                     href={"/Dashboard/" + user}
-                    >
-                    <AccountCircle />
+                >
+                    <AccountCircle/>
                 </IconButton>
             </React.Fragment>
         )
