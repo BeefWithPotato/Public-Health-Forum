@@ -156,7 +156,6 @@ export default function TopBar(props) {
                     aria-label="account of current user"
                     aria-controls={menuId}
                     aria-haspopup="true"
-                    onClick={handleProfileMenuOpen}
                     color="inherit"
                     href="/Login"
                     >
@@ -183,7 +182,6 @@ export default function TopBar(props) {
                     aria-label="account of current user"
                     aria-controls={menuId}
                     aria-haspopup="true"
-                    onClick={handleProfileMenuOpen}
                     color="inherit"
                     href={"/Dashboard/" + user}
                     >
