@@ -47,7 +47,7 @@ The purpose of the website is to provide a platform for the public to share and 
 + **Active Users**: Some active users will be displayed here. If they are verified bt admin, the verified information will also be displayed.
 
 ### Dashboard
-+ This page will display some personal information about the account. They can edit their personal information by using the **EDIT** button under the information and **SAVE** button to save changes.
++ This page will display some personal information about the account. They can edit their personal information by using the **EDIT** button under the information and **SAVE** button to save changes. If user want to change their avatar image, they can use the **UPLOAD AVATAR** button and upload an image. Notice that since we will have some requirements on the avatar image, all the avatar images related functions are hardcoded for now and will be completed in Phase 2.
 + Under the buttons, there's a verification box. This box is for present some proofed information by admin. For users who want to be verified as a doctor or some other identity, they could upload certain documents to admin for verification. The whole functionality will be complete in Phase 2.
 
 + The user login history locates at the bottom of the page. For the **See more history** part, it will be complete in Phase 2.
