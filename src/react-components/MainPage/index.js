@@ -87,7 +87,7 @@ export default function MainPage(props) {
 
                 </main>
             </Container>
-            <Footer title="Footer" description="Something here to give the footer a purpose!"/>
+            <Footer title="Contact us if you have any suggestions or questions!" description="Please keep the social distancing and wear a mask."/>
         </React.Fragment>
     );
 };
