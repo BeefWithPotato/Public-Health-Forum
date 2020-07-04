@@ -39,6 +39,9 @@ const useStyles = makeStyles((theme) => ({
     },
     edit: {
         width: 500
+    },
+    upload: {
+        display: "none"
     }
 }));
 
@@ -82,20 +85,31 @@ const UserInfo = (props) => {
                 }));
             }
         }
-        setOn(on => !on);
+        setOn(false);
         setValues(origin);
     }
 
     const edit = (
         <div className={classes.edit}>
-            <form onSubmit={handleSave} noValidate={false} autoComplete="off" className={classes.formControl}>
-                <FormGroup>
-                    <Button
-                        variant="contained"
-                        color="default"
-                        startIcon={<CloudUploadIcon/>}
-                    >Change Avatar
-                    </Button>
+            <form noValidate={false} autoComplete="off" className={classes.formControl}>
+                <FormGroup className={classes.input}>
+                    <input
+                        className={classes.upload}
+                        accept="image/*"
+                        multiple
+                        type="file"
+                        id="avatar"
+                    />
+                    <label htmlFor="avatar">
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            component="span"
+                            startIcon={<CloudUploadIcon />}
+                        >
+                            Upload Avatar
+                        </Button>
+                    </label>
                 </FormGroup>
                 <FormGroup className={classes.input}>
                     <FormControl variant="outlined">

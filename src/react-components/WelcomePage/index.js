@@ -6,31 +6,25 @@ import "./style.css";
 
 /* Component for the Welcome page */
 class WelcomePage extends React.Component {
+
     render() {
+
         return (
-
             <div className="welcome_page">
-
                 {/* sign up button */}
                 <Link className="button_link" to="./Register">
-
                     <Button size="small" className="welcome_button">Want an account?</Button>
-
                 </Link>
 
                 {/* login button */}
                 <Link className="button_link" to="./Login">
-
                     <Button size="small" className="welcome_button">User Login!</Button>
-
                 </Link>
 
                 {/* guest visit button */}
-                <Link className="button_link" to={"./MainPage/guest"} {...this.props}>
+                <Link className="button_link" to={"./MainPage/guest"}>
                     <Button size="small" className="welcome_button">Continue as a guest!</Button>
                 </Link>
-
-
             </div>
         );
     }
