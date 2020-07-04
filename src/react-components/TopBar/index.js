@@ -162,7 +162,7 @@ export default function TopBar(props) {
                 color="inherit"
                 href={"/Dashboard/" + user}
             >
-                user
+                {user}
             </IconButton>
 
         )

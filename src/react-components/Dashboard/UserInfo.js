@@ -11,7 +11,8 @@ import {
     Typography
 } from "@material-ui/core";
 import Detail from './Detail';
-
+import Grid from '@material-ui/core/Grid';
+import userImg from './static/user.png'
 
 const useStyles = makeStyles((theme) => ({
     formControl: {
@@ -29,6 +30,10 @@ const useStyles = makeStyles((theme) => ({
     },
     margin: {
         margin: theme.spacing(2),
+    },
+    userimg: {
+        width:150,
+        height: 150,
     }
 }));
 
@@ -135,11 +140,18 @@ const UserInfo = (props) => {
 
     return (
         <React.Fragment>
-            {/* user icon need added in Phase2 */}
-            <Typography component="div" variant="h3" className={classes.margin}>
-                {user}
-            </Typography>
 
+            
+            <Grid className="Grid" container spacing={1}>
+                <Grid item>
+                    <img alt="user-img" src={userImg} className={classes.userimg}/>
+                </Grid>
+                <Grid item>
+                    <Typography component="div" variant="h3" className={classes.margin}>
+                        {user}
+                    </Typography>
+                </Grid>
+            </Grid>
             <Typography component="div" variant="h3" className={classes.margin}>
                 <Detail gender={info.gender} phone={info.phone} email={info.email} address={info.address}/>
             </Typography>

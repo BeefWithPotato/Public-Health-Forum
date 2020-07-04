@@ -72,7 +72,7 @@ class PostItem extends React.Component {
 
                     {checkDelete}
 
-                    <img className="user-icon" src={post.icon}/>
+                    <img alt="user-icon" className="user-icon" src={post.icon}/>
 
                     <h3 className="post-user">
                         @{post.username}
