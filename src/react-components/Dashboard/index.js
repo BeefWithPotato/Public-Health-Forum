@@ -54,7 +54,6 @@ const Dashboard = (props) => {
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
     const user = props.match.params.user;
-    console.log("status: " + props.loggedIn);
 
     return (
         <div className={classes.root}>
