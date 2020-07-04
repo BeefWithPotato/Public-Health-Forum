@@ -10,6 +10,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
+import AccountCircle from '@material-ui/icons/AccountCircle';
 
 const useStyles = makeStyles((theme) => ({
     grow: {
@@ -61,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
             width: '20ch',
         },
     },
-    sectionDesktop: {
+    userBlock: {
         display: 'none',
         [theme.breakpoints.up('md')]: {
             display: 'flex',
@@ -138,36 +139,59 @@ export default function TopBar(props) {
     let checkUser;
     if (user === "guest") {
         checkUser = (
-
-            <IconButton
-                edge="end"
-                aria-label="account of current user"
-                aria-controls={menuId}
-                aria-haspopup="true"
-                color="inherit"
-                href="/Login"
-            >
-                Guest
-            </IconButton>
-
+            <React.Fragment>
+                <IconButton
+                    edge="end"
+                    aria-label="account of current user"
+                    aria-controls={menuId}
+                    aria-haspopup="true"
+                    color="inherit"
+                    href="/Login"
+                >
+                    Guest
+                </IconButton>
+            
+                <IconButton
+                    edge="end"
+                    aria-label="account of current user"
+                    aria-controls={menuId}
+                    aria-haspopup="true"
+                    onClick={handleProfileMenuOpen}
+                    color="inherit"
+                    href="/Login"
+                    >
+                    <AccountCircle />
+                </IconButton>
+            </React.Fragment>
         )
     } else {
         checkUser = (
+            <React.Fragment>
+                <IconButton
+                    edge="end"
+                    aria-label="account of current user"
+                    aria-controls={menuId}
+                    aria-haspopup="true"
+                    color="inherit"
+                    href={"/Dashboard/" + user}
+                >
+                    {user}
+                </IconButton>
 
-            <IconButton
-                edge="end"
-                aria-label="account of current user"
-                aria-controls={menuId}
-                aria-haspopup="true"
-                color="inherit"
-                href={"/Dashboard/" + user}
-            >
-                {user}
-            </IconButton>
-
+                <IconButton
+                    edge="end"
+                    aria-label="account of current user"
+                    aria-controls={menuId}
+                    aria-haspopup="true"
+                    onClick={handleProfileMenuOpen}
+                    color="inherit"
+                    href={"/Dashboard/" + user}
+                    >
+                    <AccountCircle />
+                </IconButton>
+            </React.Fragment>
         )
     }
-
 
     return (
         <div className={classes.grow}>
@@ -201,17 +225,7 @@ export default function TopBar(props) {
                         />
                     </div>
                     <div className={classes.grow}/>
-                    <div className={classes.sectionDesktop}>
-                        {/* <IconButton aria-label="show 4 new mails" color="inherit">
-                            <Badge badgeContent={4} color="secondary">
-                                <MailIcon/>
-                            </Badge>
-                        </IconButton>
-                        <IconButton aria-label="show 17 new notifications" color="inherit">
-                            <Badge badgeContent={17} color="secondary">
-                                <NotificationsIcon/>
-                            </Badge>
-                        </IconButton> */}
+                    <div className={classes.userBlock}>
                         {checkUser}
                     </div>
                 </Toolbar>
