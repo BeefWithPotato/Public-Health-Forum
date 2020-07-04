@@ -20,7 +20,11 @@ class PostList extends React.Component {
 
                         {posts.map((post) => (
 
-                            <PostItem type={type} post={post} postComponent={postComponent} user={user}/>
+                            <PostItem key={posts.indexOf(post)}
+                                      type={type}
+                                      post={post}
+                                      postComponent={postComponent}
+                                      user={user}/>
 
                         ))}
 
