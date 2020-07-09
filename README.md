@@ -71,5 +71,9 @@ The purpose of the website is to provide a platform for the public to share and 
 ### Comment Page
 + This page has a similar structure and functions as a post page. The difference is that the owner of the current post can delete all the comments. Normal users can only delete the comments made by themselves.
 
+## Sources
+https://material-ui.com
+https://github.com/mui-org/material-ui/tree/master/docs/src/pages/getting-started/templates
+
 ## Copyright
 The project is implemented by CSC309 2020 Summer Team08
