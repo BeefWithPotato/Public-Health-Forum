@@ -12,6 +12,11 @@ import img3 from "./static/user3.png"
 
 class Post extends React.Component {
 
+    constructor(props) {
+        super(props);
+        this.props.history.push("/postpage");
+    }
+
     state = {
         homeurl: "",
         posturl: "",
@@ -79,6 +84,7 @@ class Post extends React.Component {
 
 
     render() {
+        const { history, app } = this.props;
         //check if the currrent topic contain posts
         let checkList;
         if (this.state.posts === "") {

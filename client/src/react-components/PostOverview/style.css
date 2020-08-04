@@ -41,7 +41,7 @@
 
 }
 
-.tags-grid {
+.topic-grid {
     float: left;
     position: relative;
     left: 50%;
@@ -54,7 +54,7 @@
     display: none;
 }
 
-.tag-input {
+.topic-input {
     width: 345px;
     height: 100px;
     position: relative;
@@ -75,7 +75,7 @@
 
 }
 
-.tag-delete-button {
+.topic-delete-button {
     width: 10%;
     top: -32px;
     left: 300px;

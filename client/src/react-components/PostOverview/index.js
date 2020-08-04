@@ -15,31 +15,42 @@ import fever from "./static/fever.jpg"
 
 class AllPost extends React.Component {
 
+    constructor(props) {
+        super(props);
+        this.props.history.push("/postoverview");
+    }
+
+    // state = {
+    //     topicTitle: "",
+    //     creator: "",
+    //     topicImg: "",
+    //     homeurl: "",
+    //     posturl: "",
+    //     topics: [
+    //         // now the tags data is hard-coded
+    //         // here requires server call in the future
+    //         {tagName: "COV-19", creator: "User1", img: cov19},
+    //         {tagName: "Fever", creator: "User2", img: fever},
+    //     ]
+    // }
+
     state = {
-        tagName: "",
-        creator: "",
-        img: "",
-        homeurl: "",
-        posturl: "",
-        tags: [
-            // now the tags data is hard-coded
-            // here requires server call in the future
-            {tagName: "COV-19", creator: "User1", img: cov19},
-            {tagName: "Fever", creator: "User2", img: fever},
-        ]
+        topicTitle: "",
+        topicImg: "",
+        creator: "user1"
     }
 
     componentDidMount() {
-        console.log(this.props.match.params.user);
+        //console.log(this.props.match.params.user);
 
-        const homeurl = "/homepage/" + this.props.match.params.user;
-        const posturl = "/postoverview/" + this.props.match.params.user;
+        //const homeurl = "/homepage/" + this.props.match.params.user;
+        //const posturl = "/postoverview/" + this.props.match.params.user;
 
-        this.setState({
-            creator: this.props.match.params.user,
-            homeurl: homeurl,
-            posturl: posturl
-        });
+        //this.setState({
+            //creator: this.props.match.params.user,
+            //homeurl: homeurl,
+            //posturl: posturl
+        //});
 
     }
 
@@ -47,7 +58,7 @@ class AllPost extends React.Component {
     handleInputChange = event => {
 
         this.setState({
-            tagName: event.target.value
+            topicTitle: event.target.value
 
         });
     }
@@ -58,7 +69,7 @@ class AllPost extends React.Component {
         let reader = new FileReader();
         reader.onload = (event) => {
             this.setState({
-                img: event.target.result
+                topicImg: event.target.result
             });
         };
         reader.readAsDataURL(event.target.files[0]);
@@ -66,6 +77,8 @@ class AllPost extends React.Component {
 
 
     render() {
+
+        const { history, app } = this.props;
 
         return (
             <div className="postoverview">
@@ -76,7 +89,7 @@ class AllPost extends React.Component {
 
                     <Grid item className="input-topic">
                         <TextField
-                            className="tag-input"
+                            className="topics-input"
                             id="outlined-basic"
                             label="Create a brand new Topic"
                             variant="outlined"
@@ -110,7 +123,7 @@ class AllPost extends React.Component {
                             variant="contained"
                             color="primary"
                             component="span"
-                            onClick={() => addTag(this)}
+                            onClick={() => addTopic(this)}
                         >
                             Create
                         </Button>
@@ -118,26 +131,26 @@ class AllPost extends React.Component {
                     </Grid>
 
 
-                    <Grid item className="tags-grid">
+                    <Grid item className="topics-grid">
                         {/* Post Title */}
-                        {this.state.tags.map((tag) => (
+                        {this.state.topics.map((topic) => (
 
                             /* Post Title */
-                            <Paper className="postsubpaper" key={tag.tagName}>
+                            <Paper className="postsubpaper" key={topic.tagName}>
 
                                 <Grid container direction="column" spacing={1}>
 
                                     {/* Link to topic detail */}
                                     <Link className="button_link"
-                                          to={"/postpage/" + tag.tagName + "/" + this.props.match.params.user}>
+                                          to={"/postpage/" + topic.tagName + "/" + this.props.match.params.user}>
                                         <Grid item>
                                             {/* img src */}
-                                            <img className="sub_img" src={tag.img} alt="sub"/>
+                                            <img className="sub_img" src={topic.img} alt="sub"/>
                                         </Grid>
 
                                         <Grid item>
                                             <h2 className="subtitle">
-                                                {tag.tagName}
+                                                {topic.tagName}
                                             </h2>
                                         </Grid>
 
@@ -145,7 +158,7 @@ class AllPost extends React.Component {
                                         <Grid item>
                                             <h5 className="src">
                                                 Tag First Created by, <br/>
-                                                {tag.creator}
+                                                {topic.creator}
                                             </h5>
                                         </Grid>
                                     </Link>
@@ -154,9 +167,9 @@ class AllPost extends React.Component {
                                     <Like/>
 
                                     <IconButton
-                                        className="tag-delete-button"
+                                        className="topic-delete-button"
                                         aria-label="delete"
-                                        onClick={() => deleteTag(this, tag)}
+                                        onClick={() => deleteTopic(this, topic)}
                                     >
                                         <DeleteIcon/>
                                     </IconButton>

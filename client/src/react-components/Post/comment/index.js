@@ -13,6 +13,11 @@ import img3 from "./static/user3.png"
 
 class Comment extends React.Component {
 
+    constructor(props) {
+        super(props);
+        this.props.history.push("/comment");
+    }
+
     state = {
         homeurl: "",
         posturl: "",
@@ -77,6 +82,8 @@ class Comment extends React.Component {
 
 
     render() {
+        const { history, app } = this.props;
+
         //check if the currrent post contain any comments
         let checkList;
         if (this.state.comments === "") {

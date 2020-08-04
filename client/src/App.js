@@ -98,19 +98,37 @@ class App extends React.Component {
                             }
                         />
 
-                        <Route exact path='/postpage/:topic/:user'
+                        <Route exact path='/postoverview'
+                            render={({ history }) => (
+                                <div className="app">
+                                  
+                                    {<PostOverview history={history} app={this} />}
+                                    
+                                </div>
+                            )}
+                        />
 
-                               render={
-                                   props => (<Post {...props} loggedIn={this.state.loggedIn}/>)
-                               }
+                        <Route exact path='/postpage'
+                            render={({ history }) => (
+                                <div className="app">
+                                  
+                                    {<Post history={history} app={this} />}
+                                    
+                                </div>
+                            )}
+                        />
 
+                        <Route exact path='/comment'
+                            render={({ history }) => (
+                                <div className="app">
+                                  
+                                    {<Post history={history} app={this} />}
+                                    
+                                </div>
+                            )}
                         />
 
                         <Route exact path='/news/:id/:title/:user' component={News}/>
-
-                        <Route exact path='/postoverview/:user' component={PostOverview}/>
-
-                        <Route exact path='/comment/:title/:user' component={Comment}/>
 
                         <Route exact path='/login'
                                render={

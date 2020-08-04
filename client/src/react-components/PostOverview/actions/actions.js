@@ -1,7 +1,7 @@
 //Methods in this file modifies the postoverview component state
 
 
-export const addTag = actions => {
+export const addTopic = actions => {
     //guest don't have permission to do any actions
     if (actions.props.match.params.user !== "guest") {
         const tagsList = actions.state.tags;
@@ -40,8 +40,19 @@ export const addTag = actions => {
     }
 };
 
+export const addTopic = actions => {
+    const url = "/topics";
+    const
 
-export const deleteTag = (actions, tag) => {
+
+
+
+
+
+
+}
+
+export const deleteTopic = (actions, tag) => {
     //admin can delete any tags in this page
     if (actions.props.match.params.user === "admin") {
 
