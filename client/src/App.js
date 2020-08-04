@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import './App.css';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
@@ -32,59 +33,22 @@ class App extends React.Component {
 
     data = [this.user, this.admin];
 
+    state = {
+        current: null,
+        role: null
+    }
+
     constructor(props) {
         super(props);
-        this.state = {
-            loggedIn: "NOT_LOGGED_IN",
-            user: {}
-        }
-        this.handleLogin = this.handleLogin.bind(this);
-        this.handleRegister = this.handleRegister.bind(this);
-        this.tempAuth = this.tempAuth.bind(this);
-        this.tempRegister = this.tempRegister.bind(this);
+        this.update = this.update.bind(this);
+        this.readCookie = this.readCookie.bind(this);
+        this.readCookie().then();
     }
 
-    tempAuth = (data) => {
-        for (let i = 0; i < this.data.length; i++) {
-            if (this.data[i].username === data.username &&
-                this.data[i].password === data.password)
-                return this.data[i]
-        }
-        return false
-    }
+    update = data => this.setState(data);
 
-    tempRegister = (data) => {
-        if (data.repeat === data.password) {
-            for (let i = 0; i < this.data.length; i++) {
-                if (this.data[i].username === data.username) return {}
-            }
-            return {
-                username: data.username,
-                password: data.password,
-                role: "user"
-            }
-        }
-        return false
-    }
+    readCookie = _ => axios.get("/verify").then(response => this.update(response.data)).catch();
 
-    handleLogin(data) {
-        this.setState(
-            {
-                loggedIn: "LOGGED_IN",
-                user: data
-            }
-        )
-    }
-
-    handleRegister(data) {
-        this.data.push(data);
-        this.setState(
-            {
-                loggedIn: "LOGGED_IN",
-                user: data
-            }
-        )
-    }
 
     render() {
         return (
@@ -112,18 +76,17 @@ class App extends React.Component {
 
                         <Route exact path='/comment/:title/:user' component={Comment}/>
 
-                        <Route exact path='/login'
+                        <Route exact path={['/dashboard', '/login']}
                                render={
-                                   props => (<Login {...props}
-                                                    handleLogin={this.handleLogin}
-                                                    tempAuth={this.tempAuth}/>)
+                                   props => (this.state.current) ?
+                                       (<Dashboard {...props}/>) :
+                                       (<Login {...props} update={this.update}/>)
                                }
                         />
                         <Route exact path='/register'
                                render={
                                    props => (<Register {...props}
-                                                       handleRegister={this.handleRegister}
-                                                       tempRegister={this.tempRegister}/>)
+                                                       update={this.update}/>)
                                }
                         />
 
@@ -131,7 +94,7 @@ class App extends React.Component {
                                render={
                                    props => (<Dashboard {...props}
                                                         loggedIn={this.state.loggedIn}
-                                                        user={this.state.user}/>)}
+                                                        user={this.state.current}/>)}
                         />
 
                         <Route exact path='/MainPage/:user' component={MainPage}/>
