@@ -38,6 +38,7 @@ const TopicSchema = new mongoose.Schema({
     	required: true
     },
     likes: Number,
+    img: Buffer,
     creator: {
 		type: mongoose.Schema.Types.ObjectId,
 		required: true

@@ -37,7 +37,6 @@ class AllPost extends React.Component {
     state = {
         topicTitle: "",
         topicImg: "",
-        creator: "user1"
     }
 
     componentDidMount() {
@@ -123,7 +122,7 @@ class AllPost extends React.Component {
                             variant="contained"
                             color="primary"
                             component="span"
-                            onClick={() => addTopic(this)}
+                            onClick={() => addTopic(this, app)}
                         >
                             Create
                         </Button>

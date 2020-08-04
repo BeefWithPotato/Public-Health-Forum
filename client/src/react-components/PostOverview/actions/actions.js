@@ -1,55 +1,41 @@
 //Methods in this file modifies the postoverview component state
 
+export const addTopic = (topicOverview, app) => {
 
-export const addTopic = actions => {
-    //guest don't have permission to do any actions
-    if (actions.props.match.params.user !== "guest") {
-        const tagsList = actions.state.tags;
+    //guests are not allowed to add a topic
+    if(app.state.current !== null){
+        const url = "/topics";
 
-        const tag = {
-            tagName: actions.state.tagName,
-            creator: actions.state.creator,
-            img: actions.state.img
-        };
+        const topic = topicOverview.state;
 
-        //Check if the topic has been created
-        let check = false;
-        for (var i = 0; i < tagsList.length; i++) {
-            if (tagsList[i].tagName === tag.tagName) {
-                check = true;
+        const request = new Request(url, {
+            method: "post",
+            body: JSON.stringify(topic),
+            headers: {
+                Accept: "application/json, text/plain, */*",
+                "Content-Type": "application/json"
             }
-        }
+        });
 
-        //check if there's a picture
-        if (tag.img !== "") {
-            if (check !== true) {
-                tagsList.unshift(tag);
-                actions.setState({
-                    tags: tagsList
-                });
-            } else {
-                alert("This TOPIC HAS BEEN CREATED BY OTHERS!");
-            }
-        } else {
-            alert("PLEASE CHOOSE A PICTURE WITH YOUR TOPIC");
-        }
-
-
-    } else {
-        alert("IF YOU WANT TO CREATE A POST PLEASE LOG IN!");
+        // Send the request with fetch()
+        fetch(request)
+            .then(function (res) {
+                // Handle response we get from the API.
+                if (res.status === 200) {
+                    // If student was added successfully, tell the user.
+                    alert("Successfully creating a new topic!");
+                } else {
+                    // If server couldn't add the topic
+                    alert("Error in creating the new topic!");
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            });
     }
-};
-
-export const addTopic = actions => {
-    const url = "/topics";
-    const
-
-
-
-
-
-
-
+    else{
+        alert("Guest is not allowed to create a topic, please log in!");
+    }
 }
 
 export const deleteTopic = (actions, tag) => {

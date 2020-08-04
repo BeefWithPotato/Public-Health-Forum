@@ -10,7 +10,8 @@ import {
     OutlinedInput,
     TextField
 } from "@material-ui/core";
-import {Visibility, VisibilityOff} from "@material-ui/icons"
+import {Visibility, VisibilityOff} from "@material-ui/icons";
+import axios from "axios";
 
 import "./style.css";
 
@@ -27,23 +28,24 @@ const Login = (props) => {
     ));
 
     const successCallback = (data) => {
-        props.handleLogin(data);
+        props.update(data);
         if (data.role === "user") {
             // TODO: Redirect to user's page
-            props.history.push("/MainPage/user");
+            props.history.push(`/MainPage/:${data.current}`);
         } else {
             // TODO: Redirect to admin's page
             props.history.push("/MainPage/admin");
         }
     }
 
-    const failedCallback = () => {
+    const failedCallback = (error) => {
         alert("Login failed");
+        console.error(error);
     }
 
     const submit = (event) => {
         event.preventDefault();
-        console.log("username: " + values.username + "\npassword: " + values.password)
+        console.log("submit:\nusername: " + values.username + "\npassword: " + values.password)
         /*
         * TODO
         */
@@ -51,11 +53,12 @@ const Login = (props) => {
             username: values.username,
             password: values.password
         };
-        const result = props.tempAuth(data);
-        if (result !== false)
-            successCallback(result);
-        else
-            failedCallback();
+        axios.post("/login", data).then(response => successCallback(response.data), error => failedCallback(error));
+        // const result = props.tempAuth(data);
+        // if (result !== false)
+        //     successCallback(result);
+        // else
+        //     failedCallback();
     }
 
     const change = (prop) => (event) => {

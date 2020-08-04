@@ -10,6 +10,7 @@ import {
     TextField
 } from "@material-ui/core";
 import {Visibility, VisibilityOff} from "@material-ui/icons"
+import axios from "axios";
 
 import "./style.css";
 
@@ -23,7 +24,7 @@ const Register = (props) => {
     });
 
     const successCallback = (data) => {
-        props.handleRegister(data);
+        props.update(data);
         if (data.role === "user") {
             // TODO: Redirect to user's page
             props.history.push("/MainPage/user");
@@ -33,13 +34,15 @@ const Register = (props) => {
         }
     }
 
-    const failedCallback = () => {
+    const failedCallback = (error) => {
         alert("Register failed");
+        console.error(error);
     }
 
     const submit = (event) => {
         event.preventDefault();
-        console.log("username: " + values.username
+        console.log("submit:" +
+            "\nusername: " + values.username
             + "\npassword: " + values.password
             + "\nrepeat: " + values.repeat
         )
@@ -51,12 +54,15 @@ const Register = (props) => {
             password: values.password,
             repeat: values.repeat
         }
-        const result = props.tempRegister(data)
-        if (result !== false) {
-            successCallback(result);
-        } else {
-            failedCallback();
-        }
+        if (data.repeat === data.password)
+            axios.post("/register", data).then(response => successCallback(response.data), error => failedCallback(error));
+        else alert("Repeated password should match");
+        // const result = props.tempRegister(data)
+        // if (result !== false) {
+        //     successCallback(result);
+        // } else {
+        //     failedCallback();
+        // }
     }
 
     const change = (prop) => (event) => {
