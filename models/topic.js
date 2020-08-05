@@ -1,8 +1,7 @@
 /* Topic, Post and Comment Models */
-
 const mongoose = require('mongoose');
 
-const CommentSchema = new mongoose.Schema({
+const CommentInstanceSchema = new mongoose.Schema({
     content: {
     	type: String,
     	minlegth: 1,
@@ -11,12 +10,11 @@ const CommentSchema = new mongoose.Schema({
     likes: Number,
     creator: {
 		type: mongoose.Schema.Types.ObjectId,
-		required: true
 	}
 });
 
 // Comments will be embedded in the Post model
-const PostSchema = new mongoose.Schema({
+const PostInstanceSchema = new mongoose.Schema({
     title: {
     	type: String,
     	minlegth: 1,
@@ -25,28 +23,28 @@ const PostSchema = new mongoose.Schema({
     likes: Number,
     creator: {
 		type: mongoose.Schema.Types.ObjectId,
-		required: true
 	},
-    comments: [CommentSchema]
+    comments: [CommentInstanceSchema]
 });
 
 // Posts will be embedded in the Topic model
-const TopicSchema = new mongoose.Schema({
+const TopicInstanceSchema = new mongoose.Schema({
     title: {
     	type: String,
     	minlegth: 1,
     	required: true
     },
+    id: Number,
     likes: Number,
-    img: Buffer,
-    creator: {
+    img: String,
+    creatorUsername: String,
+    creatorId: {
 		type: mongoose.Schema.Types.ObjectId,
-		required: true
 	},
-    posts: [PostSchema]
+    posts: [PostInstanceSchema]
 });
 
 
-const Topic = mongoose.model('Topic', TopicSchema);
+const TopicInstance = mongoose.model('TopicInstance', TopicInstanceSchema);
 
-module.exports = { Topic };
+module.exports = TopicInstance;

@@ -7,7 +7,7 @@ import TextField from "@material-ui/core/TextField";
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Like from './Like';
-import {addTag, deleteTag} from "./actions/actions";
+import {addTopic, deleteTopic, getTopics} from "./actions/actions";
 import TopBar from "../TopBar";
 import "./style.css";
 import cov19 from "./static/cov19.jpg"
@@ -17,7 +17,7 @@ class AllPost extends React.Component {
 
     constructor(props) {
         super(props);
-        this.props.history.push("/postoverview");
+        props.history.push("/postoverview");
     }
 
     // state = {
@@ -37,6 +37,7 @@ class AllPost extends React.Component {
     state = {
         topicTitle: "",
         topicImg: "",
+        topics: [],
     }
 
     componentDidMount() {
@@ -50,6 +51,7 @@ class AllPost extends React.Component {
             //homeurl: homeurl,
             //posturl: posturl
         //});
+        getTopics(this);
 
     }
 
@@ -58,8 +60,8 @@ class AllPost extends React.Component {
 
         this.setState({
             topicTitle: event.target.value
-
         });
+        console.log(this.state.topicTitle);
     }
 
     //handler for whenever a picture is uploaded
@@ -67,6 +69,7 @@ class AllPost extends React.Component {
 
         let reader = new FileReader();
         reader.onload = (event) => {
+
             this.setState({
                 topicImg: event.target.result
             });
@@ -78,6 +81,7 @@ class AllPost extends React.Component {
     render() {
 
         const { history, app } = this.props;
+        console.log(this.state.topics.length);
 
         return (
             <div className="postoverview">
@@ -135,13 +139,12 @@ class AllPost extends React.Component {
                         {this.state.topics.map((topic) => (
 
                             /* Post Title */
-                            <Paper className="postsubpaper" key={topic.tagName}>
+                            <Paper className="postsubpaper" key={topic.title}>
 
                                 <Grid container direction="column" spacing={1}>
 
                                     {/* Link to topic detail */}
-                                    <Link className="button_link"
-                                          to={"/postpage/" + topic.tagName + "/" + this.props.match.params.user}>
+                                    <Link className="button_link" to={"/postpage"}>
                                         <Grid item>
                                             {/* img src */}
                                             <img className="sub_img" src={topic.img} alt="sub"/>
@@ -149,15 +152,15 @@ class AllPost extends React.Component {
 
                                         <Grid item>
                                             <h2 className="subtitle">
-                                                {topic.tagName}
+                                                {topic.title}
                                             </h2>
                                         </Grid>
 
                                         {/* creator */}
                                         <Grid item>
                                             <h5 className="src">
-                                                Tag First Created by, <br/>
-                                                {topic.creator}
+                                                Topic First Created by, <br/>
+                                                {topic.creatorUsername}
                                             </h5>
                                         </Grid>
                                     </Link>
@@ -168,7 +171,7 @@ class AllPost extends React.Component {
                                     <IconButton
                                         className="topic-delete-button"
                                         aria-label="delete"
-                                        onClick={() => deleteTopic(this, topic)}
+                                        onClick={() => deleteTopic(this, topic, app)}
                                     >
                                         <DeleteIcon/>
                                     </IconButton>

@@ -63,34 +63,31 @@ class App extends React.Component {
                         />
 
                         <Route exact path='/postoverview'
-                            render={({ history }) => (
-                                <div className="app">
-                                  
-                                    {<PostOverview history={history} app={this} />}
+                            render={
+                                props => (<PostOverview {...props} app={this} />)
                                     
-                                </div>
-                            )}
+                            }
                         />
 
-                        <Route exact path='/postpage'
-                            render={({ history }) => (
-                                <div className="app">
+                        // <Route exact path='/postpage'
+                        //     render={({ history }) => (
+                        //         <div className="app">
                                   
-                                    {<Post history={history} app={this} />}
+                        //             {<Post history={history} app={this} />}
                                     
-                                </div>
-                            )}
-                        />
+                        //         </div>
+                        //     )}
+                        // />
 
-                        <Route exact path='/comment'
-                            render={({ history }) => (
-                                <div className="app">
+                        // <Route exact path='/comment'
+                        //     render={({ history }) => (
+                        //         <div className="app">
                                   
-                                    {<Post history={history} app={this} />}
+                        //             {<Post history={history} app={this} />}
                                     
-                                </div>
-                            )}
-                        />
+                        //         </div>
+                        //     )}
+                        // />
 
                         <Route exact path='/news/:id/:title/:user' component={News}/>
 

@@ -7,7 +7,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
 const User = require('./models/User');
-const Topic = require("./models/topic");
+const TopicInstance = require('./models/topic');
 // mongoose and mongo connection
 const { mongoose } = require("./db/mongoose");
 mongoose.set('useFindAndModify', false); // for some deprecation issues
@@ -22,8 +22,9 @@ const app = express();
 app.use(logger('dev'));
 //app.use(express.json());
 //app.use(express.urlencoded({extended: true}));
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended: true}));
+
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 //app.use(cookieParser());
 app.use(session({
     secret: "SECRET",
@@ -53,7 +54,7 @@ const authenticate = (req, res, next) => {
 	}
 }
 
-app.post("/login", authenticate, (req, res) => {
+app.post("/login", (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
     console.log(req.body);
@@ -98,17 +99,34 @@ app.post("/register", ((req, res) => {
     }).catch(error => res.status(400).send(error));
 }));
 
-//create a new topic
-app.post("/topics", authenticate, ((req, res) => {
+//get all topics
+app.get("/topics", (req, res) => {
+    TopicInstance.find().then(
+        topics => {
+            log();
+            res.send({ topics }); 
+        },
+        error => {
+            res.status(500).send(error); // server error
+        }
+    );
+});
 
-	const topic = new Topic({
-		title: req.topicTitle,
+
+//create a new topic
+app.post("/topics", ((req, res) => {
+
+	log(req.body);
+	const topic = new TopicInstance({
+		title: req.body.title,
+		id: req.body.id,
 		likes: 0, 
-		img: req.topicImg,
-		creator: req.user,
+		img: req.body.img,
+		creatorUsername: req.session.username,
+		creatorId: req.session.user_id,
 		posts: []
 	});
-
+	
 	topic.save().then(
 		result => {
 			res.send(result);
@@ -118,8 +136,28 @@ app.post("/topics", authenticate, ((req, res) => {
 		}
 	);
 
-
 }));
+
+//remove a topic
+app.delete("/topics", (req, res) => {
+   
+
+    const title = req.body.title;
+    const creatorUsername = req.body.creatorUsername;
+
+    // Delete a topic by creator and title
+    TopicInstance.findOneAndDelete({title: title, creatorUsername: creatorUsername})
+        .then(topic => {
+            if (!topic) {
+                res.status(404).send();
+            } else {
+                res.send(topic);
+            }
+        })
+        .catch(error => {
+            res.status(500).send(); // server error, could not delete.
+        });
+});
 
 app.use(express.static(path.join(__dirname, '/client/build')));
 app.get("*", (req, res) => {
@@ -133,9 +171,6 @@ app.get("*", (req, res) => {
     // send index.html
     res.sendFile(__dirname + "/client/build/index.html");
 })
-
-
-
 
 //module.exports = app;
 
