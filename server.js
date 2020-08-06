@@ -8,6 +8,9 @@ const bodyParser = require('body-parser');
 const logger = require('morgan');
 const User = require('./models/User');
 const TopicInstance = require('./models/topic');
+
+const MainPage = require('./models/');
+
 // mongoose and mongo connection
 const { mongoose } = require("./db/mongoose");
 mongoose.set('useFindAndModify', false); // for some deprecation issues
@@ -99,6 +102,30 @@ app.post("/register", ((req, res) => {
     }).catch(error => res.status(400).send(error));
 }));
 
+//get MainPage
+app.get("/MainPage", (req, res) => {
+    MainPage.find().then(
+        mainPage => {
+            res.send({ mainPage })
+        },
+        error => {
+            res.status(500).send(error)
+        }
+    )
+});
+
+//get Dashboard
+app.get("/Dashboard", (req, res) => {
+    Dashboard.find().then(
+        dashboard => {
+            res.send({ dashboard })
+        },
+        error => {
+            res.status(500).send(error)
+        }
+    )
+});
+
 //get all topics
 app.get("/topics", (req, res) => {
     TopicInstance.find().then(
@@ -135,7 +162,7 @@ app.post("/topics", ((req, res) => {
 			res.status(400).send(error);
 		}
 	);
-
+zz
 }));
 
 //remove a topic

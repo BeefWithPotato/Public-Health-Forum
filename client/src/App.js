@@ -69,7 +69,7 @@ class App extends React.Component {
                             }
                         />
 
-                        // <Route exact path='/postpage'
+                        {/* // <Route exact path='/postpage'
                         //     render={({ history }) => (
                         //         <div className="app">
                                   
@@ -87,7 +87,7 @@ class App extends React.Component {
                                     
                         //         </div>
                         //     )}
-                        // />
+                        // /> */}
 
                         <Route exact path='/news/:id/:title/:user' component={News}/>
 
