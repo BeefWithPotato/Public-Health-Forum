@@ -30,7 +30,7 @@ class AddPost extends React.Component {
     render() {
 
 
-        const {newtitle, onChange, addPost} = this.props;
+        const {newtitle, onChange, add} = this.props;
         return (
             <div className="Add">
 
@@ -49,7 +49,7 @@ class AddPost extends React.Component {
                         className="post-button"
                         variant="contained"
                         color="primary"
-                        onClick={addPost}
+                        onClick={add}
                     >
                         Post
                     </Button>

@@ -1,6 +1,8 @@
 import React from "react";
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import IconButton from '@material-ui/core/IconButton';
+
+import {addLike, canceleLike} from "../actions/actions";
 import "./style.css";
 
 
@@ -11,13 +13,15 @@ class Like extends React.Component {
     }
 
     //check if we click on the like button
-    handleOnClick() {
+    handleOnClick(topic, topicOverview) {
         if (this.state.isLike === "") {
+            addLike(topic, topicOverview);
             this.setState({
                 isLike: "like"
             })
 
         } else {
+            canceleLike(topic, topicOverview);
             this.setState({
                 isLike: ""
             })
@@ -26,6 +30,8 @@ class Like extends React.Component {
 
 
     render() {
+        const { topic, topicOverview } = this.props;
+
         let checkLike;
         if (this.state.isLike === "like") {
             checkLike = (
@@ -34,7 +40,7 @@ class Like extends React.Component {
                     color="secondary"
                     className="like-button"
                     onClick={() => {
-                        this.handleOnClick()
+                        this.handleOnClick(topic, topicOverview)
                     }}
                 >
                     <FavoriteIcon/>
@@ -47,7 +53,7 @@ class Like extends React.Component {
                 <IconButton
                     className="like-button"
                     onClick={() => {
-                        this.handleOnClick()
+                        this.handleOnClick(topic, topicOverview)
                     }}
                 >
                     <FavoriteIcon/>

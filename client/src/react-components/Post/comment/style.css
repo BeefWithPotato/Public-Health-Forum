@@ -1,23 +1,40 @@
-.comment-page ul {
-    border: 1px solid grey;
-    width: 100%;
-    list-style-type: none;
-    margin: 0;
+.comment-title {
+    position: relative;
+    font-style: 1em;
+    font-weight: 400;
+    left: 11%;
+    border-bottom: 1px solid grey;
+    width: 81%;
+    color: grey;
 }
 
-.comment-page ul li {
-    margin-right: 20px;
-    font-weight: 350;
-    font-size: 1em;
-    list-style: none;
-    text-align: center;
-    display: inline-block;
+.comment-list {
+    position: relative;
+    left: 5%;
+    margin: 20px;
+    float: left;
+    width: 90%;
+}
+
+.comment-input {
+    position: relative;
+    float: left;
+    width: 80%;
+
+}
+
+.no-comment-title {
+    position: relative;
+    left: 11%;
+    color: #FF0000;
 }
 
 
-.search_button {
-    width: 90px;
-    height: 30px;
-    left: 10px;
-    text-align: center;
+a {
+    text-decoration: none;
+    color: black;
 }
+
+a:CommentPage {
+    text-decoration: underline
+} 

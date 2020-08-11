@@ -14,13 +14,6 @@
     display: inline-block
 }
 
-.search_button {
-    width: 90px;
-    height: 30px;
-    left: 10px;
-    text-align: center;
-}
-
 .topic-title {
     position: relative;
     font-style: 1em;

@@ -8,9 +8,8 @@ import "./style.css";
 /* Component for the List of Posts */
 class PostList extends React.Component {
 
-
     render() {
-        const {type, posts, postComponent, user} = this.props;
+        const {postComponent, app, topic} = this.props;
         return (
 
 
@@ -18,13 +17,14 @@ class PostList extends React.Component {
                 <Table>
                     <TableBody>
 
-                        {posts.map((post) => (
+                        {postComponent.state.posts.map((post) => (
 
-                            <PostItem key={posts.indexOf(post)}
-                                      type={type}
-                                      post={post}
-                                      postComponent={postComponent}
-                                      user={user}/>
+                            <PostItem key={postComponent.state.posts.indexOf(post)}
+                                post={post}
+                                postComponent={postComponent}
+                                app={app}
+                                topic={topic}
+                            />
 
                         ))}
 

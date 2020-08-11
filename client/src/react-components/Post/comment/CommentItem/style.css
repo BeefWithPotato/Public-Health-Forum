@@ -21,18 +21,18 @@
     float: right;
 }
 
-.post-like-button {
+.comment-like-button {
     top: 50%;
     float: left;
     left: 290px;
 }
 
-.post-user {
+.comment-user {
     float: left;
     font-family: Aerial;
 }
 
-.post-info {
+.comment-info {
 
     padding-top: 5px;
     padding-left: 35px;

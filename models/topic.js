@@ -8,6 +8,8 @@ const CommentInstanceSchema = new mongoose.Schema({
     	required: true
     },
     likes: Number,
+    id: Number,
+    creatorUsername: String,
     creator: {
 		type: mongoose.Schema.Types.ObjectId,
 	}
@@ -15,13 +17,15 @@ const CommentInstanceSchema = new mongoose.Schema({
 
 // Comments will be embedded in the Post model
 const PostInstanceSchema = new mongoose.Schema({
-    title: {
+    content: {
     	type: String,
     	minlegth: 1,
     	required: true
     },
     likes: Number,
-    creator: {
+    id: Number,
+    creatorUsername: String,
+    creatorId: {
 		type: mongoose.Schema.Types.ObjectId,
 	},
     comments: [CommentInstanceSchema]
@@ -34,12 +38,11 @@ const TopicInstanceSchema = new mongoose.Schema({
     	minlegth: 1,
     	required: true
     },
-    id: Number,
     likes: Number,
     img: String,
     creatorUsername: String,
     creatorId: {
-		type: mongoose.Schema.Types.ObjectId,
+		type: mongoose.Schema.Types.ObjectId
 	},
     posts: [PostInstanceSchema]
 });

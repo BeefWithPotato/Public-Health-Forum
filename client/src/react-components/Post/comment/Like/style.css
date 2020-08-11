@@ -1,0 +1,13 @@
+.post-like {
+    top: -5px;
+    left: 680px;
+    height: 10px;
+    width: 10px;
+    float: left;
+    position: relative;
+}
+
+.post-like-button {
+    height: 10px;
+    width: 10px;
+}

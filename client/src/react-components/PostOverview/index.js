@@ -20,37 +20,13 @@ class AllPost extends React.Component {
         props.history.push("/postoverview");
     }
 
-    // state = {
-    //     topicTitle: "",
-    //     creator: "",
-    //     topicImg: "",
-    //     homeurl: "",
-    //     posturl: "",
-    //     topics: [
-    //         // now the tags data is hard-coded
-    //         // here requires server call in the future
-    //         {tagName: "COV-19", creator: "User1", img: cov19},
-    //         {tagName: "Fever", creator: "User2", img: fever},
-    //     ]
-    // }
-
     state = {
         topicTitle: "",
         topicImg: "",
-        topics: [],
+        topics: []
     }
 
     componentDidMount() {
-        //console.log(this.props.match.params.user);
-
-        //const homeurl = "/homepage/" + this.props.match.params.user;
-        //const posturl = "/postoverview/" + this.props.match.params.user;
-
-        //this.setState({
-            //creator: this.props.match.params.user,
-            //homeurl: homeurl,
-            //posturl: posturl
-        //});
         getTopics(this);
 
     }
@@ -86,7 +62,7 @@ class AllPost extends React.Component {
         return (
             <div className="postoverview">
 
-                <TopBar user={this.props.match.params.user}/>
+                <TopBar user={app.state.current}/>
 
                 <Grid className="Grid" container direction="column" spacing={3}>
 
@@ -144,7 +120,8 @@ class AllPost extends React.Component {
                                 <Grid container direction="column" spacing={1}>
 
                                     {/* Link to topic detail */}
-                                    <Link className="button_link" to={"/postpage"}>
+                                    <Link className="button_link" to={"/postpage/" + topic.title}>
+                                    {console.log("/postpage/" + topic.title)}
                                         <Grid item>
                                             {/* img src */}
                                             <img className="sub_img" src={topic.img} alt="sub"/>
@@ -165,8 +142,8 @@ class AllPost extends React.Component {
                                         </Grid>
                                     </Link>
 
-                                    {/* The like component can't do any record in this phase, will be fix in Phase2 */}
-                                    <Like/>
+                                    
+                                    <Like topic={topic} topicOverview={this}/>
 
                                     <IconButton
                                         className="topic-delete-button"
@@ -175,7 +152,6 @@ class AllPost extends React.Component {
                                     >
                                         <DeleteIcon/>
                                     </IconButton>
-
                                 </Grid>
                             </Paper>
                         ))}

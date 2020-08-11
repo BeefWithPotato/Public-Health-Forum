@@ -1,4 +1,3 @@
-//Methods in this file modifies the postoverview component state
 
 export const getTopics = (topicOverview) => {
     const url = "/topics";    
@@ -31,8 +30,8 @@ export const addTopic = (topicOverview, app) => {
 
         const topic = {
             title: topicOverview.state.topicTitle,
-            id: topicOverview.state.topics.length + 1,
-            img: topicOverview.state.topicImg
+            img: topicOverview.state.topicImg,
+            username: app.state.current
         };
 
         const request = new Request(url, {
@@ -52,6 +51,7 @@ export const addTopic = (topicOverview, app) => {
                     // If student was added successfully, tell the user.
                     //topicOverview.topics = [];
                     getTopics(topicOverview);
+                    console.log("Successfully create a new topic!");
                     //alert("Successfully create a new topic!");
                 } else {
                     // If server couldn't add the topic
@@ -117,4 +117,68 @@ export const deleteTopic = (topicOverview, topic, app) => {
 //             alert("YOU DON'T HAVE PERMISSION TO DELETE THIS TOPIC");
 //         }
 //     }
+};
+
+
+export const addLike = (topic, topicOverview) => {
+
+    const url = "/likes/" + "topic";
+
+    const request = new Request(url, {
+        method: "post",
+        body: JSON.stringify(topic),
+        headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json"
+        }
+    });
+
+    // Send the request with fetch()
+    fetch(request)
+        .then(function (res) {
+            // Handle response we get from the API.
+            if (res.status === 200) {
+                getTopics(topicOverview);
+                return res.json();
+            } else {
+                alert("Error in adding a like");
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        });
+}
+
+export const canceleLike = (topic, topicOverview) => {
+//     //admin can delete any tags in this page
+//     if(app.state.role === "admin"){
+
+        const url = "/likes/" + "topic";
+
+        const request = new Request(url, {
+            method: "delete",
+            body: JSON.stringify(topic),
+            headers: {
+                Accept: "application/json, text/plain, */*",
+                "Content-Type": "application/json"
+            }
+        });
+
+        // Send the request with fetch()
+        fetch(request)
+            .then(function (res) {
+                // Handle response we get from the API.
+                if (res.status === 200) {
+                    // If student was added successfully, tell the user.
+                    //topicOverview.topics = [];
+                    getTopics(topicOverview);
+                    console.log("success canceling a like");
+                } else {
+                    // If server couldn't add the topic
+                    alert("Error in canceling the topic!");
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            });
 };

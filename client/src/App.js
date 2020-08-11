@@ -10,7 +10,6 @@ import Post from './react-components/Post';
 import Comment from './react-components/Post/comment';
 import Register from "./react-components/Register";
 import PostOverview from "./react-components/PostOverview";
-
 import News from "./react-components/News";
 
 import Dashboard from './react-components/Dashboard';
@@ -68,27 +67,21 @@ class App extends React.Component {
                                     
                             }
                         />
-
-                        // <Route exact path='/postpage'
-                        //     render={({ history }) => (
-                        //         <div className="app">
-                                  
-                        //             {<Post history={history} app={this} />}
+                      
+                        <Route exact path='/postpage/:topic'
+                            render={
+                                props => (<Post {...props} app={this} />)
                                     
-                        //         </div>
-                        //     )}
-                        // />
+                            }
+                        />
 
-                        // <Route exact path='/comment'
-                        //     render={({ history }) => (
-                        //         <div className="app">
-                                  
-                        //             {<Post history={history} app={this} />}
+                        <Route exact path='/comments/:topic/:postid'
+                            render={
+                                props => (<Comment {...props} app={this} />)
                                     
-                        //         </div>
-                        //     )}
-                        // />
-
+                            }
+                        />
+                    
                         <Route exact path='/news/:id/:title/:user' component={News}/>
 
 

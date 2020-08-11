@@ -2,7 +2,7 @@ import React from "react";
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import IconButton from '@material-ui/core/IconButton';
 
-import {addLike, canceleLike} from "../../actions/actions";
+import {addLike, canceleLike} from "../actions/actions";
 import "./style.css";
 
 
@@ -13,15 +13,15 @@ class Like extends React.Component {
     }
 
     //check if we click on the like button
-    handleOnClick(postComponent, post, topic, app) {
+    handleOnClick(commentComponent, comment, topic, postid, app) {
         if (this.state.isLike === "") {
-            addLike(postComponent, post, topic, app);
+            addLike(commentComponent, comment, topic, postid, app);
             this.setState({
                 isLike: "like"
             })
 
         } else {
-            canceleLike(postComponent, post, topic, app);
+            canceleLike(commentComponent, comment, topic, postid, app);
             this.setState({
                 isLike: ""
             })
@@ -30,7 +30,7 @@ class Like extends React.Component {
 
 
     render() {
-        const {postComponent, post, topic, app} = this.props;
+        const {commentComponent, comment, topic, postid, app} = this.props;
 
         let checkLike;
         if (this.state.isLike === "like") {
@@ -40,7 +40,7 @@ class Like extends React.Component {
                     color="secondary"
                     className="post-like-button"
                     onClick={() => {
-                        this.handleOnClick(postComponent, post, topic, app)
+                        this.handleOnClick(commentComponent, comment, topic, postid, app)
                     }}
                 >
                     <FavoriteIcon/>
@@ -53,7 +53,7 @@ class Like extends React.Component {
                 <IconButton
                     className="post-like-button"
                     onClick={() => {
-                        this.handleOnClick(postComponent, post, topic, app)
+                        this.handleOnClick(commentComponent, comment, topic, postid, app)
                     }}
                 >
                     <FavoriteIcon/>
