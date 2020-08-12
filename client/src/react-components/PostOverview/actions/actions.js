@@ -15,7 +15,6 @@ export const getTopics = (topicOverview) => {
         .then(json => {
             // the resolved promise with the JSON body
             topicOverview.setState({ topics: json.topics });
-            //console.log(topicOverview.state.topics);
         })
         .catch(error => {
             console.log(error);
@@ -25,7 +24,7 @@ export const getTopics = (topicOverview) => {
 export const addTopic = (topicOverview, app) => {
 
     //guests are not allowed to add a topic
-    //if(app.state.role === "user" || app.state.role === "admin"){
+    if(app.state.role === "user" || app.state.role === "admin"){
         const url = "/topics";
 
         const topic = {
@@ -48,11 +47,8 @@ export const addTopic = (topicOverview, app) => {
             .then(function (res) {
                 // Handle response we get from the API.
                 if (res.status === 200) {
-                    // If student was added successfully, tell the user.
-                    //topicOverview.topics = [];
                     getTopics(topicOverview);
                     console.log("Successfully create a new topic!");
-                    //alert("Successfully create a new topic!");
                 } else {
                     // If server couldn't add the topic
                     alert("Error in creating the new topic!");
@@ -61,15 +57,16 @@ export const addTopic = (topicOverview, app) => {
             .catch(error => {
                 console.log(error);
             });
-    //}
-    //else{
-    //    alert("Guest is not allowed to create a topic, please log in!");
-    //}
+    }
+    else{
+        alert("Guest is not allowed to create a topic, please log in!");
+    }
 }
 
 export const deleteTopic = (topicOverview, topic, app) => {
-//     //admin can delete any tags in this page
-//     if(app.state.role === "admin"){
+
+     //user can only delete their own topic
+     if(app.state.role === "admin" || app.state.current === topic.creatorUsername){
 
         const url = "/topics";
 
@@ -87,10 +84,7 @@ export const deleteTopic = (topicOverview, topic, app) => {
             .then(function (res) {
                 // Handle response we get from the API.
                 if (res.status === 200) {
-                    // If student was added successfully, tell the user.
-                    //topicOverview.topics = [];
                     getTopics(topicOverview);
-                    //alert("Successfully delete the topic!");
                 } else {
                     // If server couldn't add the topic
                     alert("Error in deleting the topic!");
@@ -99,59 +93,47 @@ export const deleteTopic = (topicOverview, topic, app) => {
             .catch(error => {
                 console.log(error);
             });
-
-
-//     } 
-
-//     else {
-//         //users only can delete their own tags
-//         if (tag.creator === actions.props.match.params.user) {
-//             const filteredTags = actions.state.tags.filter(t => {
-//                 return t !== tag;
-//             });
-
-//             actions.setState({
-//                 tags: filteredTags
-//             });
-//         } else {
-//             alert("YOU DON'T HAVE PERMISSION TO DELETE THIS TOPIC");
-//         }
-//     }
+    }
+    else {
+        alert("YOU DON'T HAVE PERMISSION TO DELETE THIS TOPIC");
+    }
 };
 
 
-export const addLike = (topic, topicOverview) => {
+export const addLike = (topic, topicOverview, app) => {
+    //if is a guest, then don't call server
+    if(app.state.role === "user" || app.state.role === "admin"){
+        const url = "/likes/" + "topic";
 
-    const url = "/likes/" + "topic";
-
-    const request = new Request(url, {
-        method: "post",
-        body: JSON.stringify(topic),
-        headers: {
-            Accept: "application/json, text/plain, */*",
-            "Content-Type": "application/json"
-        }
-    });
-
-    // Send the request with fetch()
-    fetch(request)
-        .then(function (res) {
-            // Handle response we get from the API.
-            if (res.status === 200) {
-                getTopics(topicOverview);
-                return res.json();
-            } else {
-                alert("Error in adding a like");
+        const request = new Request(url, {
+            method: "post",
+            body: JSON.stringify(topic),
+            headers: {
+                Accept: "application/json, text/plain, */*",
+                "Content-Type": "application/json"
             }
-        })
-        .catch(error => {
-            console.log(error);
         });
+
+        // Send the request with fetch()
+        fetch(request)
+            .then(function (res) {
+                // Handle response we get from the API.
+                if (res.status === 200) {
+                    getTopics(topicOverview);
+                    return res.json();
+                } else {
+                    alert("Error in adding a like");
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }
 }
 
-export const canceleLike = (topic, topicOverview) => {
-//     //admin can delete any tags in this page
-//     if(app.state.role === "admin"){
+export const canceleLike = (topic, topicOverview, app) => {
+
+    if(app.state.role === "user" || app.state.role === "admin"){
 
         const url = "/likes/" + "topic";
 
@@ -169,16 +151,15 @@ export const canceleLike = (topic, topicOverview) => {
             .then(function (res) {
                 // Handle response we get from the API.
                 if (res.status === 200) {
-                    // If student was added successfully, tell the user.
-                    //topicOverview.topics = [];
                     getTopics(topicOverview);
                     console.log("success canceling a like");
                 } else {
-                    // If server couldn't add the topic
-                    alert("Error in canceling the topic!");
+                    // If server couldn't add the like
+                    alert("Error in canceling the like!");
                 }
             })
             .catch(error => {
                 console.log(error);
             });
+    }
 };

@@ -14,7 +14,6 @@ export const getPosts = (postpage) => {
         .then(json => {
             // the resolved promise with the JSON body
             postpage.setState({ posts: json.posts });
-            //console.log(topicOverview.state.topics);
         })
         .catch(error => {
             console.log(error);
@@ -24,7 +23,7 @@ export const getPosts = (postpage) => {
 export const addPost = (postpage, app) => {
 
     //guests are not allowed to add a topic
-    //if(app.state.role === "user" || app.state.role === "admin"){
+    if(app.state.role === "user" || app.state.role === "admin"){
         const url = "/posts";
 
         const post = {
@@ -47,11 +46,8 @@ export const addPost = (postpage, app) => {
             .then(function (res) {
                 // Handle response we get from the API.
                 if (res.status === 200) {
-                    // If student was added successfully, tell the user.
-                    //topicOverview.topics = [];
                     getPosts(postpage);
                     console.log("Successfully create a new post!");
-                    //alert("Successfully create a new post!");
                 } else {
                     // If server couldn't add the post
                     alert("Error in creating the new post!");
@@ -60,16 +56,16 @@ export const addPost = (postpage, app) => {
             .catch(error => {
                 console.log(error);
             });
-    //}
-    //else{
-    //    alert("Guest is not allowed to create a topic, please log in!");
-    //}
+    }
+    else{
+       alert("Guest is not allowed to create a post, please log in!");
+    }
 }
 
 export const deletePost = (postpage, post, topic, app) => {
 
-    //admin can delete any tags in this page
-    // if(app.state.role === "admin"){
+    //user can only delete their own post
+    if(app.state.role === "admin" || app.state.current === post.creatorUsername){
 
         const url = "/posts";
 
@@ -92,8 +88,6 @@ export const deletePost = (postpage, post, topic, app) => {
             .then(function (res) {
                 // Handle response we get from the API.
                 if (res.status === 200) {
-                    // If student was added successfully, tell the user.
-                    //topicOverview.topics = [];
                     getPosts(postpage);
                     console.log("Successfully delete the post!");
                 } else {
@@ -104,11 +98,15 @@ export const deletePost = (postpage, post, topic, app) => {
             .catch(error => {
                 console.log(error);
             });
-//     } 
+    }
+    else {
+        alert("YOU DON'T HAVE PERMISSION TO DELETE THIS post");
+    } 
 }
 
 export const addLike = (postpage, post, topic, app) => {
-    if(app.state.role !== "guest"){
+    //if is a guest, then don't call server
+    if(app.state.role === "user" || app.state.role === "admin"){
         const url = "/likes/" + "post";
 
         const data = {
@@ -143,8 +141,9 @@ export const addLike = (postpage, post, topic, app) => {
 }
 
 export const canceleLike = (postpage, post, topic, app) => {
-//     //admin can delete any tags in this page
-    if(app.state.role !== "guest"){
+
+    //if is a guest, then don't call server
+    if(app.state.role === "user" || app.state.role === "admin"){
 
         const url = "/likes/" + "post";
 
@@ -167,13 +166,10 @@ export const canceleLike = (postpage, post, topic, app) => {
             .then(function (res) {
                 // Handle response we get from the API.
                 if (res.status === 200) {
-                    // If student was added successfully, tell the user.
-                    //topicOverview.topics = [];
                     getPosts(postpage);
                     console.log("success cancelling a like");
                 } else {
-                    // If server couldn't add the topic
-                    alert("Error in canceling the topic!");
+                    alert("Error in canceling the like!");
                 }
             })
             .catch(error => {

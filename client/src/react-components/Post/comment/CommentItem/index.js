@@ -36,15 +36,15 @@ class CommentItem extends React.Component {
                     <h3 className="comment-user">
                         @{comment.creatorUsername}
                     </h3>
-
-                    <Like className="comment-like-button" 
-                        commentComponent={commentComponent} 
-                        comment={comment} 
-                        topic={topic} 
-                        postid={postid} 
-                        app={app}
-                    />
-
+                    <span className="comment-like-button" >
+                        <Like
+                            commentComponent={commentComponent} 
+                            comment={comment} 
+                            topic={topic} 
+                            postid={postid} 
+                            app={app}
+                        />
+                    </span>
                     <h4 className="comment-info">{Parser(comment.content)}</h4>
 
                 </TableCell>

@@ -21,12 +21,6 @@
     float: right;
 }
 
-.comment-like-button {
-    top: 50%;
-    float: left;
-    left: 290px;
-}
-
 .comment-user {
     float: left;
     font-family: Aerial;

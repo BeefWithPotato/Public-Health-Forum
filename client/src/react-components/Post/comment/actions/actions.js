@@ -14,7 +14,6 @@ export const getComments = (commentpage) => {
         .then(json => {
             // the resolved promise with the JSON body
             commentpage.setState({ comments: json.comments });
-            //console.log(topicOverview.state.topics);
         })
         .catch(error => {
             console.log(error);
@@ -22,8 +21,9 @@ export const getComments = (commentpage) => {
 }
 
 export const addComment = (commentpage, app) => {
-    //guests are not allowed to add a topic
-    //if(app.state.role === "user" || app.state.role === "admin"){
+
+    //guests are not allowed to add a comment
+    if(app.state.role === "user" || app.state.role === "admin"){
         const url = "/comments";
 
         const post = {
@@ -47,29 +47,25 @@ export const addComment = (commentpage, app) => {
             .then(function (res) {
                 // Handle response we get from the API.
                 if (res.status === 200) {
-                    // If student was added successfully, tell the user.
-                    //topicOverview.topics = [];
                     getComments(commentpage);
                     console.log("Successfully add a new comment!");
-                    //alert("Successfully create a new post!");
                 } else {
-                    // If server couldn't add the post
                     alert("Error in creating the new comment!");
                 }
             })
             .catch(error => {
                 console.log(error);
             });
-    //}
-    //else{
-    //    alert("Guest is not allowed to create a topic, please log in!");
-    //}
+    }
+    else{
+       alert("Guest is not allowed to add a comment, please log in!");
+    }
 }
 
 export const deleteComment = (commentpage, comment, topic, postid, app) => {
 
     //admin can delete any tags in this page
-    // if(app.state.role === "admin"){
+    if(app.state.role === "admin" || app.state.current === comment.creatorUsername){
 
         const url = "/comments";
 
@@ -93,8 +89,6 @@ export const deleteComment = (commentpage, comment, topic, postid, app) => {
             .then(function (res) {
                 // Handle response we get from the API.
                 if (res.status === 200) {
-                    // If student was added successfully, tell the user.
-                    //topicOverview.topics = [];
                     getComments(commentpage);
                     console.log("Successfully delete the post!");
                 } else {
@@ -105,11 +99,15 @@ export const deleteComment = (commentpage, comment, topic, postid, app) => {
             .catch(error => {
                 console.log(error);
             });
-//     } 
+    } 
+    else {
+        alert("YOU DON'T HAVE PERMISSION TO DELETE THIS COMMENT");
+    } 
 }
 
 export const addLike = (commentpage, comment, topic, postid, app) => {
-    if(app.state.role !== "guest"){
+    //if is a guest, then don't call server
+    if(app.state.role === "user" || app.state.role === "admin"){
         const url = "/likes/" + "comment";
 
         const data = {
@@ -145,8 +143,8 @@ export const addLike = (commentpage, comment, topic, postid, app) => {
 }
 
 export const canceleLike = (commentPage, comment, topic, postid, app) => {
-//     //admin can delete any tags in this page
-    if(app.state.role !== "guest"){
+    //if is a guest, then don't call server
+    if(app.state.role === "user" || app.state.role === "admin"){
 
         const url = "/likes/" + "comment";
 
@@ -170,13 +168,11 @@ export const canceleLike = (commentPage, comment, topic, postid, app) => {
             .then(function (res) {
                 // Handle response we get from the API.
                 if (res.status === 200) {
-                    // If student was added successfully, tell the user.
-                    //topicOverview.topics = [];
                     getComments(commentPage);
                     console.log("success cancelling a like");
                 } else {
-                    // If server couldn't add the topic
-                    alert("Error in canceling the topic!");
+                    // If server couldn't cancel the like
+                    alert("Error in canceling the like!");
                 }
             })
             .catch(error => {

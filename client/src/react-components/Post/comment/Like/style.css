@@ -1,13 +1,16 @@
-.post-like {
-    top: -5px;
-    left: 680px;
-    height: 10px;
-    width: 10px;
-    float: left;
+.comment-like {
+    float: right;
     position: relative;
 }
 
-.post-like-button {
-    height: 10px;
-    width: 10px;
+.comment-like-button {
+    top: 35px;
+    right: -55px;
+}
+
+.like-number{
+	position: relative;
+	float: right;
+	top: 56px;
+	right: -19px;
 }

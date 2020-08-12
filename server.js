@@ -495,20 +495,16 @@ app.delete("/comments", (req, res) => {
                 res.status(404).send();
             } else {
 
-            	topic.posts.forEach((post) => {
-            		if(post.id === postid){
-            			const filterComments = post.comments.filter((comment) =>{
-            				return (comment.id !== id)
-            			});
-
-            			let num = 1;               
-						for(let i = 0; i < filterComments.length; i++){
-							filterComments[i].id = num;
-							num++;
-						}
-						post.comments = filterComments;
-            		}
+            	const filterComments = topic.posts[postid-1].comments.filter((comment) => {
+            		return (comment.id !== id)
             	});
+
+            	let num = 1;               
+				for(let i = 0; i < filterComments.length; i++){
+					filterComments[i].id = num;
+					num++;
+				}
+				topic.posts[postid-1].comments = filterComments;
 
                 topic.save();
                 res.send(topic);

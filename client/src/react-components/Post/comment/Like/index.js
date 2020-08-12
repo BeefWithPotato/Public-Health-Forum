@@ -38,7 +38,7 @@ class Like extends React.Component {
                 //with color -- red
                 <IconButton
                     color="secondary"
-                    className="post-like-button"
+                    className="comment-like-button"
                     onClick={() => {
                         this.handleOnClick(commentComponent, comment, topic, postid, app)
                     }}
@@ -51,7 +51,7 @@ class Like extends React.Component {
             checkLike = (
                 //with color -- grey
                 <IconButton
-                    className="post-like-button"
+                    className="comment-like-button"
                     onClick={() => {
                         this.handleOnClick(commentComponent, comment, topic, postid, app)
                     }}
@@ -62,8 +62,11 @@ class Like extends React.Component {
         }
 
         return (
-            <div className="post-like">
+            <div className="comment-like">
                 {checkLike}
+                <p className="like-number">
+                    {comment.likes}
+                </p>
             </div>
         )
 

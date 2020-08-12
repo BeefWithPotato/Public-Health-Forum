@@ -45,7 +45,7 @@ class Comment extends React.Component {
 
         //check if the currrent post contain any comments
         let checkList;
-        if (this.state.comments === "") {
+        if (this.state.comments.length === 0) {
             checkList = (
                 <h3 className="no-comment-title">
                     Be the first to share your thoughts!

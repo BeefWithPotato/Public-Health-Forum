@@ -43,7 +43,7 @@ class Post extends React.Component {
 
         //check if the currrent topic contain posts
         let checkList;
-        if (this.state.posts === "") {
+        if (this.state.posts.length === 0) {
             checkList = (
                 <h3 className="no-post-title">
                     Please start the first post of current topic!

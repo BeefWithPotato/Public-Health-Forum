@@ -143,7 +143,7 @@ class AllPost extends React.Component {
                                     </Link>
 
                                     
-                                    <Like topic={topic} topicOverview={this}/>
+                                    <Like topic={topic} topicOverview={this} app={app}/>
 
                                     <IconButton
                                         className="topic-delete-button"

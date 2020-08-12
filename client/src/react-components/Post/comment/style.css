@@ -19,7 +19,8 @@
 .comment-input {
     position: relative;
     float: left;
-    width: 80%;
+    right: 0.5%;
+    width: 100%;
 
 }
 

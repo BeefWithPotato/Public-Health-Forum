@@ -28,7 +28,6 @@ class Like extends React.Component {
         }
     }
 
-
     render() {
         const {postComponent, post, topic, app} = this.props;
 
@@ -64,6 +63,9 @@ class Like extends React.Component {
         return (
             <div className="post-like">
                 {checkLike}
+                <p className="post-like-number">
+                    {post.likes}
+                </p>
             </div>
         )
 

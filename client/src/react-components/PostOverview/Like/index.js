@@ -13,15 +13,15 @@ class Like extends React.Component {
     }
 
     //check if we click on the like button
-    handleOnClick(topic, topicOverview) {
+    handleOnClick(topic, topicOverview, app) {
         if (this.state.isLike === "") {
-            addLike(topic, topicOverview);
+            addLike(topic, topicOverview, app);
             this.setState({
                 isLike: "like"
             })
 
         } else {
-            canceleLike(topic, topicOverview);
+            canceleLike(topic, topicOverview, app);
             this.setState({
                 isLike: ""
             })
@@ -30,7 +30,7 @@ class Like extends React.Component {
 
 
     render() {
-        const { topic, topicOverview } = this.props;
+        const { topic, topicOverview, app } = this.props;
 
         let checkLike;
         if (this.state.isLike === "like") {
@@ -40,7 +40,7 @@ class Like extends React.Component {
                     color="secondary"
                     className="like-button"
                     onClick={() => {
-                        this.handleOnClick(topic, topicOverview)
+                        this.handleOnClick(topic, topicOverview, app)
                     }}
                 >
                     <FavoriteIcon/>
@@ -53,7 +53,7 @@ class Like extends React.Component {
                 <IconButton
                     className="like-button"
                     onClick={() => {
-                        this.handleOnClick(topic, topicOverview)
+                        this.handleOnClick(topic, topicOverview, app)
                     }}
                 >
                     <FavoriteIcon/>

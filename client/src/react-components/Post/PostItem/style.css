@@ -15,16 +15,9 @@
 }
 
 .delete-button {
-
     height: 15px;
     width: 15px;
     float: right;
-}
-
-.post-like-button {
-    top: 50%;
-    float: left;
-    left: 290px;
 }
 
 .post-user {
@@ -33,7 +26,6 @@
 }
 
 .post-info {
-
     padding-top: 5px;
     padding-left: 35px;
     width: 500px;
