@@ -570,8 +570,34 @@ app.delete("/likes/:type", (req, res) => {
     }
 });
 
-// image upload
-// not test yet!
+// get user info for dashboard
+// app.get("/dashboard/:id", (req, res) => {
+//     /// req.params has the wildcard parameters in the url, in this case, id.
+//     log(req.params.id)
+//     const id = req.params.id;
+
+//     // Good practise: Validate id immediately.
+//     if (!ObjectID.isValid(id)) {
+//         res.status(404).send(); // if invalid id, definitely can't find resource, 404.
+//         return;
+//     }
+
+//     // Otherwise, findById
+//     User.findById(id).then(student => {
+//         if (!student) {
+//             res.status(404).send(); // could not find this student
+//         } else {
+//             /// sometimes we wrap returned object in another object:
+//             //res.send({student})
+//             res.send(student);
+//         }
+//     })
+//     .catch(error => {
+//         res.status(500).send(); // server error
+//     });
+// });
+
+// update avatar
 // app.use(multer({ 
 // 	dest: path.join(__dirname + '/uploads/'), 
 // 	rename: function (fieldname, filename) {
@@ -583,6 +609,24 @@ app.delete("/likes/:type", (req, res) => {
 // 	newItem.img.data = fs.readFileSync(req.files.userPhoto.path);
 // 	newItem.img.contentType = 'image/png';
 // 	newItem.save();
+// });
+// app.post("/dashboard/avatar", (req, res) => {
+//     if (mongoose.connection.readyState !== 1) {
+//         res.status(500).send('Server connection error');
+//         return;
+//     }
+
+//     console.log(req.body)
+//     let userid = null;
+//     User.findOne({username: req.body.username}).then((user) => {
+//         if (!user) {
+//             res.status(404).send('Resource not found')
+//         } else {
+//             console.log("find user");
+//             console.log(user._id);
+//             userid = user._id;
+//         }
+//     })
 // });
 
 
