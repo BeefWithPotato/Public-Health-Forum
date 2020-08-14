@@ -14,8 +14,11 @@
         "express": "^4.17.1",
         "express-session": "^1.17.1",
         "mongodb": "^3.6.0",
-        "mongoose": "^5.9.27",
+        "mongoose": "^5.10.0",
         "morgan": "^1.10.0",
         "validator": "^13.1.1"
+    },
+    "optionalDependencies": {
+        "fsevents": "^2.1.3"
     }
 }
