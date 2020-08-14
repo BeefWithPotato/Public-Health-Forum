@@ -23,20 +23,6 @@ class AllPost extends React.Component {
     state = {
         topicTitle: "",
         topicImg: "",
-        temp: [
-            {
-                title: "fever",
-                creatorUsername: "user1",
-                img: fever,
-                likes: 1
-            },
-            {
-                title: "COV19",
-                creatorUsername: "user2",
-                img: cov19,
-                likes: 100
-            }
-        ],
         topics: []
     }
 
@@ -70,7 +56,7 @@ class AllPost extends React.Component {
 
     render() {
 
-        const { history, app } = this.props;
+        const { app } = this.props;
 
         return (
             <div className="postoverview">

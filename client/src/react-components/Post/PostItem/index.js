@@ -35,9 +35,9 @@ class PostItem extends React.Component {
 
                     <img alt="user-icon" className="user-icon" src={img1}/>
 
-                    <h3 className="post-user">
+                    <h4 className="post-user">
                         @{post.creatorUsername}
-                    </h3>
+                    </h4>
 
                     <Like className="post-like-button" 
                         postComponent={postComponent} 
@@ -47,7 +47,7 @@ class PostItem extends React.Component {
                     />
 
                     <Link to={"/comments/" + topic + "/" + post.id}>
-                        <h4 className="post-info">{Parser(post.content)}</h4>
+                        <p className="post-info">{Parser(post.content)}</p>
                     </Link>
 
                 </TableCell>

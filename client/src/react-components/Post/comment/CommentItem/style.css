@@ -23,14 +23,13 @@
 
 .comment-user {
     float: left;
-    font-family: Aerial;
+    color: grey;
 }
 
 .comment-info {
 
     padding-top: 5px;
-    padding-left: 35px;
-    width: 500px;
+    padding-left: 30px;
     table-layout: fixed;
     word-wrap: break-all;
     word-break: break-all;

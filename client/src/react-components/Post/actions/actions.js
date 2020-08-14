@@ -13,7 +13,8 @@ export const getPosts = (postpage) => {
         })
         .then(json => {
             // the resolved promise with the JSON body
-            postpage.setState({ posts: json.posts });
+            const posts = json.posts;
+            postpage.setState({ posts: posts.reverse() });
         })
         .catch(error => {
             console.log(error);

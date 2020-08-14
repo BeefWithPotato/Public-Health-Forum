@@ -20,7 +20,16 @@ class Comment extends React.Component {
     state = {
         commentContent: "",
         icon: img1,
-        comments: []
+        comments: [{
+                content: "fever",
+                creatorUsername: "user1",
+                likes: 1
+            },
+            {
+                content: "COV19",
+                creatorUsername: "user2",
+                likes: 100
+            }]
     }
 
     componentDidMount() {
@@ -41,7 +50,7 @@ class Comment extends React.Component {
 
 
     render() {
-        const { history, app } = this.props;
+        const { app } = this.props;
 
         //check if the currrent post contain any comments
         let checkList;

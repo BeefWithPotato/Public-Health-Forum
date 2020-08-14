@@ -11,18 +11,13 @@
 }
 
 .text-area {
-
     height: 200px;
     width: 81.5%;
-
-    font-family: Areial;
-    font-size: 100%;
 }
 
 .text-input {
     position: relative;
     left: 11%;
-
 }
 
 .post-button {

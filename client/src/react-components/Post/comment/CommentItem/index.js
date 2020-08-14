@@ -4,9 +4,6 @@ import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
-
-import {Link} from "react-router-dom";
-
 import Parser from 'html-react-parser';
 import {deleteComment} from "../actions/actions";
 import Like from "../Like";
@@ -33,9 +30,9 @@ class CommentItem extends React.Component {
 
                     <img alt="user-icon" className="user-icon" src={commentComponent.state.icon}/>
 
-                    <h3 className="comment-user">
+                    <h4 className="comment-user">
                         @{comment.creatorUsername}
-                    </h3>
+                    </h4>
                     <span className="comment-like-button" >
                         <Like
                             commentComponent={commentComponent} 
@@ -45,7 +42,7 @@ class CommentItem extends React.Component {
                             app={app}
                         />
                     </span>
-                    <h4 className="comment-info">{Parser(comment.content)}</h4>
+                    <p className="comment-info">{Parser(comment.content)}</p>
 
                 </TableCell>
             </TableRow>

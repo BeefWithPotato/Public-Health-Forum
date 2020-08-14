@@ -13,7 +13,8 @@ export const getComments = (commentpage) => {
         })
         .then(json => {
             // the resolved promise with the JSON body
-            commentpage.setState({ comments: json.comments });
+            const comments = json.comments;
+            commentpage.setState({ comments: comments.reverse() });
         })
         .catch(error => {
             console.log(error);

@@ -20,7 +20,7 @@ class Post extends React.Component {
     state = {
         postContent: "",
         icon: img3,
-        posts: []
+        posts: [{content: "123", creatorUsername: "user1", likes: 1}]
     }
 
     componentDidMount() {
@@ -39,7 +39,7 @@ class Post extends React.Component {
 
 
     render() {
-        const { history, app } = this.props;
+        const { app } = this.props;
 
         //check if the currrent topic contain posts
         let checkList;

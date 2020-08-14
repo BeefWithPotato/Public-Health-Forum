@@ -13,17 +13,23 @@ class WelcomePage extends React.Component {
             <div className="welcome_page">
                 {/* sign up button */}
                 <Link className="button_link" to="./Register">
-                    <Button size="small" className="welcome_button">Want an account?</Button>
+                    <Button size="small" className="welcome_button">
+                        Want an account?
+                    </Button>
                 </Link>
 
                 {/* login button */}
                 <Link className="button_link" to="./Login">
-                    <Button size="small" className="welcome_button">User Login!</Button>
+                    <Button size="small" className="welcome_button">
+                        User Login!
+                    </Button>
                 </Link>
 
                 {/* guest visit button */}
                 <Link className="button_link" to={"./MainPage/guest"}>
-                    <Button size="small" className="welcome_button">Continue as a guest!</Button>
+                    <Button size="small" className="welcome_button">
+                        Continue as a guest!
+                    </Button>
                 </Link>
             </div>
         );

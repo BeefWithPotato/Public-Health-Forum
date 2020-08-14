@@ -21,14 +21,14 @@
 }
 
 .post-user {
+    color: grey;
     float: left;
-    font-family: Aerial;
+    position: relative;
 }
 
 .post-info {
     padding-top: 5px;
-    padding-left: 35px;
-    width: 500px;
+    padding-left: 30px;
     table-layout: fixed;
     word-wrap: break-all;
     word-break: break-all;
