@@ -61,7 +61,7 @@ const UserInfo = (props) => {
     const [info, setInfo] = React.useState({
         gender: "Male",
         email: "user@user.com",
-        phone: "123456789",
+        phone: "4169783435",
         address: "xxxxxx"
     });
 
