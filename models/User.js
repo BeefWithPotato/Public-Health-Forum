@@ -3,7 +3,9 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcrypt');
-//var imgModel = require('./models/image'); 
+
+// const imgModel = require('./models/image'); 
+
 
 // Making a Mongoose model a little differently: a Mongoose Schema
 // Allows us to add additional functionality.
