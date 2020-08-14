@@ -88,7 +88,73 @@ Here is an overview of the routes:
 + POST on "/register":
   + Expected request body: `{username: string, password: string}`
   + Expected result: `status: 200 with {current: string, role: string}` or `status: 500`
-+ \<topics routing\>
++ GET on "/topics":
+  + The route is used for obtaining all topics from database.
+  + Expected request body: `{}`
+  + Expected result: `status: 200` with `{topics}`
++ GET on "/posts/:topic":
+  + The route is used for obtaining all posts under current topic.
+  + Expected request parameter: 
+    + topic: topic title
+  + Expected request body: `{}`
+  + Expected result: `status: 200` with `{posts}`
++ GET on "/comments/:topic/:postid":
+  + The route is used for obtaining all comments under current post.
+  + Expected request parameters: 
+    + 1.topic: topic title 
+    + 2.postid: id start from 1 (not mongo object id)
+  + Expected request body: `{}`
+  + Expected result: `status: 200` with `{comments}`
++ POST on "/topics":
+  + The route is used for creating a new topic in database.
+  + Expected request body: `{username: string, title: string, img: base64 string data }`
+  + Expected result: `status: 200` or `status: 409` if the new topic has already been created.
++ POST on "/posts":
+  + The route is used for creating a new post under current topic in database.
+  + Expected request body: `{username: string, content: string, topic: string (topic title)}`
+  + Expected result: `status: 200`
++ POST on "/comments":
+  + The route is used for creating a new comment under current post in database.
+  + Expected request body: `{username: string, content: string, topic: string (topic title), postid: number (post.id not mongo object id) }`
+  + Expected result: `status: 200`
++ POST on "/likes/:type":
+  + The route is used for adding 1 likes count for each topic/post/comment object in database.
+  + Expected request parameters: 
+    + type: "topic"/"post"/"comment" 
+  + type = "topic"
+    + Expected request body: `{topic schema (title: string, likes: number, img: base64 string data, creatorUsername: string, creatorId: userid (mongo object id), posts: [post schema])}`
+    + Expected result: `status: 200` with target `topic` object
+  + type = "post"
+    + Expected request body: `{id: number (post.id not mongo object id), topic: string (topic title)}`
+    + Expected result: `status: 200` with target `topic` object
+  + type = "comment"
+    + Expected request body: `{id: number (comment.id not mongo object id), topic: string (topic title), postid: number (post.id not mongo object id)}`
+    + Expected result: `status: 200` with target `topic` object
++ DELETE on "/topics":
+  + The route is used for deleting a topic in database.
+  + + Expected request body: `{topic schema (title: string, likes: number, img: base64 string data, creatorUsername: string, creatorId: userid (mongo object id), posts: [post schema])}`
+  + Expected result: `status: 200` with target `topic` object
++ DELETE on "/posts":
+  + The route is used for deleting a post under current topic in database.
+  + Expected request body: `{id: number (post.id not mongo object id), topic: string (topic title)}`
+  + Expected result: `status: 200` with target `topic` object
++ DELETE on "/comments":
+  + The route is used for deleting a comment under current post in database.
+  + Expected request body: `{id: number (comment.id not mongo object id), topic: string (topic title), postid: number (post.id not mongo object id)}`
+  + Expected result: `status: 200` with target `topic` object
++ DELETE on "/likes/:type":
+  + The route is used for removing 1 likes count for each topic/post/comment object in database.
+  + Expected request parameters: 
+    + type: "topic"/"post"/"comment" 
+  + type = "topic"
+    + Expected request body: `{topic schema (title: string, likes: number, img: base64 string data, creatorUsername: string, creatorId: userid (mongo object id), posts: [post schema])}`
+    + Expected result: `status: 200`
+  + type = "post"
+    + Expected request body: `{id: number (post.id not mongo object id), topic: string (topic title)}`
+    + Expected result: `status: 200`
+  + type = "comment"
+    + Expected request body: `{id: number (comment.id not mongo object id), topic: string (topic title), postid: number (post.id not mongo object id)}`
+    + Expected result: `status: 200`
 + Others: Handled by React
 
 
