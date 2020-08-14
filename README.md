@@ -4,22 +4,59 @@
 The purpose of the website is to provide a platform for the public to share and exchange thoughts, curing experience and the latest public health-related information online. Through sharing, patients can get advice from others and non-patient users can check prevention information.
 
 ## Deployed Example Page
-\<link\>
+\[link\]
 
 ## Getting Started
 ### Clone our project
 
 `git clone https://github.com/csc309-summer-2020/team08.git`
 
-### Run App
+### Setup
+1. Create and run local MongoDB in the root directory of the repo, and this requires the installation of MongoDB. Run the following commands in an separate terminal window: 
+    ```
+    mkdir mongo-data
+    mongod --dbpath mongo-data
+    ```
+    
+2. Install dependencies. In the root directory of the repo, run:
+    ```
+    npm install
+    cd client
+    npm install
+    ```
+    
+3. Build the React app and start an Express server on `localhost:3000`. In the root directory of the repo, run:
 
-`npm start`: this will install all dependencies and create an Express server on `localhost:3000`
+    ```
+    npm run start
+    ```
+
+4. Alternatively, run `npm run serve` in the root directory which only start the Express server without building the client.
+
+5. Optionally, run the following command according to developing environment will provide more debug information:
+
+   ```
+   # Windows CMD
+   set DEBUG=* && npm run serve
+   
+   # Windows Powershell
+   $env:DEBUG='*';npm run serve
+   
+   # MacOS or Linux
+   export DEBUG=* && npm run serve
+   ```
+
+   See the documentation of [*debug*](https://www.npmjs.com/package/debug) library for more details.
 
 ## How to use
 ### Welcome Page
 + This page is the first page a user/guest will see once they open the web application. In this page, guest/user/admin could choose to **register** an account, **login** as a user or **continue to visit as a guest** and start browsing. There are two initial accounts for demonstrating purposes. 
-  + Standard user: username: user, password: user
-  + Administrator: username: admin, password: admin
+  + Standard user: 
+    + username: user
+    + password: user
+  + Administrator: 
+    + username: admin
+    + password: admin
 
 ### Register Page
 + This page lets a guest visitor setup a new account by providing the username and password. Once complete, guest will be registered as a user in this web application and redirect to the Main Page.
@@ -27,7 +64,7 @@ The purpose of the website is to provide a platform for the public to share and 
 ### Login Page
 + The page lets a user's/admin's log in. Once logging in, he will be redirected to the Main Page. Guests can choose to register an account here as well.
 
-### Top Bar(App Bar): 
+### Top Bar (App Bar): 
 + Top bar locates at the top of every sub pages.
 
 + On the left side of the bar, there is a menu open button. The menu contains three buttons: **MAIN PAGE**, **DASHBOARD** and **TOPICS**. Every user/admin/guest can redirect to the Main Page by using MAIN PAGE button or to Post Overview Page by TOPICS button. The dashboard button will only redirect users and admin to the Dashboard. If a guest clicks the button, he will be redirected to the Login Page. 
@@ -77,15 +114,19 @@ The purpose of the website is to provide a platform for the public to share and 
 
 Here is an overview of the routes:
 + POST on "/login": 
+  + The route is used for handling login request.
   + Expected request body: `{username: string, password: string}`
   + Expected result: `status: 200 with {current: string, role: string}` or `status: 404`
 + GET on "/logout":
+  + The route is used for handling logout request.
   + Expected request body: `{}`
   + Expected result: `status: 200`
 + GET on "/verify":
+  + The route is used for checking session timeout.
   + Expected request body: `{}`
   + Expected result: `status: 200 with {current: string, role: string}` or `status: 401`
 + POST on "/register":
+  + The route is used for handling user registration request.
   + Expected request body: `{username: string, password: string}`
   + Expected result: `status: 200 with {current: string, role: string}` or `status: 500`
 + GET on "/topics":
