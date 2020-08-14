@@ -102,7 +102,7 @@ Here is an overview of the routes:
   + The route is used for obtaining all comments under current post.
   + Expected request parameters: 
     + 1.topic: topic title 
-    + 2.postid: id start from 1 (not mongo object id)
+    + 2.postid: post.id (not mongo object id)
   + Expected request body: `{}`
   + Expected result: `status: 200` with `{comments}`
 + POST on "/topics":
@@ -122,7 +122,7 @@ Here is an overview of the routes:
   + Expected request parameters: 
     + type: "topic"/"post"/"comment" 
   + type = "topic"
-    + Expected request body: `{topic schema (title: string, likes: number, img: base64 string data, creatorUsername: string, creatorId: userid (mongo object id), posts: [post schema])}`
+    + Expected request body: target topic object`{title: string, likes: number, img: base64 string data, creatorUsername: string, creatorId: userid (mongo object id), posts: [post objects]}`
     + Expected result: `status: 200` with target `topic` object
   + type = "post"
     + Expected request body: `{id: number (post.id not mongo object id), topic: string (topic title)}`
@@ -132,7 +132,7 @@ Here is an overview of the routes:
     + Expected result: `status: 200` with target `topic` object
 + DELETE on "/topics":
   + The route is used for deleting a topic in database.
-  + + Expected request body: `{topic schema (title: string, likes: number, img: base64 string data, creatorUsername: string, creatorId: userid (mongo object id), posts: [post schema])}`
+  + + Expected request body: target topic object`{title: string, likes: number, img: base64 string data, creatorUsername: string, creatorId: userid (mongo object id), posts: [post objects]}`
   + Expected result: `status: 200` with target `topic` object
 + DELETE on "/posts":
   + The route is used for deleting a post under current topic in database.
@@ -147,7 +147,7 @@ Here is an overview of the routes:
   + Expected request parameters: 
     + type: "topic"/"post"/"comment" 
   + type = "topic"
-    + Expected request body: `{topic schema (title: string, likes: number, img: base64 string data, creatorUsername: string, creatorId: userid (mongo object id), posts: [post schema])}`
+    + Expected request body: target topic object `{(title: string, likes: number, img: base64 string data, creatorUsername: string, creatorId: userid (mongo object id), posts: [post objects]}`
     + Expected result: `status: 200`
   + type = "post"
     + Expected request body: `{id: number (post.id not mongo object id), topic: string (topic title)}`
