@@ -9,6 +9,11 @@ const User = require('./models/User');
 const TopicInstance = require('./models/topic');
 const mongoose = require("mongoose");
 
+// need ask...
+// var fs = require('fs'); 
+// var multer = require('multer'); 
+// var imgModel = require('./models/image'); 
+
 const app = express();
 app.use(logger('dev'));
 //app.use(express.json());
@@ -69,7 +74,7 @@ app.post("/register", ((req, res) => {
         req.session.username = user.username;
         req.session.role = user.role;
         res.send({ current: user.username, role: user.role });
-    }).catch(error => res.status(400).send(error));
+    }).catch(error => res.status(500).send(error));
 }));
 
 //get all topics
@@ -86,7 +91,7 @@ app.get("/topics", (req, res) => {
             res.send({ topics });
         },
         error => {
-            res.status(500).send(error); // server error
+            res.status(500).send('Internal Error'); // server error
         }
     );
 });
@@ -552,6 +557,20 @@ app.delete("/likes/:type", (req, res) => {
     }
 });
 
+// image upload
+// not test yet!
+// app.use(multer({ 
+// 	dest: path.join(__dirname + '/uploads/'), 
+// 	rename: function (fieldname, filename) {
+// 		return filename;
+// 	},
+// }));
+// app.post('/dashboard/avatar',function(req,res){
+// 	var newItem = new imgModel();
+// 	newItem.img.data = fs.readFileSync(req.files.userPhoto.path);
+// 	newItem.img.contentType = 'image/png';
+// 	newItem.save();
+// });
 
 
 app.use(express.static(path.join(__dirname, '/client/build')));

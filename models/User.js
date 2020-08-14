@@ -3,6 +3,7 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcrypt');
+var imgModel = require('./models/image'); 
 
 // Making a Mongoose model a little differently: a Mongoose Schema
 // Allows us to add additional functionality.
@@ -27,6 +28,23 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: false,
         default: "user"
+    },
+    verification: {
+        type: String,
+        required: false,
+        default: ''
+    },
+    avatar: {
+        data: Buffer, 
+        contentType: String,
+        required: false,
+        // should get default avatar
+        // default: 
+    },
+    loginHistory: {
+        type: Array,
+        required: false,
+        default: []
     }
 });
 
