@@ -13,7 +13,7 @@ The purpose of the website is to provide a platform for the public to share and 
 
 ### Run App
 
-`npm start`, this will install all dependencies and create an Express server on `localhost:3000`
+`npm start`: this will install all dependencies and create an Express server on `localhost:3000`
 
 ## How to use
 ### Welcome Page
@@ -22,22 +22,22 @@ The purpose of the website is to provide a platform for the public to share and 
   + Administrator: username: admin, password: admin
 
 ### Register Page
-+ This page requires a guest visitor to setup a new account by providing the username and password. Once complete, guest will be registered as a user in this web application and redirect to the Main Page.
++ This page lets a guest visitor setup a new account by providing the username and password. Once complete, guest will be registered as a user in this web application and redirect to the Main Page.
 
 ### Login Page
-+ The page requires a user's/admin's username and password to log in. Once logging in, he will be redirected to the Main Page. Guests can choose to register an account here as well.
++ The page lets a user's/admin's log in. Once logging in, he will be redirected to the Main Page. Guests can choose to register an account here as well.
 
 ### Top Bar(App Bar): 
 + Top bar locates at the top of every sub pages.
 
 + On the left side of the bar, there is a menu open button. The menu contains three buttons: **MAIN PAGE**, **DASHBOARD** and **TOPICS**. Every user/admin/guest can redirect to the Main Page by using MAIN PAGE button or to Post Overview Page by TOPICS button. The dashboard button will only redirect users and admin to the Dashboard. If a guest clicks the button, he will be redirected to the Login Page. 
 
-+ Besides the menu button, we have a Health Base Link and a search box. The Health Base works the same as the Main Page button. For the search box, we plan to implement it in Phase 2 since it needs to call the server.
++ Beside the menu button, we have a Health Base Link and a search box. The Health Base works the same as the Main Page button. For the search box, we plan to implement it in Phase 2 since it needs to call the server.
 
-+ Users' username and the icon are displayed on the right side of the Top Bar. Users can click their username to go to their Dashboard Page. For guests, the Top Bar will display "Guest" with a default user icon and they will be redirect to the Login Page by clicking.
++ Users' username and the icon are displayed on the right side of the Top Bar. Users can click their username to go to their Dashboard Page. For guests, the Top Bar will display "Guest" with a default user icon, and they will be redirect to the Login Page by clicking.
 
 ### User/Guest Main Page (Homepage)
-+ Once a guest registers successfully or a user logs in successfully or a guest chooses to keep visiting as a guest, the page will be redirected to the main page.
++ Once a guest registers successfully, or a user logs in successfully, or a guest chooses to keep visiting as a guest, the page will be redirected to the main page.
 
 #### The Main Page
 
@@ -45,17 +45,17 @@ The purpose of the website is to provide a platform for the public to share and 
 
 + **Topics**: The topics are displayed under the Main Featured Content. People can go to the posts overview page by clicking the **TOPICS** button. We also put some hot topics displayed under it. Now we put COVID-19 and FEVER here. People can view the detailed posts on these topics by clicking them.
 
-+ **Other News**: This part locates at the left side under the **Topics**. The contents are also chosen by the admin. It can be used for other purposes, but we would like it to display news. People can view detailed news by clicking them.
++ **Other News**: This part locates on the left side under the **Topics**. The contents are also chosen by the admin. It can be used for other purposes, but we would like it to display news. People can view detailed news by clicking them.
 
 
 ### Dashboard
 + This page will display some personal information about the account. They can edit their personal information by using the **EDIT** button under the information and **SAVE** button to save changes. If user want to change their avatar image, they can use the **UPLOAD AVATAR** button and upload an image. 
-+ Under the buttons, there's a verification box. This box is for present some proofed information by admin. For users who want to be verified as a doctor or some other identity, they could upload certain documents for verification. 
++ Under the buttons, there's a verification box. This box is for present some proofed information by admins. For users who want to be verified as a doctor or some other identity, they could upload certain documents for verification. 
 
 + The user login history locates at the bottom of the page. 
 
 ### Post Overview Page
-+ People can view this page by using the **Topics** button on the Main Page. The page will display all current topics in the web application. User and admin can create a new topic by using **Create** button as well(Must with a picture when creating, the picture can be uploaded by **Upload** button). However, two topics with the same name are not allowed.
++ People can view this page by using the **Topics** button on the Main Page. The page will display all current topics in the application. User and admin can create a new topic by using **Create** button as well(Must with a picture when creating, the picture can be uploaded by **Upload** button). However, two topics with the same name are not allowed.
 
 + People can choose their interested topic and view the detailed content by clicking the topic.
 
