@@ -149,8 +149,7 @@ app.get("/comments/:topic/:postid", (req, res) => {
 
 //create a new topic
 app.post("/topics", ((req, res) => {
-
-<<<<<<< HEAD
+	
 	if (mongoose.connection.readyState != 1) {
 		res.status(500).send('Server connection error');
 		return;
