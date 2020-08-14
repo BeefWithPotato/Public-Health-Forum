@@ -1,6 +1,15 @@
 .like-button {
     top: 10px;
-    left: 260px;
+    left: 20px;
+    height: 15px;
+    width: 10%;
+    float: left;
+    position: relative;
+}
+
+.topic-like-number{
+	top: -20px;
+    left: 15px;
     height: 15px;
     width: 10%;
     float: left;

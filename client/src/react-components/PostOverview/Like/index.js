@@ -12,7 +12,7 @@ class Like extends React.Component {
         isLike: ""
     }
 
-    //check if we click on the like button
+    //check if we click the like button
     handleOnClick(topic, topicOverview, app) {
         if (this.state.isLike === "") {
             addLike(topic, topicOverview, app);
@@ -64,6 +64,9 @@ class Like extends React.Component {
         return (
             <div>
                 {checkLike}
+                <p className="topic-like-number">
+                    {topic.likes}
+                </p>
             </div>
         )
 

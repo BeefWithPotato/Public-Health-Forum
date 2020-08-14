@@ -24,6 +24,10 @@ export const addComment = (commentpage, app) => {
 
     //guests are not allowed to add a comment
     if(app.state.role === "user" || app.state.role === "admin"){
+        if(commentpage.state.commentContent === ""){
+            alert("Comment can not be empty!");
+        }
+
         const url = "/comments";
 
         const post = {
@@ -108,7 +112,7 @@ export const deleteComment = (commentpage, comment, topic, postid, app) => {
 export const addLike = (commentpage, comment, topic, postid, app) => {
     //if is a guest, then don't call server
     if(app.state.role === "user" || app.state.role === "admin"){
-        const url = "/likes/" + "comment";
+        const url = "/likes/comment";
 
         const data = {
             id: comment.id,
@@ -146,7 +150,7 @@ export const canceleLike = (commentPage, comment, topic, postid, app) => {
     //if is a guest, then don't call server
     if(app.state.role === "user" || app.state.role === "admin"){
 
-        const url = "/likes/" + "comment";
+        const url = "/likes/comment";
 
         const data = {
             id: comment.id,

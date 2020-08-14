@@ -194,27 +194,35 @@ app.post("/topics", ((req, res) => {
 		console.log(error);
 		res.status(500).send('Server connection error');
 	})
-	
-	const topic = new TopicInstance({
-		title: req.body.title,
-		likes: 0, 
-		img: req.body.img,
-		creatorUsername: req.body.username,
-		creatorId: userid,
-		posts: []
-	});
 
-	topic.save().then(
-		result => {
-			res.send(result);
-		},
-		error => {
-			console.log("server error");
-			console.log(error)
-			res.status(400).send(error);
+	TopicInstance.findOne({title: req.body.title}).then((topic) => {
+		if (topic) {
+			res.status(409).send("Duplicate topic!");
 		}
-	);
+		else{
+			console.log("no Duplicate")
+			console.log(req.body.title)
+			const topic = new TopicInstance({
+				title: req.body.title,
+				likes: 0, 
+				img: req.body.img,
+				creatorUsername: req.body.username,
+				creatorId: userid,
+				posts: []
+			});
 
+			topic.save().then(
+				result => {
+					res.send(result);
+				},
+				error => {
+					console.log("server error");
+					console.log(error)
+					res.status(400).send(error);
+				}
+			);
+		}
+	})
 }));
 
 //create a new post under current topic
@@ -435,6 +443,7 @@ app.delete("/topics", (req, res) => {
             }
         })
         .catch(error => {
+        	console.log(error);
             res.status(500).send(); // server error, could not delete.
         });
 });

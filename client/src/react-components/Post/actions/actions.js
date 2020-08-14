@@ -24,6 +24,10 @@ export const addPost = (postpage, app) => {
 
     //guests are not allowed to add a topic
     if(app.state.role === "user" || app.state.role === "admin"){
+        if(postpage.state.postContent === ""){
+            alert("Post content can not be empty!");
+        }
+
         const url = "/posts";
 
         const post = {
@@ -107,7 +111,7 @@ export const deletePost = (postpage, post, topic, app) => {
 export const addLike = (postpage, post, topic, app) => {
     //if is a guest, then don't call server
     if(app.state.role === "user" || app.state.role === "admin"){
-        const url = "/likes/" + "post";
+        const url = "/likes/post";
 
         const data = {
             id: post.id,
@@ -145,7 +149,7 @@ export const canceleLike = (postpage, post, topic, app) => {
     //if is a guest, then don't call server
     if(app.state.role === "user" || app.state.role === "admin"){
 
-        const url = "/likes/" + "post";
+        const url = "/likes/post";
 
         const data = {
             id: post.id,

@@ -1,4 +1,4 @@
-
+//get topics from database 
 export const getTopics = (topicOverview) => {
     const url = "/topics";    
 
@@ -21,11 +21,19 @@ export const getTopics = (topicOverview) => {
         });
 }
 
+//add a topic
 export const addTopic = (topicOverview, app) => {
 
     //guests are not allowed to add a topic
     if(app.state.role === "user" || app.state.role === "admin"){
         const url = "/topics";
+
+        if(topicOverview.state.topicImg === ""){
+            alert("Every topic must with a theme picture!");
+        }
+        if(topicOverview.state.topicTitle === ""){
+            alert("Every topic must contain a title!");
+        }
 
         const topic = {
             title: topicOverview.state.topicTitle,
@@ -49,7 +57,11 @@ export const addTopic = (topicOverview, app) => {
                 if (res.status === 200) {
                     getTopics(topicOverview);
                     console.log("Successfully create a new topic!");
-                } else {
+                } 
+                else if(res.status === 409){
+                    alert("Error: Duplicate Topic.");
+                }
+                else {
                     // If server couldn't add the topic
                     alert("Error in creating the new topic!");
                 }
@@ -103,7 +115,7 @@ export const deleteTopic = (topicOverview, topic, app) => {
 export const addLike = (topic, topicOverview, app) => {
     //if is a guest, then don't call server
     if(app.state.role === "user" || app.state.role === "admin"){
-        const url = "/likes/" + "topic";
+        const url = "/likes/topic";
 
         const request = new Request(url, {
             method: "post",
@@ -135,7 +147,7 @@ export const canceleLike = (topic, topicOverview, app) => {
 
     if(app.state.role === "user" || app.state.role === "admin"){
 
-        const url = "/likes/" + "topic";
+        const url = "/likes/topic";
 
         const request = new Request(url, {
             method: "delete",

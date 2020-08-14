@@ -6,13 +6,13 @@ import {Link} from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
+import AddPhotoAlternateIcon from '@material-ui/icons/AddPhotoAlternate';
 import Like from './Like';
 import {addTopic, deleteTopic, getTopics} from "./actions/actions";
 import TopBar from "../TopBar";
 import "./style.css";
-import cov19 from "./static/cov19.jpg"
-import fever from "./static/fever.jpg"
-
+import fever from "./static/fever.jpg";
+import cov19 from "./static/cov19.jpg";
 class AllPost extends React.Component {
 
     constructor(props) {
@@ -23,12 +23,26 @@ class AllPost extends React.Component {
     state = {
         topicTitle: "",
         topicImg: "",
+        temp: [
+            {
+                title: "fever",
+                creatorUsername: "user1",
+                img: fever,
+                likes: 1
+            },
+            {
+                title: "COV19",
+                creatorUsername: "user2",
+                img: cov19,
+                likes: 100
+            }
+        ],
         topics: []
     }
 
     componentDidMount() {
+        //let all topics from database desplayed on the page
         getTopics(this);
-
     }
 
     //handler for whenever we input in the input box
@@ -57,7 +71,6 @@ class AllPost extends React.Component {
     render() {
 
         const { history, app } = this.props;
-        console.log(this.state.topics.length);
 
         return (
             <div className="postoverview">
@@ -66,16 +79,16 @@ class AllPost extends React.Component {
 
                 <Grid className="Grid" container direction="column" spacing={3}>
 
-                    <Grid item className="input-topic">
+                    <Grid item className="input-grid">
                         <TextField
                             className="topics-input"
                             id="outlined-basic"
-                            label="Create a brand new Topic"
+                            label="Create a brand new Topic here"
                             variant="outlined"
                             onChange={this.handleInputChange}
                         />
 
-
+                       
                         <input
                             accept="image/*"
                             className="upload-input"
@@ -88,17 +101,15 @@ class AllPost extends React.Component {
                             <Button
                                 size="small"
                                 className="upload-button"
-                                variant="contained"
-                                color="secondary"
                                 component="span"
                             >
-                                Upload
+                                <AddPhotoAlternateIcon/>
                             </Button>
                         </label>
 
                         <Button
                             size="small"
-                            className="upload-button"
+                            className="create-button"
                             variant="contained"
                             color="primary"
                             component="span"
@@ -106,15 +117,14 @@ class AllPost extends React.Component {
                         >
                             Create
                         </Button>
-
+               
                     </Grid>
 
 
                     <Grid item className="topics-grid">
-                        {/* Post Title */}
+                   
                         {this.state.topics.map((topic) => (
 
-                            /* Post Title */
                             <Paper className="postsubpaper" key={topic.title}>
 
                                 <Grid container direction="column" spacing={1}>
@@ -127,13 +137,14 @@ class AllPost extends React.Component {
                                             <img className="sub_img" src={topic.img} alt="sub"/>
                                         </Grid>
 
+                                        {/* topic Title */}
                                         <Grid item>
                                             <h2 className="subtitle">
                                                 {topic.title}
                                             </h2>
                                         </Grid>
 
-                                        {/* creator */}
+                                        {/* topic creator */}
                                         <Grid item>
                                             <h5 className="src">
                                                 Topic First Created by, <br/>

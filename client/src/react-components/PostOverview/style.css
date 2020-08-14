@@ -4,10 +4,6 @@
     width: 100%;
 }
 
-.input-topic {
-    border-bottom: 1px solid grey;
-}
-
 .postsubpaper {
 
     margin: 40px;
@@ -20,7 +16,7 @@
 }
 
 .sub_img {
-    margin: 10px;
+    margin-top: 20px;
     width: 300px;
     height: 150px;
 }
@@ -33,7 +29,6 @@
 .src {
     margin: 10px;
     color: grey;
-
 }
 
 .Grid {
@@ -52,31 +47,38 @@
 }
 
 .topics-input {
-    width: 345px;
-    height: 100px;
+    width: 30%;
     position: relative;
-    left: 40%;
-    top: 100%;
-    transform: translate(-50%, 0%);
+    float: left;
+    left: 37%;
+    top: -15px;
+    text-align: center;
+}
 
+.input-grid{
+    border-bottom: 1px solid grey;
+    height: 125px;
+}
+
+.create-button {
+    position: relative;
+    float: left;
+    left: 2%;
+    top: 60px;
+    width: 30%;
 }
 
 .upload-button {
-
+    float: left;
     position: relative;
-    left: 33%;
-    top: 10px;
-    transform: translate(-50%, 0%);
-
-    display: inline;
-
+    left: 37%;
+    width: 5%;
 }
 
 .topic-delete-button {
     width: 10%;
-    top: -32px;
+    top: -70px;
     left: 300px;
-
 }
 
 a {
