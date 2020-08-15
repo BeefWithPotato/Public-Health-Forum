@@ -4,6 +4,7 @@ import "./style.css";
 import Add from "./Add";
 import PostList from "./PostList"
 import {addPost, getPosts} from "./actions/actions";
+import {Link} from "react-router-dom";
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import TopBar from "../TopBar";
 
@@ -64,10 +65,10 @@ class Post extends React.Component {
                         Current Topic: {this.props.match.params.topic}
                 </h3>
 
-                <a className="back" href="/postoverview">
+                <Link className="back" to={"/postoverview"}>
                     <ArrowBackIcon className="arrow"/>
                     Back
-                </a>
+                </Link>
 
                 <Grid item container className="post-grid" direction="column">
 

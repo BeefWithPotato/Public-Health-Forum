@@ -6,10 +6,8 @@ import CommentList from "./CommentList"
 import Add from "../Add";
 import TopBar from "../../TopBar";
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import IconButton from '@material-ui/core/IconButton';
+import {Link} from "react-router-dom";
 import {addComment, getComments} from "./actions/actions";
-//imgs are all hard-coded here
-//import img1 from "./static/user1.png"
 
 class Comment extends React.Component {
 
@@ -71,10 +69,10 @@ class Comment extends React.Component {
 
                 <h3 className="comment-title">Comments:</h3>
 
-                <a className="back" href={"/postpage/" + this.props.match.params.topic}>
-                        <ArrowBackIcon className="arrow"/>
-                        Back
-                </a>
+                <Link className="back" to={"/postpage/" + this.props.match.params.topic}>
+                    <ArrowBackIcon className="arrow"/>
+                    Back
+                </Link>
 
                 <Grid item container className="post-grid" direction="column">
 

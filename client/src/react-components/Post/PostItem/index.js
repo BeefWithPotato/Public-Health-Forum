@@ -9,8 +9,6 @@ import {Link} from "react-router-dom";
 
 import Parser from 'html-react-parser';
 import {deletePost} from "../actions/actions";
-//import {deleteComment} from "../comment/actions/actions";
-//import img1 from "../static/user1.png"
 import Like from "./Like";
 import "./style.css";
 
