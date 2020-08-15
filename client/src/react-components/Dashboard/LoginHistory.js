@@ -8,17 +8,17 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TextTitle from './TextTitle';
 
-// Generate Order Data
-function createData(id, Date, Time, Address, Device) {
-    return {id, Date, Time, Address, Device};
+// Generate Login Data
+function createData(id, Date, Time) {
+    return {id, Date, Time};
 }
 
 const rows = [
-    createData(0, '2020-07-03', '12:38:56', 'Toronto, ON, Canada', 'PC'),
-    createData(1, '2020-07-02', '13:38:56', 'Toronto, ON, Canada', 'PC'),
-    createData(2, '2020-07-02', '12:38:56', 'Toronto, ON, Canada', 'PC'),
-    createData(3, '2020-07-01', '14:38:56', 'Toronto, ON, Canada', 'PC'),
-    createData(4, '2020-07-01', '12:38:56', 'Toronto, ON, Canada', 'PC'),
+    createData(0, '2020-07-03', '12:38:56'),
+    createData(1, '2020-07-02', '13:38:56'),
+    createData(2, '2020-07-02', '12:38:56'),
+    createData(3, '2020-07-01', '14:38:56'),
+    createData(4, '2020-07-01', '12:38:56'),
 ];
 
 function preventDefault(event) {

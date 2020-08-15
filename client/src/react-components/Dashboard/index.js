@@ -9,9 +9,10 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Link from '@material-ui/core/Link';
 import UserInfo from './UserInfo';
-import Orders from './LoginHistory';
+import LoginHistory from './LoginHistory';
 import TopBar from '../TopBar';
 import Verification from './Verification';
+import { Button } from '@material-ui/core';
 
 function Copyright() {
     return (
@@ -46,13 +47,56 @@ const useStyles = makeStyles((theme) => ({
     fixedHeight: {
         height: 235,
     },
+    logoutButton: {
+        margin: '20px',
+        border: '20px',
+        width: '100%',
+        height: '40px',
+    },
 }));
+
+// A function to send a POST request to get user data
+// export const getUser = () => {
+//     const url = "/dashboard";
+
+//     fetch(url)
+//         .then(res => {
+//             if (res.status === 200) {
+//                 return res.json();
+//             } else {
+//                 alert("Could not get user data");
+//             }
+//         })
+//         .then(json => {
+            
+//         })
+//         .catch(error => {
+//             console.log(error);
+//         });
+// };
+
+// A function to send a GET request to logout the current user
+const logout = (user) => {
+    const url = "/logout";
+
+    fetch(url)
+        .then(res => {
+            console.log(res)
+            user.setState('');
+
+        })
+        .catch(error => {
+            console.log(error);
+        });
+};
 
 const Dashboard = (props) => {
 
     const classes = useStyles();
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
+    //get user from db
+    // const user = getUser();
     const user = props.match.params.user;
 
     return (
@@ -77,10 +121,18 @@ const Dashboard = (props) => {
                         {/* Recent Login history */}
                         <Grid item xs={12}>
                             <Paper className={classes.paper}>
-                                <Orders/>
+                                <LoginHistory user={user}/>
+                            </Paper>
+                        </Grid>
+                        <Grid item xs={12}>
+                            <Paper className={classes.paper}>
+                                <Button variant="contained" color="primary" className='logoutButton' onClick={() => logout(user)} href="/">
+                                    Log out
+                                </Button>
                             </Paper>
                         </Grid>
                     </Grid>
+                    
                     <Box pt={4}>
                         <Copyright/>
                     </Box>

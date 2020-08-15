@@ -51,7 +51,8 @@ const UserInfo = (props) => {
         gender: "",
         email: "",
         phone: "",
-        address: ""
+        address: "",
+        
     }
 
     const [on, setOn] = React.useState(false);

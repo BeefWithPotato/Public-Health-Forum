@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcrypt');
 
-// const imgModel = require('./models/image'); 
+const imgModel = require('./image'); 
 
 
 // Making a Mongoose model a little differently: a Mongoose Schema
@@ -37,11 +37,9 @@ const UserSchema = new mongoose.Schema({
         default: ''
     },
     avatar: {
-        data: Buffer, 
-        contentType: String,
         required: false,
-        // should get default avatar
-        // default: 
+        // get default avatar
+        default: imgModel.getdefault().id
     },
     loginHistory: {
         type: Array,
