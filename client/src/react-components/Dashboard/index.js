@@ -13,6 +13,7 @@ import LoginHistory from './LoginHistory';
 import TopBar from '../TopBar';
 import Verification from './Verification';
 import { Button } from '@material-ui/core';
+import {getUserInfo} from './helper.js';
 
 function Copyright() {
     return (
@@ -69,95 +70,28 @@ const logout = (user) => {
         });
 };
 
-// A function to send a POST request to get user data
-const getUserInfo = (user, data) => {
-    const url = "/dashboard/data/" + user;
-
-    fetch(url)
-        .then(res => {
-            if (res.status === 200) {
-                return res.json();
-            } else {
-                alert("Could not get user info");
-            }
-        })
-        .then(json => {
-            console.log('json')
-            console.log(json)
-            // data.setState(json);
-            console.log(data)
-            data.setState({
-                gender: json.gender,
-                email: json.email,
-                phone: json.phone,
-                address: json.address,
-            });
-            console.log('after')
-            console.log(data)
-        })
-        .catch(error => {
-            console.log(error);
-        });
-}
-
-// A function to send a POST request to get user data
-// const updateUserInfo = (user, data) => {
-//     const url = "/dashboard/data/" + user;
-
-//     // Create our request constructor with all the parameters we need
-//     const request = new Request("/users/login", {
-//         method: "post",
-//         body: JSON.stringify(loginComp.state),
-//         headers: {
-//             Accept: "application/json, text/plain, */*",
-//             "Content-Type": "application/json"
-//         }
-//     });
-
-//     // Send the request with fetch()
-//     fetch(request)
-//         .then(res => {
-//             if (res.status === 200) {
-//                 return res.json();
-//             }
-//         })
-//         .then(json => {
-//             if (json.currentUser !== undefined) {
-//                 data.setState(json);
-//             }
-//         })
-//         .catch(error => {
-//             console.log(error);
-//         });
-// }
-
-
-    // get from db
-    // const userData = getUserInfo(user);
-    // console.log('userData')
-    // console.log(userData)
-
 class Dashboard extends React.Component {
 
     constructor(props) {
         super(props);
-        this.data = {
-            userId: props.state.current,
-            gender: "",
-            email: "",
-            phone: "",
-            address: "",
-        };
         this.user = props.state.current;
         this.props.history.push("/Dashboard/"+this.user);
     }
 
+    state = {
+        userId: this.user,
+        gender: "",
+        email: "",
+        phone: "",
+        address: "",
+    };
 
-    // getUserInfo(user, this.data)
     componentDidMount() {
-        getUserInfo(this.user, this.data);
-        console.log('this.data')
-        console.log(this.data)
+        console.log('this.state')
+        console.log(this.state)
+        getUserInfo(this.user, this.state);
+        console.log('this.state')
+        console.log(this.state)
     }
 
     render() {
