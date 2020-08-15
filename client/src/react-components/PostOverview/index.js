@@ -11,8 +11,7 @@ import Like from './Like';
 import {addTopic, deleteTopic, getTopics} from "./actions/actions";
 import TopBar from "../TopBar";
 import "./style.css";
-import fever from "./static/fever.jpg";
-import cov19 from "./static/cov19.jpg";
+
 class AllPost extends React.Component {
 
     constructor(props) {

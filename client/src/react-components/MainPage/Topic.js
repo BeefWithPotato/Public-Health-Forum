@@ -88,13 +88,13 @@ export default function Topic(props) {
             url: cov19,
             title: 'COVID-19',
             width: '50%',
-            link: "/postpage/COV-19/" + user,
+            link: "/postpage/COV-19",
         },
         {
             url: fever,
             title: 'FEVER',
             width: '50%',
-            link: "/postpage/Fever/" + user,
+            link: "/postpage/Fever",
         },
     ];
 

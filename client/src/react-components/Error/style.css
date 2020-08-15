@@ -1,0 +1,10 @@
+.errorpage{
+	float: left;
+	position: relative;
+	margin: 10px;
+	left: 20px;
+}
+
+.redirect{
+	color: blue;
+}

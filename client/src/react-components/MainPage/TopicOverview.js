@@ -87,7 +87,7 @@ export default function TopicOverview(props) {
             url: backgroundpic,
             title: 'TOPICS',
             width: '100%',
-            link: "/postoverview/" + user,
+            link: "/postoverview",
         },
     ];
 

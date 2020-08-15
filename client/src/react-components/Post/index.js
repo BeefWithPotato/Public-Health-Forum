@@ -20,7 +20,7 @@ class Post extends React.Component {
     state = {
         postContent: "",
         icon: img3,
-        posts: [{content: "123", creatorUsername: "user1", likes: 1}]
+        posts: []
     }
 
     componentDidMount() {

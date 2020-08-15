@@ -9,6 +9,7 @@ export const getPosts = (postpage) => {
                 return res.json();
             } else {
                 alert("Could not get topics");
+                postpage.props.history.push("/errorpage");
             }
         })
         .then(json => {

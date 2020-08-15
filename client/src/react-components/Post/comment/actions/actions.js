@@ -9,6 +9,7 @@ export const getComments = (commentpage) => {
                 return res.json();
             } else {
                 alert("Could not get comments");
+                commentpage.props.history.push("/errorpage");
             }
         })
         .then(json => {

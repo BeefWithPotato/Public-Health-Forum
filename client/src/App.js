@@ -11,7 +11,7 @@ import Comment from './react-components/Post/comment';
 import Register from "./react-components/Register";
 import PostOverview from "./react-components/PostOverview";
 import News from "./react-components/News";
-
+import Error from "./react-components/Error";
 import Dashboard from './react-components/Dashboard';
 import MainPage from './react-components/MainPage';
 
@@ -108,6 +108,14 @@ class App extends React.Component {
                         />
 
                         <Route exact path='/MainPage/:user' component={MainPage}/>
+
+                        <Route exact path='/errorpage'
+                            render={
+                                props => (<Error {...props} app={this} />)
+                            }
+                        />
+                        
+                        <Route exact path='*' component={Error}/>
 
                     </Switch>
                 </BrowserRouter>

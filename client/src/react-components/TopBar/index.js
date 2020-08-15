@@ -109,7 +109,7 @@ export default function TopBar(props) {
                     </Button>
                 </MenuItem>
                 <MenuItem onClick={handleMenuClose}>
-                    <Button href={"/PostOverview/" + user} color="inherit">
+                    <Button href={"/PostOverview/"} color="inherit">
                         Topics
                     </Button>
                 </MenuItem>
