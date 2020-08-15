@@ -5,7 +5,6 @@
     left: 11%;
     border-bottom: 1px solid grey;
     width: 81%;
-    color: black;
 }
 
 .post-list {
@@ -20,9 +19,29 @@
     position: relative;
     float: left;
     width: 80%;
-
 }
 
+.back{
+    float: left;
+    display: inline;
+    position: absolute;
+    top: 55px;
+    margin-left: 10px;
+    color: #3300FF;
+    font-size: 0.8em;
+    font-weight: 400; 
+}
+
+.arrow{
+    position: relative;
+    top: 12px;
+    margin-left: 5px;
+}
+
+a:hover {
+    color:black;
+    text-decoration: underline
+}
 
 a {
     text-decoration: none;

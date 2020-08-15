@@ -5,7 +5,8 @@ import "./style.css";
 import CommentList from "./CommentList"
 import Add from "../Add";
 import TopBar from "../../TopBar";
-
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import IconButton from '@material-ui/core/IconButton';
 import {addComment, getComments} from "./actions/actions";
 //imgs are all hard-coded here
 import img1 from "./static/user1.png"
@@ -20,16 +21,7 @@ class Comment extends React.Component {
     state = {
         commentContent: "",
         icon: img1,
-        comments: [{
-                content: "fever",
-                creatorUsername: "user1",
-                likes: 1
-            },
-            {
-                content: "COV19",
-                creatorUsername: "user2",
-                likes: 100
-            }]
+        comments: []
     }
 
     componentDidMount() {
@@ -47,7 +39,6 @@ class Comment extends React.Component {
             commentContent: value
         });
     }
-
 
     render() {
         const { app } = this.props;
@@ -77,9 +68,14 @@ class Comment extends React.Component {
         return (
             <div className="CommentPage">
 
-                <TopBar user={this.props.match.params.user}/>
+                <TopBar user={app.state.current}/>
 
                 <h3 className="comment-title">Comments:</h3>
+
+                <a className="back" href={"/postpage/" + this.props.match.params.topic}>
+                        <ArrowBackIcon className="arrow"/>
+                        Back
+                </a>
 
                 <Grid item container className="post-grid" direction="column">
 

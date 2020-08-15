@@ -4,6 +4,7 @@ import "./style.css";
 import Add from "./Add";
 import PostList from "./PostList"
 import {addPost, getPosts} from "./actions/actions";
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import TopBar from "../TopBar";
 //imgs are all hard-coded here
 
@@ -63,7 +64,14 @@ class Post extends React.Component {
 
                 <TopBar user={app.state.current}/>
 
-                <h3 className="topic-title">Topic: {this.props.match.params.topic}</h3>
+                <h3 className="topic-title">
+                        Current Topic: {this.props.match.params.topic}
+                </h3>
+
+                <a className="back" href="/postoverview">
+                    <ArrowBackIcon className="arrow"/>
+                    Back
+                </a>
 
                 <Grid item container className="post-grid" direction="column">
 

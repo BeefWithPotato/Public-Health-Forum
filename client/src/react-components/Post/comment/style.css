@@ -30,6 +30,22 @@
     color: #FF0000;
 }
 
+.back{
+    float: left;
+    display: inline;
+    position: absolute;
+    top: 55px;
+    margin-left: 10px;
+    color: #3300FF;
+    font-size: 0.8em;
+    font-weight: 400; 
+}
+
+.arrow{
+    position: relative;
+    top: 12px;
+    margin-left: 5px;
+}
 
 a {
     text-decoration: none;
