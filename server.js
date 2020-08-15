@@ -28,7 +28,7 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     cookie: {
-        expires: 60000,
+        expires: 300000,
         httpOnly: true
     }
 }));
@@ -87,27 +87,31 @@ app.post("/register", ((req, res) => {
 }));
 
 // update user info
-// app.patch("/user", ((req, res) => {
-//     if (mongoose.connection.readyState !== 1) {
-//         res.status(500).send('Server connection error');
-//         return;
-//     }
-//     const id = req.session.user_id;
-//     User.findOneAndUpdate(
-//         { "_id": id },
-//         {
-//             "$set": {
-
-//             }
-//         },
-//         {new: true, useFindAndModify: false}
-//     ).then(user => {
-//         // TODO
-//     }).catch(error => {
-//         console.log(error);
-//         res.status(400).send("Bad Request");
-//     });
-// }));
+app.patch("/user", ((req, res) => {
+    if (mongoose.connection.readyState !== 1) {
+        res.status(500).send('Server connection error');
+        return;
+    }
+    const id = req.session.user_id;
+    User.findOneAndUpdate(
+        { "_id": id },
+        {
+            "$set": {
+                "email": req.body.email,
+                "gender": req.body.gender,
+                "phone": req.body.phone,
+                "address": req.body.address,
+            }
+        },
+        {new: true, useFindAndModify: false}
+    ).then(user => {
+        if (!user) res.status(404).send();
+        else res.send(user);
+    }).catch(error => {
+        console.log(error);
+        res.status(400).send("Bad Request");
+    });
+}));
 
 //get all topics
 app.get("/topics", (req, res) => {

@@ -47,21 +47,23 @@ const useStyles = makeStyles((theme) => ({
 
 const UserInfo = (props) => {
 
-    const userData = props.data;
-    console.log('userData')
-    console.log(props.data)
-
     const origin = {
         gender: "",
         email: "",
         phone: "",
         address: "",
-        
     }
+    const classes = useStyles();
+    const {user} = props;
 
     const [on, setOn] = React.useState(false);
 
     const [values, setValues] = React.useState(origin);
+
+    // get from db
+    // const userData = getUserInfo(user);
+    // console.log('userData')
+    // console.log(userData)
 
     const [info, setInfo] = React.useState({
         gender: "Male",
@@ -69,9 +71,6 @@ const UserInfo = (props) => {
         phone: "4169783435",
         address: "xxxxxx"
     });
-
-    const classes = useStyles();
-    const {user} = props;
 
     const change = (prop) => (event) => {
         setValues({...values, [prop]: event.target.value});

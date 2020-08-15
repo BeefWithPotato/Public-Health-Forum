@@ -46,7 +46,22 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: false,
         default: 'Male'
-    }
+    },
+    email: {
+        type: String,
+        required: false,
+        default: ''
+    },
+    phone: {
+        type: String,
+        required: false,
+        default: ''
+    },
+    address: {
+        type: String,
+        required: false,
+        default: ''
+    },
 });
 
 // An example of Mongoose middleware.
