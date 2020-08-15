@@ -28,7 +28,7 @@ class CommentItem extends React.Component {
                         <DeleteIcon/>
                     </IconButton>
 
-                    <img alt="user-icon" className="user-icon" src={commentComponent.state.icon}/>
+                    <img alt="user-icon" className="user-icon" src={comment.avatar}/>
 
                     <h4 className="comment-user">
                         @{comment.creatorUsername}

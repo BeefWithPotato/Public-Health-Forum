@@ -237,6 +237,7 @@ app.post("/posts", ((req, res) => {
     console.log(req.body);
 
     let userid = null;
+    let avatar = null;
     User.findOne({username: req.body.username}).then((user) => {
         if (!user) {
             res.status(404).send('Resource not found')
@@ -244,6 +245,7 @@ app.post("/posts", ((req, res) => {
             console.log("find user");
             console.log(user._id);
             userid = user._id;
+            avatar = user.avatar;
         }
     })
 
@@ -256,6 +258,7 @@ app.post("/posts", ((req, res) => {
             const newPost = {
                 content: req.body.content,
                 likes: 0,
+                avatar: avatar,
                 creatorUsername: req.body.username,
                 id: topic.posts.length + 1,
                 creatorId: userid,
@@ -289,6 +292,7 @@ app.post("/comments", ((req, res) => {
     }
     console.log(req.body)
     let userid = null;
+    let avatar = null;
     User.findOne({username: req.body.username}).then((user) => {
         if (!user) {
             res.status(404).send('Resource not found')
@@ -296,6 +300,7 @@ app.post("/comments", ((req, res) => {
             console.log("find user");
             console.log(user._id);
             userid = user._id;
+            avatar = user.avatar;
         }
     })
 
@@ -309,6 +314,7 @@ app.post("/comments", ((req, res) => {
             const newComment = {
                 content: req.body.content,
                 likes: 0,
+                avatar: avatar,
                 id: topic.posts[postid-1].comments.length + 1,
                 creatorUsername: req.body.username,
                 creatorId: userid,

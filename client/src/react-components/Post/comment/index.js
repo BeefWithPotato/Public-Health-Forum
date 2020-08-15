@@ -9,7 +9,7 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import IconButton from '@material-ui/core/IconButton';
 import {addComment, getComments} from "./actions/actions";
 //imgs are all hard-coded here
-import img1 from "./static/user1.png"
+//import img1 from "./static/user1.png"
 
 class Comment extends React.Component {
 
@@ -20,7 +20,6 @@ class Comment extends React.Component {
 
     state = {
         commentContent: "",
-        icon: img1,
         comments: []
     }
 

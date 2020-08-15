@@ -8,6 +8,7 @@ const CommentInstanceSchema = new mongoose.Schema({
     	required: true
     },
     likes: Number,
+    avatar: String,
     id: Number,
     creatorUsername: String,
     creator: {
@@ -23,6 +24,7 @@ const PostInstanceSchema = new mongoose.Schema({
     	required: true
     },
     likes: Number,
+    avatar: String,
     id: Number,
     creatorUsername: String,
     creatorId: {

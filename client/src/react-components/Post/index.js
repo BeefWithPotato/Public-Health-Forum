@@ -6,9 +6,6 @@ import PostList from "./PostList"
 import {addPost, getPosts} from "./actions/actions";
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import TopBar from "../TopBar";
-//imgs are all hard-coded here
-
-import img3 from "./static/user3.png"
 
 class Post extends React.Component {
 
@@ -20,7 +17,6 @@ class Post extends React.Component {
 
     state = {
         postContent: "",
-        icon: img3,
         posts: []
     }
 

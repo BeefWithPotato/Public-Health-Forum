@@ -10,7 +10,7 @@ import {Link} from "react-router-dom";
 import Parser from 'html-react-parser';
 import {deletePost} from "../actions/actions";
 //import {deleteComment} from "../comment/actions/actions";
-import img1 from "../static/user1.png"
+//import img1 from "../static/user1.png"
 import Like from "./Like";
 import "./style.css";
 
@@ -33,7 +33,7 @@ class PostItem extends React.Component {
                         <DeleteIcon/>
                     </IconButton>
 
-                    <img alt="user-icon" className="user-icon" src={img1}/>
+                    <img alt="user-icon" className="user-icon" src={post.avatar}/>
 
                     <h4 className="post-user">
                         @{post.creatorUsername}
