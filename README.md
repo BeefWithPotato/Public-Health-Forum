@@ -20,7 +20,10 @@ The purpose of the website is to provide a platform for the public to share and 
     
 2. Install dependencies. In the root directory of the repo, run:
     ```
+    # install server dependencies in the root directory
     npm install
+
+    # install frontend dependencies in the client directory
     cd client
     npm install
     ```
@@ -28,7 +31,15 @@ The purpose of the website is to provide a platform for the public to share and 
 3. Build the React app and start an Express server on `localhost:3000`. In the root directory of the repo, run:
 
     ```
-    npm run start
+    # build the React app
+    cd client
+    npm run build
+
+    # go back to the root directory
+    cd ..
+
+    # run the server
+    node ./bin/www
     ```
 
 4. Alternatively, run `npm run serve` in the root directory which only start the Express server without building the client.
