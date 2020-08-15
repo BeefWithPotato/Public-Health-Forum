@@ -155,7 +155,6 @@ app.post("/topics", ((req, res) => {
 		return;
 	}
 
-	log(req.body);
 	let userid;
 	User.findOne({username: req.body.username}).then((user) => {
 		if (!user) {
