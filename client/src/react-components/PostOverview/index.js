@@ -116,7 +116,7 @@ class AllPost extends React.Component {
 
                                     {/* Link to topic detail */}
                                     <Link className="button_link" to={"/postpage/" + topic.title}>
-                                    {console.log("/postpage/" + topic.title)}
+                                  
                                         <Grid item>
                                             {/* img src */}
                                             <img className="sub_img" src={topic.img} alt="sub"/>

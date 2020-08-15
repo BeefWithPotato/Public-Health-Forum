@@ -509,8 +509,9 @@ app.delete("/likes/:type", (req, res) => {
                 if(topic.likes !== 0){
                     topic.likes--;
                 }
-                console.log(topic.likes);
                 topic.save();
+                console.log(topic.likes);
+                res.send(topic);
             }
         }).catch(() => {
             res.status(500).send('Server connection error');
