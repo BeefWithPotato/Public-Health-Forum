@@ -4,8 +4,7 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcrypt');
 const {ObjectID} = require('mongodb');
-const imgModel = require('./image'); 
-
+const img = require("./image");
 
 // Making a Mongoose model a little differently: a Mongoose Schema
 // Allows us to add additional functionality.
@@ -38,7 +37,7 @@ const UserSchema = new mongoose.Schema({
     },
     avatar: {
         required: false,
-        default: ObjectID
+        type: ObjectID
     },
     loginHistory: {
         type: Array,

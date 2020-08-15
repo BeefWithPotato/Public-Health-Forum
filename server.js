@@ -52,7 +52,7 @@ app.get("/logout", (req, res) => {
     req.session.destroy(error => {
         if (error) {
             console.error(error);
-            res.status(500).send();
+            res.status(500).send("Server Internal Error");
         } else res.send();
     });
 });
@@ -67,6 +67,7 @@ app.post("/register", ((req, res) => {
     const user = new User({
         username: req.body.username,
         password: req.body.password
+        // TODO: Add default avatar
     });
 
     user.save().then(user => {
@@ -74,7 +75,7 @@ app.post("/register", ((req, res) => {
         req.session.username = user.username;
         req.session.role = user.role;
         res.send({ current: user.username, role: user.role });
-    }).catch(error => res.status(500).send(error));
+    }).catch(_ => res.status(500).send("Server Internal Error"));
 }));
 
 //get all topics

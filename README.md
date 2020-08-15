@@ -4,7 +4,7 @@
 The purpose of the website is to provide a platform for the public to share and exchange thoughts, curing experience and the latest public health-related information online. Through sharing, patients can get advice from others and non-patient users can check prevention information.
 
 ## Deployed Example Page
-\[link\]
+[Heroku APP](https://fast-hamlet-67471.herokuapp.com/)
 
 ## Getting Started
 ### Clone our project
@@ -18,31 +18,18 @@ The purpose of the website is to provide a platform for the public to share and 
     mongod --dbpath mongo-data
     ```
     
-2. Install dependencies. In the root directory of the repo, run:
+2. Install all dependencies. In the root directory of the repo, run:
     ```
-    # install server dependencies in the root directory
-    npm install
+    npm run setup
+    ```
 
-    # install frontend dependencies in the client directory
-    cd client
-    npm install
-    ```
-    
 3. Build the React app and start an Express server on `localhost:3000`. In the root directory of the repo, run:
 
     ```
-    # build the React app
-    cd client
-    npm run build
-
-    # go back to the root directory
-    cd ..
-
-    # run the server
-    node ./bin/www
+    npm run build-run
     ```
-
-4. Alternatively, run `npm run serve` in the root directory which only start the Express server without building the client.
+    
+4. Alternatively, run `npm run start` in the root directory which only start the Express server without building the client.
 
 5. Optionally, run the following command according to developing environment will provide more debug information:
 
@@ -211,9 +198,9 @@ Here is an overview of the routes:
 
 
 ## Sources
-Material-UI demos:
-https://material-ui.com
-Material-UI example templates:
+Material-UI demos: <br>
+https://material-ui.com <br>
+Material-UI example templates: <br>
 https://github.com/mui-org/material-ui/tree/master/docs/src/pages/getting-started/templates
 
 ## Copyright
