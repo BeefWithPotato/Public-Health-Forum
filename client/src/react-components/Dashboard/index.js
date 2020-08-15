@@ -97,7 +97,7 @@ const Dashboard = (props) => {
 
     //get user from db
     // const user = getUser();
-    const user = props.match.params.user;
+    const user = props.state.user;
 
     return (
         <div className={classes.root}>

@@ -3,7 +3,7 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcrypt');
-
+const {ObjectID} = require('mongodb');
 const imgModel = require('./image'); 
 
 
@@ -38,8 +38,7 @@ const UserSchema = new mongoose.Schema({
     },
     avatar: {
         required: false,
-        // get default avatar
-        default: imgModel.getdefault().id
+        default: ObjectID
     },
     loginHistory: {
         type: Array,

@@ -29,6 +29,7 @@ const Login = (props) => {
 
     const successCallback = (data) => {
         props.update(data);
+        console.log(data);
         if (data.role === "user") {
             // TODO: Redirect to user's page
             props.history.push(`/MainPage/:${data.current}`);
