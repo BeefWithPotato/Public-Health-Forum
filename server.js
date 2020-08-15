@@ -113,6 +113,36 @@ app.patch("/user", ((req, res) => {
     });
 }));
 
+//set user become admin
+app.patch("/user/admin", ((req, res) => {
+    if (mongoose.connection.readyState !== 1) {
+        res.status(500).send('Server connection error');
+        return;
+    }
+    User.findOne({_id: req.body.userid}).then((user) => {
+        if (!user) {
+            res.status(404).send('Resource not found')
+        } else {
+            console.log("find user");
+            user.role = "admin";
+            user.save().then(
+                result => {
+                    res.send(result);
+                },
+                error => {
+                    console.log("server error");
+                    console.log(error)
+                    res.status(400).send(error);
+                }
+            );
+        }
+    })
+    .catch((error) => {
+        console.log(error);
+        res.status(400).send('Bad Request');
+    })
+}));
+
 //get all topics
 app.get("/topics", (req, res) => {
 
