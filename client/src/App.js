@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import './App.css';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
@@ -41,12 +40,16 @@ class App extends React.Component {
         super(props);
         this.update = this.update.bind(this);
         this.readCookie = this.readCookie.bind(this);
-        this.readCookie().then();
+        this.readCookie();
     }
 
     update = data => this.setState(data);
 
-    readCookie = _ => axios.get("/verify").then(response => this.update(response.data)).catch();
+    readCookie = _ => {
+        fetch("/verify").then(response => {
+            if (response.status === 200) return response.json();
+        }).then(json => this.update(json)).catch();
+    }
 
 
     render() {
@@ -85,7 +88,7 @@ class App extends React.Component {
                         <Route exact path='/news/:id/:title/:user' component={News}/>
 
 
-                        <Route exact path={['/dashboard', '/login']}
+                        <Route exact path={['/Dashboard/:user', '/login']}
 
                                render={
                                    props => (this.state.current) ?

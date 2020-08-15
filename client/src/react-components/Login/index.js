@@ -11,109 +11,119 @@ import {
     TextField
 } from "@material-ui/core";
 import {Visibility, VisibilityOff} from "@material-ui/icons";
-import axios from "axios";
 
 import "./style.css";
 
-const Login = (props) => {
+class Login extends React.Component {
 
-    const [values, setValues] = React.useState({
+    constructor(props) {
+        super(props);
+        this.props.history.push("/login");
+        this.successCallback = this.successCallback.bind(this);
+        this.failedCallback = this.failedCallback.bind(this);
+        this.submit = this.submit.bind(this);
+        this.change = this.change.bind(this);
+        this.show = this.show.bind(this);
+    }
+
+    state = {
         username: '',
         password: '',
         show: false
-    });
+    }
 
-    const redirect = React.forwardRef((props, ref) => (
+    redirect = React.forwardRef((props, ref) => (
         <Link ref={ref} to="./register" {...props} />
     ));
 
-    const successCallback = (data) => {
-        props.update(data);
-        console.log(data);
-        if (data.role === "user") {
-            // TODO: Redirect to user's page
-            props.history.push(`/MainPage/:${data.current}`);
-        } else {
-            // TODO: Redirect to admin's page
-            props.history.push("/MainPage/admin");
-        }
+    successCallback = (data) => {
+        this.props.update(data);
+        this.props.history.push("/MainPage/"+data.current);
     }
 
-    const failedCallback = (error) => {
+    failedCallback = (error) => {
         alert("Login failed");
         console.error(error);
     }
 
-    const submit = (event) => {
+    submit = (event) => {
         event.preventDefault();
-        console.log("submit:\nusername: " + values.username + "\npassword: " + values.password)
-        /*
-        * TODO
-        */
+        console.log("submit:\nusername: " + this.state.username + "\npassword: " + this.state.password)
         const data = {
-            username: values.username,
-            password: values.password
+            username: this.state.username,
+            password: this.state.password
         };
-        axios.post("/login", data).then(response => successCallback(response.data), error => failedCallback(error));
-        // const result = props.tempAuth(data);
-        // if (result !== false)
-        //     successCallback(result);
-        // else
-        //     failedCallback();
+        const req = new Request("/login", {
+            method: "post",
+            body: JSON.stringify(data),
+            headers: {
+                Accept: "application/json, text/plain, */*",
+                "Content-Type": "application/json"
+            }
+        });
+        fetch(req).then(response => {
+            if (response.status === 200) return response.json();
+        }).then(json => {
+            this.successCallback(json);
+        }).catch(error => {
+            this.failedCallback(error);
+        });
     }
 
-    const change = (prop) => (event) => {
-        setValues({...values, [prop]: event.target.value});
+    change = (prop) => (event) => {
+        this.setState({...this.state, [prop]: event.target.value});
     }
 
-    const show = () => {
-        setValues({...values, show: !values.show});
+    show = () => {
+        this.setState({...this.state, show: !this.state.show});
     };
 
-    return (
-        <div className="login_page">
-            <form onSubmit={submit} noValidate={false} autoComplete="off" className="form">
-                <p className="title">Login</p>
-                <FormGroup className="input">
-                    <TextField
-                        required variant="outlined"
-                        label="Username"
-                        placeholder="Username"
-                        onChange={change('username')}
-                    />
-                </FormGroup>
-                <FormGroup className="input">
-                    <FormControl variant="outlined">
-                        <InputLabel>Password *</InputLabel>
-                        <OutlinedInput
-                            required
-                            placeholder="Password"
-                            type={values.show ? 'text' : 'password'}
-                            value={values.password}
-                            onChange={change('password')}
-                            endAdornment={
-                                <InputAdornment position='end'>
-                                    <IconButton onClick={show} edge="end">
-                                        {values.show ? <Visibility/> : <VisibilityOff/>}
-                                    </IconButton>
-                                </InputAdornment>
-                            }
-                            labelWidth={130}
+    render() {
+        return (
+            <div className="login_page">
+                <form onSubmit={this.submit} noValidate={false} autoComplete="off" className="form">
+                    <p className="title">Login</p>
+                    <FormGroup className="input">
+                        <TextField
+                            required variant="outlined"
+                            label="Username"
+                            placeholder="Username"
+                            onChange={this.change('username')}
                         />
-                    </FormControl>
-                </FormGroup>
-                <FormGroup className="forget">
-                    <Button color="primary" size="small">Forget password?</Button>
-                </FormGroup>
-                <FormGroup className="submit">
-                    <Button variant="contained" color="primary" type="submit">Login</Button>
-                </FormGroup>
-                <FormGroup className="submit">
-                    <Button variant="contained" color="secondary" type="button" component={redirect}>register</Button>
-                </FormGroup>
-            </form>
-        </div>
-    );
+                    </FormGroup>
+                    <FormGroup className="input">
+                        <FormControl variant="outlined">
+                            <InputLabel>Password *</InputLabel>
+                            <OutlinedInput
+                                required
+                                placeholder="Password"
+                                type={this.state.show ? 'text' : 'password'}
+                                value={this.state.password}
+                                onChange={this.change('password')}
+                                endAdornment={
+                                    <InputAdornment position='end'>
+                                        <IconButton onClick={this.show} edge="end">
+                                            {this.state.show ? <Visibility/> : <VisibilityOff/>}
+                                        </IconButton>
+                                    </InputAdornment>
+                                }
+                                labelWidth={130}
+                            />
+                        </FormControl>
+                    </FormGroup>
+                    <FormGroup className="forget">
+                        <Button color="primary" size="small">Forget password?</Button>
+                    </FormGroup>
+                    <FormGroup className="submit">
+                        <Button variant="contained" color="primary" type="submit">Login</Button>
+                    </FormGroup>
+                    <FormGroup className="submit">
+                        <Button variant="contained" color="secondary" type="button" component={this.redirect}>register</Button>
+                    </FormGroup>
+                </form>
+            </div>
+        );
+    }
 }
 
 export default Login;
