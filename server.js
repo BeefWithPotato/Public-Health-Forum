@@ -2,6 +2,8 @@
 const express = require('express');
 const session = require('express-session');
 const path = require('path');
+const fs = require('fs');
+const mineType = require("mime-types");
 //const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
@@ -11,7 +13,7 @@ const mongoose = require("mongoose");
 
 // var fs = require('fs'); 
 // var multer = require('multer'); 
-const Image = require('./models/image'); 
+//const Image = require('./models/image');
 
 const app = express();
 app.use(logger('dev'));
@@ -62,12 +64,16 @@ app.get("/verify", (req, res) =>
 
 app.post("/register", ((req, res) => {
     console.log(req.body);
-
+    if (mongoose.connection.readyState !== 1) {
+        res.status(500).send('Server connection error');
+        return;
+    }
+    const url = path.join(__dirname, "uploads/avatar.png");
+    const data = Buffer.from(fs.readFileSync(url)).toString("base64");
     const user = new User({
         username: req.body.username,
         password: req.body.password,
-        // TODO: Add default avatar
-        // avatar: Image.defaultAvatar,
+        avatar: "data:" + mineType.lookup(url) + ";base64," + data
     });
     // console.log('defaultAvatar');
     // console.log(user.avatar);
@@ -78,6 +84,23 @@ app.post("/register", ((req, res) => {
         req.session.role = user.role;
         res.send({ current: user.username, role: user.role });
     }).catch(_ => res.status(500).send("Server Internal Error"));
+}));
+
+app.patch("/user", ((req, res) => {
+    if (mongoose.connection.readyState !== 1) {
+        res.status(500).send('Server connection error');
+        return;
+    }
+    User.findOneAndUpdate(
+        {
+            // TODO
+        }
+    ).then(user => {
+        // TODO
+    }).catch(error => {
+        console.log(error);
+        res.status(400).send("Bad Request");
+    });
 }));
 
 //get all topics
