@@ -89,7 +89,7 @@ class App extends React.Component {
 
                                render={
                                    props => (this.state.current) ?
-                                       (<Dashboard {...props}/>) :
+                                       (<Dashboard {...props} state={this.state}/>) :
                                        (<Login {...props} update={this.update}/>)
                                }
                         />
@@ -100,12 +100,12 @@ class App extends React.Component {
                                }
                         />
 
-                        <Route exact path='/Dashboard/:user'
-                               render={
-                                   props => (<Dashboard {...props}
-                                                        loggedIn={this.state.loggedIn}
-                                                        user={this.state.current}/>)}
-                        />
+                        {/*<Route exact path='/Dashboard/:user'*/}
+                        {/*       render={*/}
+                        {/*           props => (<Dashboard {...props}*/}
+                        {/*                                loggedIn={this.state.loggedIn}*/}
+                        {/*                                user={this.state.current}/>)}*/}
+                        {/*/>*/}
 
                         <Route exact path='/MainPage/:user' component={MainPage}/>
 

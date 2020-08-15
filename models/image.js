@@ -2,26 +2,28 @@
 'use strict';
 const fs = require('fs'); 
 const path = require("path");
+
 const mongoose = require('mongoose'); 
-const src = fs.readFileSync(path.join(path.resolve(__dirname, "..") + '/uploads/' + 'avatar.png')); 
 const imageSchema = new mongoose.Schema({ 
     img: {
     	type: String,
-    	default: src
+    	data: Buffer
     }
+
 }); 
 
-
-// const defaultAvatar = new imageSchema({
-// 	img: src
-// });
-// defaultAvatar.save();
-
 // A static method to get default avatar
-imageSchema.statics.getDefaultAvatar = function() {
-    console.log('defaultAvatar')
-    console.log(this.img)
-    return this;
+imageSchema.statics.getDefaultAvatar = function () {
+    console.log(defaultAvatar);
+    return defaultAvatar;
 }
 
-module.exports = mongoose.model('Image', imageSchema);
+const image = new mongoose.model('Image', imageSchema);
+const defaultAvatar = new image({
+    img: {
+        type: "image/png",
+        data: fs.readFileSync(path.join(__dirname, '/../uploads/avatar.png'))
+    }
+});
+
+module.exports = image;
