@@ -39,7 +39,7 @@ const UserSchema = new mongoose.Schema({
     avatar: {
         required: false,
         // get default avatar
-        default: imgModel.getdefault().id
+        default: imgModel.getDefaultAvatar()
     },
     loginHistory: {
         type: Array,
