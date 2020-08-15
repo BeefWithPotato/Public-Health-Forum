@@ -33,12 +33,13 @@ const UserSchema = new mongoose.Schema({
     verification: {
         type: String,
         required: false,
-        default: ''
+        default: 'No verification yet'
     },
-    avatar: {
-        required: false,
-        type: ObjectID
-    },
+    // avatar: {
+    //     // required: true,
+    //     required: false,
+    //     type: ObjectID
+    // },
     loginHistory: {
         type: Array,
         required: false,

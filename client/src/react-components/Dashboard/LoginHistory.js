@@ -21,6 +21,8 @@ const rows = [
     createData(4, '2020-07-01', '12:38:56'),
 ];
 
+// const rows = this.props.user;
+
 function preventDefault(event) {
     event.preventDefault();
 }
@@ -34,8 +36,11 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function Orders() {
+export default function LoginHistory(props) {
     const classes = useStyles();
+    console.log('this.props.user in LoginHistory')
+    console.log(props.user)
+    const user = props
     return (
         <React.Fragment>
             <TextTitle className={classes.title}>Login History</TextTitle>
@@ -44,8 +49,6 @@ export default function Orders() {
                     <TableRow>
                         <TableCell>Date</TableCell>
                         <TableCell>Time</TableCell>
-                        <TableCell>Address</TableCell>
-                        <TableCell>Device</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -53,8 +56,6 @@ export default function Orders() {
                         <TableRow key={row.id}>
                             <TableCell>{row.Date}</TableCell>
                             <TableCell>{row.Time}</TableCell>
-                            <TableCell>{row.Address}</TableCell>
-                            <TableCell>{row.Device}</TableCell>
                         </TableRow>
                     ))}
                 </TableBody>

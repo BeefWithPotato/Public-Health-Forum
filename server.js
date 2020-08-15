@@ -9,10 +9,9 @@ const User = require('./models/User');
 const TopicInstance = require('./models/topic');
 const mongoose = require("mongoose");
 
-// need ask...
 // var fs = require('fs'); 
 // var multer = require('multer'); 
-// var imgModel = require('./models/image'); 
+const Image = require('./models/image'); 
 
 const app = express();
 app.use(logger('dev'));
@@ -66,9 +65,12 @@ app.post("/register", ((req, res) => {
 
     const user = new User({
         username: req.body.username,
-        password: req.body.password
+        password: req.body.password,
         // TODO: Add default avatar
+        // avatar: Image.defaultAvatar,
     });
+    // console.log('defaultAvatar');
+    // console.log(user.avatar);
 
     user.save().then(user => {
         req.session.user_id = user._id;
@@ -627,6 +629,30 @@ app.delete("/likes/:type", (req, res) => {
 //         }
 //     })
 // });
+
+//get all comments under current post
+app.get("/dashboard/:id", (req, res) => {
+
+    if (mongoose.connection.readyState !== 1) {
+        res.status(500).send('Server connection error');
+        return;
+    }
+
+    const id = req.params.id;
+
+    User.findOne({id}).then((user) => {
+        if (!user) {
+            res.status(404).send('Resource not found')
+        } else {
+            console.log("find user");
+            console.log(user);
+            res.send(user);
+        }
+    }).catch((error) => {
+        console.log(error);
+        res.status(500).send('Server connection error');
+    })
+});
 
 
 app.use(express.static(path.join(__dirname, '/client/build')));

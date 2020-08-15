@@ -12,18 +12,22 @@ const imageSchema = new mongoose.Schema({
 
 }); 
 
-// A static method to get default avatar
-imageSchema.statics.getDefaultAvatar = function () {
-    console.log(defaultAvatar);
-    return defaultAvatar;
-}
+const Image = new mongoose.model('Image', imageSchema);
 
-const image = new mongoose.model('Image', imageSchema);
-const defaultAvatar = new image({
+const defaultAvatar = new Image({
     img: {
         type: "image/png",
         data: fs.readFileSync(path.join(__dirname, '/../uploads/avatar.png'))
     }
 });
 
-module.exports = image;
+imageSchema.statics.defaultAvatar = defaultAvatar;
+
+// A static method to get default avatar
+imageSchema.statics.getDefaultAvatar = function () {
+    console.log('defaultAvatar');
+    console.log(defaultAvatar);
+    return defaultAvatar;
+}
+
+module.exports = Image;
