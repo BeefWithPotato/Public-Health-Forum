@@ -55,26 +55,6 @@ const useStyles = (theme) => ({
     },
 });
 
-// A function to send a POST request to get user data
-// export const getUser = () => {
-//     const url = "/dashboard";
-
-//     fetch(url)
-//         .then(res => {
-//             if (res.status === 200) {
-//                 return res.json();
-//             } else {
-//                 alert("Could not get user data");
-//             }
-//         })
-//         .then(json => {
-            
-//         })
-//         .catch(error => {
-//             console.log(error);
-//         });
-// };
-
 // A function to send a GET request to logout the current user
 const logout = (user) => {
     const url = "/logout";
@@ -83,42 +63,40 @@ const logout = (user) => {
         .then(res => {
             console.log(res)
             user.setState('');
-
         })
         .catch(error => {
             console.log(error);
         });
 };
 
-// const getUserInfo = (user) => {
-//     const url = "/posts/" + user;
+// A function to send a POST request to get user data
+const getUserInfo = (user) => {
+    const url = "/dashboard/data/" + user;
 
-//     fetch(url)
-//         .then(res => {
-//             if (res.status === 200) {
-//                 // return a promise that resolves with the JSON body
-//                 return res.json();
-//             } else {
-//                 alert("Could not get topics");
-//                 postpage.props.history.push("/errorpage");
-//             }
-//         })
-//         .then(json => {
-//             // the resolved promise with the JSON body
-//             const posts = json.posts;
-//             postpage.setState({ posts: posts.reverse() });
-//         })
-//         .catch(error => {
-//             console.log(error);
-//         });
-// }
+    fetch(url)
+        .then(res => {
+            if (res.status === 200) {
+                return res.json();
+            } else {
+                alert("Could not get user info");
+            }
+        })
+        .then(json => {
+            console.log('json')
+            console.log(json)
+            return json.reverse()
+        })
+        .catch(error => {
+            console.log(error);
+        });
+}
 
 class Dashboard extends React.Component {
 
     constructor(props) {
         super(props);
         this.user = props.state.current;
-        // this.userData = getUserInfo(this.user);
+        this.userData = getUserInfo(this.user);
         this.props.history.push("/Dashboard/"+this.user);
     }
 
@@ -136,7 +114,7 @@ class Dashboard extends React.Component {
                             {/* UserInfo */}
                             <Grid item xs={12}>
                                 <Paper>
-                                    <UserInfo user={this.user}/>
+                                    <UserInfo user={this.user} data={this.userData}/>
                                 </Paper>
                             </Grid>
                             <Grid item xs={12}>

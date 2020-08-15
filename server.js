@@ -86,22 +86,28 @@ app.post("/register", ((req, res) => {
     }).catch(_ => res.status(500).send("Server Internal Error"));
 }));
 
-app.patch("/user", ((req, res) => {
-    if (mongoose.connection.readyState !== 1) {
-        res.status(500).send('Server connection error');
-        return;
-    }
-    User.findOneAndUpdate(
-        {
-            // TODO
-        }
-    ).then(user => {
-        // TODO
-    }).catch(error => {
-        console.log(error);
-        res.status(400).send("Bad Request");
-    });
-}));
+// update user info
+// app.patch("/user", ((req, res) => {
+//     if (mongoose.connection.readyState !== 1) {
+//         res.status(500).send('Server connection error');
+//         return;
+//     }
+//     const id = req.session.user_id;
+//     User.findOneAndUpdate(
+//         { "_id": id },
+//         {
+//             "$set": {
+
+//             }
+//         },
+//         {new: true, useFindAndModify: false}
+//     ).then(user => {
+//         // TODO
+//     }).catch(error => {
+//         console.log(error);
+//         res.status(400).send("Bad Request");
+//     });
+// }));
 
 //get all topics
 app.get("/topics", (req, res) => {
@@ -660,8 +666,8 @@ app.delete("/likes/:type", (req, res) => {
 //     })
 // });
 
-//get all comments under current post
-app.get("/dashboard/:id", (req, res) => {
+//get user data
+app.get("/dashboard/data/:id", (req, res) => {
 
     if (mongoose.connection.readyState !== 1) {
         res.status(500).send('Server connection error');
@@ -670,12 +676,10 @@ app.get("/dashboard/:id", (req, res) => {
 
     const id = req.params.id;
 
-    User.findOne({id}).then((user) => {
+    User.findOne({username: id}).then((user) => {
         if (!user) {
             res.status(404).send('Resource not found')
         } else {
-            console.log("find user");
-            console.log(user);
             res.send(user);
         }
     }).catch((error) => {
