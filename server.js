@@ -2,6 +2,8 @@
 const express = require('express');
 const session = require('express-session');
 const path = require('path');
+const fs = require('fs');
+const mineType = require("mime-types");
 //const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
@@ -9,10 +11,9 @@ const User = require('./models/User');
 const TopicInstance = require('./models/topic');
 const mongoose = require("mongoose");
 
-// need ask...
 // var fs = require('fs'); 
 // var multer = require('multer'); 
-// var imgModel = require('./models/image'); 
+//const Image = require('./models/image');
 
 const app = express();
 app.use(logger('dev'));
@@ -63,12 +64,19 @@ app.get("/verify", (req, res) =>
 
 app.post("/register", ((req, res) => {
     console.log(req.body);
-
+    if (mongoose.connection.readyState !== 1) {
+        res.status(500).send('Server connection error');
+        return;
+    }
+    const url = path.join(__dirname, "uploads/avatar.png");
+    const data = Buffer.from(fs.readFileSync(url)).toString("base64");
     const user = new User({
         username: req.body.username,
-        password: req.body.password
-        // TODO: Add default avatar
+        password: req.body.password,
+        avatar: "data:" + mineType.lookup(url) + ";base64," + data
     });
+    // console.log('defaultAvatar');
+    // console.log(user.avatar);
 
     user.save().then(user => {
         req.session.user_id = user._id;
@@ -76,6 +84,23 @@ app.post("/register", ((req, res) => {
         req.session.role = user.role;
         res.send({ current: user.username, role: user.role });
     }).catch(_ => res.status(500).send("Server Internal Error"));
+}));
+
+app.patch("/user", ((req, res) => {
+    if (mongoose.connection.readyState !== 1) {
+        res.status(500).send('Server connection error');
+        return;
+    }
+    User.findOneAndUpdate(
+        {
+            // TODO
+        }
+    ).then(user => {
+        // TODO
+    }).catch(error => {
+        console.log(error);
+        res.status(400).send("Bad Request");
+    });
 }));
 
 //get all topics
@@ -628,6 +653,30 @@ app.delete("/likes/:type", (req, res) => {
 //         }
 //     })
 // });
+
+//get all comments under current post
+app.get("/dashboard/:id", (req, res) => {
+
+    if (mongoose.connection.readyState !== 1) {
+        res.status(500).send('Server connection error');
+        return;
+    }
+
+    const id = req.params.id;
+
+    User.findOne({id}).then((user) => {
+        if (!user) {
+            res.status(404).send('Resource not found')
+        } else {
+            console.log("find user");
+            console.log(user);
+            res.send(user);
+        }
+    }).catch((error) => {
+        console.log(error);
+        res.status(500).send('Server connection error');
+    })
+});
 
 
 app.use(express.static(path.join(__dirname, '/client/build')));

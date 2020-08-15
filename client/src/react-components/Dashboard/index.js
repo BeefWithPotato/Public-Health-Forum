@@ -90,11 +90,35 @@ const logout = (user) => {
         });
 };
 
+// const getUserInfo = (user) => {
+//     const url = "/posts/" + user;
+
+//     fetch(url)
+//         .then(res => {
+//             if (res.status === 200) {
+//                 // return a promise that resolves with the JSON body
+//                 return res.json();
+//             } else {
+//                 alert("Could not get topics");
+//                 postpage.props.history.push("/errorpage");
+//             }
+//         })
+//         .then(json => {
+//             // the resolved promise with the JSON body
+//             const posts = json.posts;
+//             postpage.setState({ posts: posts.reverse() });
+//         })
+//         .catch(error => {
+//             console.log(error);
+//         });
+// }
+
 class Dashboard extends React.Component {
 
     constructor(props) {
         super(props);
         this.user = props.state.current;
+        // this.userData = getUserInfo(this.user);
         this.props.history.push("/Dashboard/"+this.user);
     }
 
