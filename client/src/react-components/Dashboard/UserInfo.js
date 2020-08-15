@@ -47,6 +47,10 @@ const useStyles = makeStyles((theme) => ({
 
 const UserInfo = (props) => {
 
+    const userData = props.data;
+    console.log('userData')
+    console.log(props.data)
+
     const origin = {
         gender: "",
         email: "",
