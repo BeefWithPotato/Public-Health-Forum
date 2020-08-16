@@ -113,34 +113,64 @@ app.patch("/user", ((req, res) => {
     });
 }));
 
-//set user become admin
-app.patch("/user/admin", ((req, res) => {
+//modify user.role and user.verification info
+app.patch("/user/:content", ((req, res) => {
     if (mongoose.connection.readyState !== 1) {
         res.status(500).send('Server connection error');
         return;
     }
-    User.findOne({_id: req.body.userid}).then((user) => {
-        if (!user) {
-            res.status(404).send('Resource not found')
-        } else {
-            console.log("find user");
-            user.role = "admin";
-            user.save().then(
-                result => {
-                    res.send(result);
-                },
-                error => {
-                    console.log("server error");
-                    console.log(error)
-                    res.status(400).send(error);
-                }
-            );
-        }
-    })
-    .catch((error) => {
-        console.log(error);
-        res.status(400).send('Bad Request');
-    })
+    const content = req.params.content;
+    if(content === "admin"){
+        const id = req.body.userid;
+        User.findOne({_id: id}).then((user) => {
+            if (!user) {
+                res.status(404).send('Resource not found')
+            } else {
+                console.log("find user");
+                user.role = "admin";
+                user.save().then(
+                    result => {
+                        res.send(result);
+                    },
+                    error => {
+                        console.log("server error");
+                        console.log(error)
+                        res.status(400).send(error);
+                    }
+                );
+            }
+        })
+        .catch((error) => {
+            console.log(error);
+            res.status(400).send('Bad Request');
+        })
+    }
+    else if(content === "verification"){
+        const description = req.body.description;
+        const id = req.body.userid;
+        User.findOne({_id: id}).then((user) => {
+            if (!user) {
+                res.status(404).send('Resource not found')
+            } else {
+                console.log("find user");
+                user.verification = description;
+                user.save().then(
+                    result => {
+                        res.send(result);
+                    },
+                    error => {
+                        console.log("server error");
+                        console.log(error)
+                        res.status(400).send(error);
+                    }
+                );
+            }
+        })
+        .catch((error) => {
+            console.log(error);
+            res.status(400).send('Bad Request');
+        })
+    }
 }));
 
 //get all topics
@@ -403,7 +433,7 @@ app.post('/likes/:type', (req, res) => {
             } else {
                 topic.likes++;
                 topic.save();
-                res.send(topic);
+                res.send(result);
             }
         }).catch((error) => {
             console.log(error)
@@ -425,7 +455,7 @@ app.post('/likes/:type', (req, res) => {
                 });
 
                 topic.save();
-                res.send(topic);
+                res.send(result);
             }
         }).catch(error => {
             console.log(error);
@@ -449,7 +479,7 @@ app.post('/likes/:type', (req, res) => {
                 });
 
                 topic.save();
-                res.send(topic);
+                res.send(result);
             }
         }).catch(error => {
             console.log(error);

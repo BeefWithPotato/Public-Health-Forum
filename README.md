@@ -144,6 +144,14 @@ Here is an overview of the routes:
     + 2.postid: post.id (not mongo object id)
   + Expected request body: `{}`
   + Expected result: `status: 200` with `{comments}`
++ PATCH on "/user/:content":
+  + The route is used for update user.role and user.verification info.
+  + Expected request parameters: 
+    + content: "admin"/"verification"
+  + Expected request body: 
+    + content = "admin": `{userid: user object id}`
+    + content = "verification": `{"description": string, userid: mongo object id}`
+  + Expected result: `status: 200` with `{comments}`
 + POST on "/topics":
   + The route is used for creating a new topic in database.
   + Expected request body: `{username: string, title: string, img: base64 string data }`
