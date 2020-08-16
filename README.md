@@ -67,7 +67,7 @@ The purpose of the website is to provide a platform for the public to share and 
 
 + On the left side of the bar, there is a menu open button. The menu contains three buttons: **MAIN PAGE**, **DASHBOARD** and **TOPICS**. Every user/admin/guest can redirect to the Main Page by using MAIN PAGE button or to Post Overview Page by TOPICS button. The dashboard button will only redirect users and admin to the Dashboard. If a guest clicks the button, he will be redirected to the Login Page. 
 
-+ Beside the menu button, we have a Health Base Link and a search box. The Health Base works the same as the Main Page button. For the search box, we plan to implement it in Phase 2 since it needs to call the server.
++ Beside the menu button, we have a Main Page Link. The Main Page Link works the same as the Main Page button.
 
 + Users' username and the icon are displayed on the right side of the Top Bar. Users can click their username to go to their Dashboard Page. For guests, the Top Bar will display "Guest" with a default user icon, and they will be redirect to the Login Page by clicking.
 
