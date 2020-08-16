@@ -17,11 +17,12 @@ export default function Verification(props, data) {
         <React.Fragment>
             <TextTitle>Verification</TextTitle>
             <Typography component="p" variant="h6">
-                <if condition={props.data.verification}>
+                    {props.data.verification}
+                {/* <if condition={props.data.verification}>
                     {props.data.verification}
                 <else/>
                     No verification yet
-                </if>
+                </if> */}
             </Typography>
 
             <Typography component="p" variant="h6" color="textSecondary">

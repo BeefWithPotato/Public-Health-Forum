@@ -13,6 +13,7 @@ import LoginHistory from './LoginHistory';
 import TopBar from '../TopBar';
 import Verification from './Verification';
 import { Button } from '@material-ui/core';
+import { ThreeSixty } from '@material-ui/icons';
 
 function Copyright() {
     return (
@@ -150,18 +151,18 @@ class Dashboard extends React.Component {
                             {/* UserInfo */}
                             <Grid item xs={12}>
                                 <Paper>
-                                    <UserInfo user={this.user}/>
+                                    <UserInfo user={this.user} data={this.state}/>
                                 </Paper>
                             </Grid>
                             <Grid item xs={12}>
                                 <Paper className={fixedHeightPaper}>
-                                    <Verification user={this.user}/>
+                                    <Verification user={this.user} data={this.state}/>
                                 </Paper>
                             </Grid>
                             {/* Recent Login history */}
                             <Grid item xs={12}>
                                 <Paper className={classes.paper}>
-                                    <LoginHistory user={this.user}/>
+                                    <LoginHistory user={this.user} data={this.state}/>
                                 </Paper>
                             </Grid>
                             <Grid item xs={12}>

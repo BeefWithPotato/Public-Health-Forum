@@ -59,6 +59,8 @@ const UserInfo = (props) => {
 
     const [values, setValues] = React.useState(origin);
 
+    console.log("props in info")
+    console.log(props.data)
     const [info, setInfo] = React.useState({
         gender: props.data.gender,
         email: props.data.email,
