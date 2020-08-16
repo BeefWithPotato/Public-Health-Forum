@@ -70,7 +70,7 @@ const logout = (user) => {
 };
 
 // A function to send a POST request to get user data
-const getUserInfo = (user, data) => {
+const getUserInfo = (user, component) => {
     const url = "/dashboard/data/" + user;
 
     fetch(url)
@@ -85,17 +85,15 @@ const getUserInfo = (user, data) => {
             console.log('json')
             console.log(json)
             // data.setState(json);
-            console.log(data)
-            data.setState({
+            component.setState({
+                username: user,
                 gender: json.gender,
                 email: json.email,
                 phone: json.phone,
                 address: json.address,
             });
             console.log('after')
-            console.log(data)
-        })
-        .catch(error => {
+        }).catch(error => {
             console.log(error);
         });
 }
@@ -141,23 +139,23 @@ class Dashboard extends React.Component {
 
     constructor(props) {
         super(props);
-        this.data = {
-            userId: props.state.current,
-            gender: "",
-            email: "",
-            phone: "",
-            address: "",
-        };
         this.user = props.state.current;
         this.props.history.push("/Dashboard/"+this.user);
     }
 
+    state = {
+        username: this.user,
+        gender: "",
+        email: "",
+        phone: "",
+        address: "",
+    }
 
     // getUserInfo(user, this.data)
     componentDidMount() {
-        getUserInfo(this.user, this.data);
-        console.log('this.data')
-        console.log(this.data)
+        getUserInfo(this.user, this);
+        console.log('state:')
+        console.log(this.state)
     }
 
     render() {
