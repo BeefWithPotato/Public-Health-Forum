@@ -5,12 +5,12 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import InputBase from '@material-ui/core/InputBase';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
-// import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
+// import InputBase from '@material-ui/core/InputBase';
+// import SearchIcon from '@material-ui/icons/Search';
 
 const useStyles = makeStyles((theme) => ({
     grow: {
@@ -25,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
             display: 'block',
         },
     },
+    // Left for future update
     // search: {
     //     position: 'relative',
     //     borderRadius: theme.shape.borderRadius,
@@ -210,10 +211,11 @@ export default function TopBar(props) {
                         <MenuIcon/>
                     </IconButton>
                     <Button href={"/MainPage/" + user} color="inherit">
-                        Health Base
+                        Main Page
                     </Button>
                     <Typography className={classes.title} variant="h6" noWrap>
                     </Typography>
+                    {/* Search Block */}
                     {/* <div className={classes.search}>
                         <div className={classes.searchIcon}>
                             <SearchIcon/>

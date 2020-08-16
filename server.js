@@ -4,25 +4,17 @@ const session = require('express-session');
 const path = require('path');
 const fs = require('fs');
 const mineType = require("mime-types");
-//const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
 const User = require('./models/User');
 const TopicInstance = require('./models/topic');
 const mongoose = require("mongoose");
 
-// var fs = require('fs'); 
-// var multer = require('multer'); 
-//const Image = require('./models/image');
-
 const app = express();
 app.use(logger('dev'));
-//app.use(express.json());
-//app.use(express.urlencoded({extended: true}));
 
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
-//app.use(cookieParser());
 app.use(session({
     secret: "SECRET",
     resave: false,
@@ -36,8 +28,6 @@ app.use(session({
 app.post("/login", (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
-    console.log(req.body);
-    console.log(`username: ${username}, password: ${password}`);
     User.findByUsernameAndPassword(username, password).then(user => {
         req.session.user_id = user._id;
         req.session.username = user.username;
@@ -63,7 +53,6 @@ app.get("/verify", (req, res) =>
 );
 
 app.post("/register", ((req, res) => {
-    console.log(req.body);
     if (mongoose.connection.readyState !== 1) {
         res.status(500).send('Server connection error');
         return;
@@ -75,8 +64,6 @@ app.post("/register", ((req, res) => {
         password: req.body.password,
         avatar: "data:" + mineType.lookup(url) + ";base64," + data
     });
-    // console.log('defaultAvatar');
-    // console.log(user.avatar);
 
     user.save().then(user => {
         req.session.user_id = user._id;
@@ -459,7 +446,7 @@ app.post('/likes/:type', (req, res) => {
             }
         }).catch(error => {
             console.log(error);
-            res.status(500).send(); // server error, could not add
+            res.status(500).send();
         });
     }
     else if(type === "comment"){
@@ -483,7 +470,7 @@ app.post('/likes/:type', (req, res) => {
             }
         }).catch(error => {
             console.log(error);
-            res.status(500).send(); // server error, could not add
+            res.status(500).send();
         });
     } else {
         res.status(400).send('Bad Request')
@@ -513,7 +500,7 @@ app.delete("/topics", (req, res) => {
         })
         .catch(error => {
         	console.log(error);
-            res.status(500).send(); // server error, could not delete.
+            res.status(500).send();
         });
 });
 
@@ -542,14 +529,13 @@ app.delete("/posts", (req, res) => {
                 num++;
             }
 
-            //console.log(filterUser.length)
             topic.posts = filterPost;
             topic.save();
             res.send(topic);
         }
     }).catch(error => {
         console.log(error);
-        res.status(500).send(); // server error, could not delete.
+        res.status(500).send();
     });
 });
 
@@ -586,7 +572,7 @@ app.delete("/comments", (req, res) => {
         }
     }).catch(error => {
         console.log(error);
-        res.status(500).send(); // server error, could not delete.
+        res.status(500).send();
     });
 });
 
@@ -638,7 +624,7 @@ app.delete("/likes/:type", (req, res) => {
             }
         }).catch(error => {
             console.log(error);
-            res.status(500).send(); // server error, could not delete.
+            res.status(500).send();
         });
     }
     else if(type === "comment"){
@@ -663,72 +649,13 @@ app.delete("/likes/:type", (req, res) => {
             }
         }).catch(error => {
             console.log(error);
-            res.status(500).send(); // server error, could not add
+            res.status(500).send();
         });
     }
     else{
         res.status(400).send('Bad Request')
     }
 });
-
-// get user info for dashboard
-// app.get("/dashboard/:id", (req, res) => {
-//     /// req.params has the wildcard parameters in the url, in this case, id.
-//     log(req.params.id)
-//     const id = req.params.id;
-
-//     // Good practise: Validate id immediately.
-//     if (!ObjectID.isValid(id)) {
-//         res.status(404).send(); // if invalid id, definitely can't find resource, 404.
-//         return;
-//     }
-
-//     // Otherwise, findById
-//     User.findById(id).then(student => {
-//         if (!student) {
-//             res.status(404).send(); // could not find this student
-//         } else {
-//             /// sometimes we wrap returned object in another object:
-//             //res.send({student})
-//             res.send(student);
-//         }
-//     })
-//     .catch(error => {
-//         res.status(500).send(); // server error
-//     });
-// });
-
-// update avatar
-// app.use(multer({ 
-// 	dest: path.join(__dirname + '/uploads/'), 
-// 	rename: function (fieldname, filename) {
-// 		return filename;
-// 	},
-// }));
-// app.post('/dashboard/avatar',function(req,res){
-// 	var newItem = new imgModel();
-// 	newItem.img.data = fs.readFileSync(req.files.userPhoto.path);
-// 	newItem.img.contentType = 'image/png';
-// 	newItem.save();
-// });
-// app.post("/dashboard/avatar", (req, res) => {
-//     if (mongoose.connection.readyState !== 1) {
-//         res.status(500).send('Server connection error');
-//         return;
-//     }
-
-//     console.log(req.body)
-//     let userid = null;
-//     User.findOne({username: req.body.username}).then((user) => {
-//         if (!user) {
-//             res.status(404).send('Resource not found')
-//         } else {
-//             console.log("find user");
-//             console.log(user._id);
-//             userid = user._id;
-//         }
-//     })
-// });
 
 //get user data
 app.get("/dashboard/data/:id", (req, res) => {
@@ -737,9 +664,7 @@ app.get("/dashboard/data/:id", (req, res) => {
         res.status(500).send('Server connection error');
         return;
     }
-
     const id = req.params.id;
-
     User.findOne({username: id}).then((user) => {
         if (!user) {
             res.status(404).send('Resource not found')

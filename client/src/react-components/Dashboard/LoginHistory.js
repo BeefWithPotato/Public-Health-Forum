@@ -36,11 +36,8 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function LoginHistory(props) {
+export default function LoginHistory(props, data) {
     const classes = useStyles();
-    console.log('this.props.user in LoginHistory')
-    console.log(props.user)
-    const user = props
     return (
         <React.Fragment>
             <TextTitle className={classes.title}>Login History</TextTitle>

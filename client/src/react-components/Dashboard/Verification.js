@@ -11,14 +11,17 @@ const useStyles = makeStyles({
     },
 });
 
-export default function Verification(props) {
+export default function Verification(props, data) {
     const classes = useStyles();
-    // const {user} = props;
     return (
         <React.Fragment>
             <TextTitle>Verification</TextTitle>
             <Typography component="p" variant="h6">
-                Verification Message
+                <if condition={props.data.verification}>
+                    {props.data.verification}
+                <else/>
+                    No verification yet
+                </if>
             </Typography>
 
             <Typography component="p" variant="h6" color="textSecondary">

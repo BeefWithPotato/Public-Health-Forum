@@ -48,7 +48,6 @@ class Login extends React.Component {
 
     submit = (event) => {
         event.preventDefault();
-        console.log("submit:\nusername: " + this.state.username + "\npassword: " + this.state.password)
         const data = {
             username: this.state.username,
             password: this.state.password

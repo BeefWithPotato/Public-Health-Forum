@@ -48,28 +48,22 @@ const useStyles = makeStyles((theme) => ({
 const UserInfo = (props) => {
 
     const origin = {
-        gender: "",
-        email: "",
-        phone: "",
-        address: "",
+        gender: "No info",
+        email: "No info",
+        phone: "No info",
+        address: "No info",
     }
     const classes = useStyles();
-    const {user} = props;
 
     const [on, setOn] = React.useState(false);
 
     const [values, setValues] = React.useState(origin);
 
-    // get from db
-    // const userData = getUserInfo(user);
-    // console.log('userData')
-    // console.log(userData)
-
     const [info, setInfo] = React.useState({
-        gender: "Male",
-        email: "user@user.com",
-        phone: "4169783435",
-        address: "xxxxxx"
+        gender: props.data.gender,
+        email: props.data.email,
+        phone: props.data.phone,
+        address: props.data.address
     });
 
     const change = (prop) => (event) => {
@@ -177,7 +171,7 @@ const UserInfo = (props) => {
                 </Grid>
                 <Grid item>
                     <Typography component="div" variant="h3" className={classes.margin}>
-                        {user}
+                        {props.data.username}
                     </Typography>
                 </Grid>
             </Grid>
