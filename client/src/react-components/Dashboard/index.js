@@ -70,32 +70,16 @@ const logout = (user) => {
 };
 
 // A function to send a POST request to get user data
-const getUserInfo = (user, component) => {
+const getUserInfo = user => {
     const url = "/dashboard/data/" + user;
-
-    fetch(url)
-        .then(res => {
+    return fetch(url).then(res => {
             if (res.status === 200) {
                 return res.json();
             } else {
                 alert("Could not get user info");
             }
-        })
-        .then(json => {
-            console.log('json')
-            console.log(json)
-            // data.setState(json);
-            component.setState({
-                username: user,
-                gender: json.gender,
-                email: json.email,
-                phone: json.phone,
-                address: json.address,
-            });
-            console.log('after')
-        }).catch(error => {
-            console.log(error);
-        });
+        }).then(json => json)
+        .catch(error => console.log(error));
 }
 
 // A function to send a POST request to get user data
@@ -143,24 +127,18 @@ class Dashboard extends React.Component {
         this.props.history.push("/Dashboard/"+this.user);
     }
 
-    state = {
-        username: this.user,
-        gender: "",
-        email: "",
-        phone: "",
-        address: "",
-    }
+    state = {}
 
-    // getUserInfo(user, this.data)
     componentDidMount() {
-        getUserInfo(this.user, this);
-        console.log('state:')
-        console.log(this.state)
+        getUserInfo(this.user).then(data => this.setState(data, _=>{})).catch(_=>{});
     }
 
     render() {
         const { classes } = this.props;
         const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+        console.log("user:"+this.user);
+        console.log("state at render:");
+        console.log(this.state);
         return (
             <div className={classes.root}>
                 <CssBaseline/>
