@@ -420,7 +420,7 @@ app.post('/likes/:type', (req, res) => {
             } else {
                 topic.likes++;
                 topic.save();
-                res.send(result);
+                res.send(topic);
             }
         }).catch((error) => {
             console.log(error)
@@ -442,7 +442,7 @@ app.post('/likes/:type', (req, res) => {
                 });
 
                 topic.save();
-                res.send(result);
+                res.send(topic);
             }
         }).catch(error => {
             console.log(error);
@@ -466,7 +466,7 @@ app.post('/likes/:type', (req, res) => {
                 });
 
                 topic.save();
-                res.send(result);
+                res.send(topic);
             }
         }).catch(error => {
             console.log(error);
