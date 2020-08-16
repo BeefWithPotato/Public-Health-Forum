@@ -194,6 +194,14 @@ Here is an overview of the routes:
   + type = "comment"
     + Expected request body: `{id: number (comment.id not mongo object id), topic: string (topic title), postid: number (post.id not mongo object id)}`
     + Expected result: `status: 200`
++ PATCH on "/user/:id":
+  + The route is used for handling user infomation update.
+  + Expected request body: `{email: String, gender: String, phone: String, address: String}`
+  + Expected result: `status: 200 with {email: String, gender: String, phone: String, address: String}`
++ GET on "/dashboard/data/:id":
+  + The route is used for obtaining user infomation from database.
+  + Expected request body: `{}`
+  + Expected result: `status: 200` with `{email: String, gender: String, phone: String, address: String}`
 + Others: Handled by React
 
 
